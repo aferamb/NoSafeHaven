@@ -20,6 +20,7 @@ public class NoSafeHaven {
         for (int i = 0; i < numHumanos; i++) {
             Humano humano = new Humano("Humano-" + i, refugio, exterior);
             humano.start(); // Arrancar cada hilo de Humano
+            System.out.println("Creando humano");
             try {
                 Thread.sleep((int) (Math.random() * 500 + 1500)); //en zona comun 1 a 2 seg
             } catch (Exception e) {
