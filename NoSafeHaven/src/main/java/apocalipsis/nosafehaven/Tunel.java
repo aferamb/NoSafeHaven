@@ -60,7 +60,6 @@ public class Tunel {
 
         entrando.lock();
         try {
-
             humanosDentro--;
             if (humanosEntrando > 0) {
                 // Si siguen quedando humanos intentando entrar, priorizamos su entrada
@@ -75,7 +74,7 @@ public class Tunel {
 
     }
 
-    /////////////////////////////////////////// Getters, setters y toString
+    /////////////////////////////////////////// Getters, setters y toString:
     //yo lo modificaría xd quitar el 98%
     public int getHumanosDentro() {
         return humanosDentro;

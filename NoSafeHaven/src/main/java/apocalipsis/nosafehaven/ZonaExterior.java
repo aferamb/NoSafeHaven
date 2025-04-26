@@ -42,7 +42,8 @@ public class ZonaExterior {
         }
         int tiempoAtaque = (int) (Math.random() * 1000 + 500); //0.5-1.5 seg
         h.serAtacado(muerte, tiempoAtaque);
-        z.atacar(muerte, tiempoAtaque);
+        z.atacar(muerte, tiempoAtaque, h.getid()); //Se le pasa el id del humano para los logs
+        
 
     }
 

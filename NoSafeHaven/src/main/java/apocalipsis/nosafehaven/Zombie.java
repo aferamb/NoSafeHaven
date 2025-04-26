@@ -4,9 +4,6 @@
  */
 package apocalipsis.nosafehaven;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author 05jan
@@ -26,10 +23,13 @@ public class Zombie extends Thread {
     public void run() {
         while (true) {
             try {
-                int zona = (int) (Math.random()*4); //seleccionar zona de 0-3
+                int zona = (int) (Math.random() * 4); //seleccionar zona de 0-3
+                Log.escribir("Z" + id + " se dirige a la zona exterior " + zona + ".");
                 exterior.buscarCerebros(this, zona);
-                sleep((int) (Math.random()*1000 + 2000)); //dormir 2-3 s
+                Log.escribir("Z" + id + " está buscando cerebros en la zona exterior " + zona + ".");
+                sleep((int) (Math.random() * 1000 + 2000)); //dormir 2-3 s
                 exterior.acabarZombie(this, zona);
+                Log.escribir("Z" + id + " abandona la zona exterior " + zona + ".");
                 //vuelve a buscar zona. se podria repetir la misma (ver si seria necesario que fuera distinta a la anterior)
 
             } catch (InterruptedException ie) {
@@ -38,14 +38,17 @@ public class Zombie extends Thread {
 
     }
 
-    public void atacar(boolean matado, int tiempo) {
-        
+    public void atacar(boolean matado, int tiempo, String hid) {
+
         try {
             sleep(tiempo);
         } catch (InterruptedException ex) {
         }
         if (matado) {
             bodycount++;
+            Log.escribir("Z" + id + " ha matado al humano H" + hid + ". Total muertos: " + bodycount + ".");
+        } else {
+            Log.escribir("Z" + id + " ha atacado y herido al humano H" + hid + ".");
         }
     }
 }
