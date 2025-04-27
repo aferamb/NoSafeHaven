@@ -27,7 +27,7 @@ public class Refugio {
         }
     }
 
-    public void dejarComida() { 
+    public synchronized void dejarComida() { 
         comida.addAndGet(2);
         notifyAll();
     }
@@ -48,7 +48,7 @@ public class Refugio {
         enCama.decrementAndGet();
     }
 
-    public void irComedor() throws InterruptedException { 
+    public synchronized void irComedor() throws InterruptedException { 
         enComedor.incrementAndGet();
         while (comida.get() == 0) {
             wait();

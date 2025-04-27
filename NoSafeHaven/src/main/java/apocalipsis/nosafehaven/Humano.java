@@ -16,6 +16,8 @@ public class Humano extends Thread {
     private Refugio refugio;
     private Exterior exterior;
 
+    private int tiempoAtaque = 0;
+
     public Humano(String id, Refugio refugio, Exterior exterior) {
         this.id = id;
         this.refugio = refugio;
@@ -33,7 +35,7 @@ public class Humano extends Thread {
                 Log.escribir(id + " sale de la zona comun.");
                 System.out.println(id + " sale de la zona comun.");
 
-                int tunel = (int) (Math.random() * 3); //elegir entre los tuneles 0-3 para salir del refugio
+                int tunel = (int) (Math.random() * 4); //elegir entre los tuneles 0-3 para salir del refugio
                 Log.escribir(id + " intenta salir del refugio por el tunel " + tunel + ".");
                 System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
                 refugio.salirRefugio(tunel);
@@ -45,22 +47,36 @@ public class Humano extends Thread {
                 exterior.buscarComida(this, tunel);
                 Log.escribir(id + " busca comida en la zona exterior " + tunel + ".");
                 System.out.println(id + " busca comida en la zona exterior " + tunel + ".");
-                try { // este sleep espeligroso, si un humano lo atataca se queda tiempo xtra en la zona exterior y otr zombien lo puede volver a atacar
-                    sleep((int) (Math.random() * 2000 + 3000)); // en exterior 3-5 seg
-                } catch (InterruptedException e) {
-                    Log.escribir(id + " fue interrumpido mientras buscaba comida.");
-                    System.out.println(id + " fue interrumpido mientras buscaba comida.");
+
+                if (herido || muerto) { //si le atacan, simula el tiempo del ataque
+                    try {
+                        sleep(tiempoAtaque);
+                    } catch (InterruptedException ex) {
+                        Log.escribir("Error al dormir el hilo en serAtacado: " + ex.getMessage());
+                        System.out.println("Error al dormir el hilo en fun serAtacado: " + ex.getMessage());
+                    }
+                    tiempoAtaque = 0; //reinicio tiempoataque
                 }
 
                 if (!muerto) {
+                    //si le matan, no hace el sleep
+                    try { // este sleep es peligroso, si un humano lo ataca se queda tiempo extra en la zona exterior y otr zombien lo puede volver a atacar
+                        sleep((int) (Math.random() * 2000 + 3000)); // en exterior 3-5 seg
+                    } catch (InterruptedException e) {
+                        Log.escribir(id + " fue interrumpido mientras buscaba comida.");
+                        System.out.println(id + " fue interrumpido mientras buscaba comida.");
+                    }
+
                     exterior.acabarHumano(this, tunel); //si no ha muerto, se va de la zona exterior...
                     Log.escribir(id + " deja la zona exterior " + tunel + ".");
                     System.out.println(id + " deja la zona exterior " + tunel + ".");
-                    tunel = (int) (Math.random() * 3); //cambiar el tunel para entrar
+                    
+                    tunel = (int) (Math.random() * 4); //cambiar el tunel para entrar
                     Log.escribir(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     refugio.entrarRefugio(tunel); //... entra al tunel...
                     sleep(1000); //esperar 1 seg cruzar tunel
+                    
                     refugio.salirTunel(tunel); //...llega a dentro del refugio
                     Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
                     System.out.println(id + " ha entrado al refugio por el tunel " + tunel + ".");
@@ -125,17 +141,13 @@ public class Humano extends Thread {
     }
 
     public void serAtacado(boolean muerte, int tiempo) {
-        try {
-            sleep(tiempo);
-        } catch (InterruptedException ex) {
-            Log.escribir("Error al dormir el hilo en serAtacado: " + ex.getMessage());
-            System.out.println("Error al dormir el hilo en fun serAtacado: " + ex.getMessage());
-        }
         if (muerte) {
             muerto = true;
         } else {
             herido = true;
         }
+        //try {sleep(tiempo);} catch (InterruptedException ex) {Log.escribir("Error al dormir el hilo en serAtacado: " + ex.getMessage());System.out.println("Error al dormir el hilo en fun serAtacado: " + ex.getMessage());}
+        tiempoAtaque = tiempo;
 
     }
 
