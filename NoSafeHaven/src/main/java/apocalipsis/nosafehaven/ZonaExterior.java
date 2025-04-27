@@ -5,6 +5,7 @@
 package apocalipsis.nosafehaven;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
@@ -12,8 +13,8 @@ import java.util.ArrayList;
  */
 public class ZonaExterior {
 
-    private int ctdzombies = 0;
-    private int ctdhumanos = 0;
+    private AtomicInteger ctdzombies = new AtomicInteger(0);
+    private AtomicInteger ctdhumanos = new AtomicInteger(0);
     private int id;
 
     private ArrayList<Humano> humanos = new ArrayList<>();
@@ -24,15 +25,15 @@ public class ZonaExterior {
     }
 
     public synchronized void zombieLlegar(Zombie z) {
-        ctdzombies++;
+        ctdzombies.incrementAndGet();
         zombies.add(z);
-        if (ctdhumanos > 0) {
-            zombieAtacar(z);
+        if (ctdhumanos.get() > 0) {
+            zombieAtacar(z); // debido a esto se podria bloquear este metodo durante el tiempo de ataque del zombie
         }
     }
 
-    public synchronized void zombieAtacar(Zombie z) {
-        int humano = (int) (Math.random() * ctdhumanos); //humano en el array en la posicion "humano"
+    public synchronized void zombieAtacar(Zombie z) { // cuidado, si el humano esta herido no se le puede volver a atacar, habra que quitarlo nada mas ser atacado, pero habria que moidificar wl codigo de humano para cuando es atacado no salga dos veces de la zona exterior
+        int humano = (int) (Math.random() * ctdhumanos.get()); //humano en el array en la posicion "humano"
         Humano h = humanos.get(humano);
         
         boolean muerte = false;  //inicializamos a que el humano sobrevive
@@ -41,25 +42,24 @@ public class ZonaExterior {
             humanoIrse(h); //el humano ha muerto. lo borro para que otro zombie no se piense que siga vivo 
         }
         int tiempoAtaque = (int) (Math.random() * 1000 + 500); //0.5-1.5 seg
-        h.serAtacado(muerte, tiempoAtaque);
         z.atacar(muerte, tiempoAtaque, h.getid()); //Se le pasa el id del humano para los logs
-        
+        h.serAtacado(muerte, tiempoAtaque);
 
     }
 
     public synchronized void zombieIrse(Zombie z) {
-        ctdzombies--;
+        ctdzombies.decrementAndGet();
         zombies.remove(z);
     }
 
     public synchronized void humanoLlegar(Humano h) {
-        ctdhumanos++;
+        ctdhumanos.incrementAndGet();
         humanos.add(h);
 
     }
 
     public synchronized void humanoIrse(Humano h) {
-        ctdhumanos--;
+        ctdhumanos.decrementAndGet();
         humanos.remove(h);
     }
 

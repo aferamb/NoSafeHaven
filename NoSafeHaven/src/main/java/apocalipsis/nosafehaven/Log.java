@@ -14,9 +14,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Log {
 
-    private static final String nombre_archivo = "apocalipsis.txt";
-    private static final Lock lock = new ReentrantLock(); // Protege el acceso concurrente
     private static final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static final String fecha_archivo = LocalDateTime.now().format(formatoFecha).replace(":", "-").replace(" ", "_");
+    private static final String nombre_archivo = "apocalipsis" + fecha_archivo + ".txt";
+    private static final Lock lock = new ReentrantLock(); // Protege el acceso concurrente
 
     public static void escribir(String mensaje) {
         lock.lock();

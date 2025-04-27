@@ -4,18 +4,20 @@
  */
 package apocalipsis.nosafehaven;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  *
  * @author 05jan
  */
 public class Refugio {
 
-    private int comida = 0;
-    private int humanos = 0;
+    private AtomicInteger comida = new AtomicInteger(0);
+    private AtomicInteger humanos = new AtomicInteger(0);
 
-    private int enZonaComun = 0;
-    private int enCama = 0;
-    private int enComedor = 0;
+    private AtomicInteger enZonaComun = new AtomicInteger(0);
+    private AtomicInteger enCama = new AtomicInteger(0);
+    private AtomicInteger enComedor = new AtomicInteger(0);
 
     private Tunel[] tuneles = new Tunel[4]; // Array de túneles
 
@@ -25,37 +27,37 @@ public class Refugio {
         }
     }
 
-    public synchronized void dejarComida() { //bloquea el refugio entero. usar lock??????
-        comida += 2;
+    public void dejarComida() { 
+        comida.addAndGet(2);
         notifyAll();
     }
 
-    public synchronized void irZonaComun() { //bloquea el refugio entero
-        enZonaComun++;
+    public void irZonaComun() { 
+        enZonaComun.incrementAndGet();
     }
 
-    public synchronized void salirZonaComun() { //bloquea el refugio entero
-        enZonaComun--;
+    public void salirZonaComun() { 
+        enZonaComun.decrementAndGet();
     }
 
-    public synchronized void irZonaDescanso() { //bloquea el refugio entero
-        enCama++;
+    public void irZonaDescanso() { 
+        enCama.incrementAndGet();
     }
 
-    public synchronized void salirZonaDescanso() { //bloquea el refugio entero
-        enCama--;
+    public void salirZonaDescanso() { 
+        enCama.decrementAndGet();
     }
 
-    public synchronized void irComedor() throws InterruptedException { //bloquea el refugio entero
-        enComedor++;
-        while (comida == 0) {
+    public void irComedor() throws InterruptedException { 
+        enComedor.incrementAndGet();
+        while (comida.get() == 0) {
             wait();
         }
-        comida--;
+        comida.decrementAndGet(); //comer 1 comida
     }
 
-    public synchronized void salirComedor() { //bloquea el refugio entero
-        enComedor--;
+    public void salirComedor() { 
+        enComedor.decrementAndGet();
 
     }
 
