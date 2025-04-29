@@ -19,7 +19,7 @@ public class Tunel {
     private Condition quiereEntrar = entrando.newCondition(); //prioridad
     private Condition quiereSalir = entrando.newCondition();
     //private int dentro;
-    private int humanosEntrando;
+    private int humanosEntrando = 0;
 
     private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
@@ -55,16 +55,17 @@ public class Tunel {
     public void entrarRefugio(String idHumano) throws InterruptedException {
         entrando.lock();
         try {
-            if (humanosDentro > 0) {
-                humanosEntrando++; //evitar que se aumente cada bucle del while. solo se incrementa una vez
-                humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
-                PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
-            }
+            humanosEntrando++; //evitar que se aumente cada bucle del while. solo se incrementa una vez
+
+            humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
+            PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
+
             while (humanosDentro > 0) {
                 quiereEntrar.await();
             }
             humanosDentro++;
             humanosEntrando--;
+
             humanosEntrandoRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
             humanosDentroRef.add(idHumano); //añadimos el id del humano a la lista de ids
             PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
@@ -75,7 +76,6 @@ public class Tunel {
     }
 
     public void salirTunel(String idHumano) throws InterruptedException {
-        //Thread.sleep(1000); //poner fuera de tunel
 
         entrando.lock();
         try {
