@@ -5,7 +5,10 @@
 package apocalipsis.nosafehaven.backend;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
 /**
  *
@@ -17,16 +20,20 @@ public class ZonaExterior {
     private AtomicInteger ctdhumanos = new AtomicInteger(0);
     private int id;
 
-    private ArrayList<Humano> humanos = new ArrayList<>();
-    private ArrayList<Zombie> zombies = new ArrayList<>();
+    private CopyOnWriteArrayList<Humano> humanos = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<Zombie> zombies = new CopyOnWriteArrayList<>();
+
+    private CopyOnWriteArrayList<String> listaIDs = new CopyOnWriteArrayList<>(); // IDs de los humanos y zombies en la zona exterior
 
     public ZonaExterior(int id) {
         this.id = id;
     }
 
-    public synchronized void zombieLlegar(Zombie z) {
+    public void zombieLlegar(Zombie z) {
         ctdzombies.incrementAndGet();
+        listaIDs.add(z.getid()); //añadimos el id del zombie a la lista de ids
         zombies.add(z);
+        PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
         if (ctdhumanos.get() > 0) {
             zombieAtacar(z); // debido a esto se podria bloquear este metodo durante el tiempo de ataque del zombie
         }
@@ -47,20 +54,25 @@ public class ZonaExterior {
 
     }
 
-    public synchronized void zombieIrse(Zombie z) {
+    public void zombieIrse(Zombie z) {
         ctdzombies.decrementAndGet();
+        listaIDs.remove(z.getid()); //eliminamos el id del zombie de la lista de ids
         zombies.remove(z);
+        PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
     }
 
-    public synchronized void humanoLlegar(Humano h) {
+    public void humanoLlegar(Humano h) {
         ctdhumanos.incrementAndGet();
+        listaIDs.add(h.getid()); //añadimos el id del humano a la lista de ids
         humanos.add(h);
-
+        PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
     }
 
-    public synchronized void humanoIrse(Humano h) {
+    public void humanoIrse(Humano h) {
         ctdhumanos.decrementAndGet();
+        listaIDs.remove(h.getid()); //eliminamos el id del humano de la lista de ids
         humanos.remove(h);
+        PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
     }
 
 }

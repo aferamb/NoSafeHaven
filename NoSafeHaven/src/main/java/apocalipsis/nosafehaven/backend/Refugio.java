@@ -5,7 +5,7 @@
 package apocalipsis.nosafehaven.backend;
 
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -18,13 +18,13 @@ public class Refugio {
     private AtomicInteger humanos = new AtomicInteger(0);
 
     private AtomicInteger enZonaComun = new AtomicInteger(0);
-    private ArrayList<String> humanosZonaComun = new ArrayList<>();
+    private CopyOnWriteArrayList<String> humanosZonaComun = new CopyOnWriteArrayList<>(); // mejor que colleccion sincronizada mas rapida y eficaz
 
     private AtomicInteger enCama = new AtomicInteger(0);
-    private ArrayList<String> humanosZonaDescanso = new ArrayList<>();
+    private CopyOnWriteArrayList<String> humanosZonaDescanso = new CopyOnWriteArrayList<>();
 
     private AtomicInteger enComedor = new AtomicInteger(0);
-    private ArrayList<String> humanosComedor = new ArrayList<>();
+    private CopyOnWriteArrayList<String> humanosComedor = new CopyOnWriteArrayList<>();
 
     private Tunel[] tuneles = new Tunel[4]; // Array de túneles
 
@@ -36,42 +36,54 @@ public class Refugio {
 
     public synchronized void dejarComida() { 
         comida.addAndGet(2);
-        //PantallaPrincipal.actualizarComida(comida.get());
+        PantallaPrincipal.getInstancia().actualizarComida(comida.get());
         notifyAll();
     }
 
-    public void irZonaComun() { 
+    public void irZonaComun(String id) { 
         enZonaComun.incrementAndGet();
+        humanosZonaComun.add(id);
+        PantallaPrincipal.getInstancia().actualizarZonaComun(humanosZonaComun);
     }
 
-    public void salirZonaComun() { 
+    public void salirZonaComun(String id) { 
         enZonaComun.decrementAndGet();
+        humanosZonaComun.remove(id);
+        PantallaPrincipal.getInstancia().actualizarZonaComun(humanosZonaComun);
     }
 
-    public void irZonaDescanso() { 
+    public void irZonaDescanso(String id) { 
         enCama.incrementAndGet();
+        humanosZonaDescanso.add(id);
+        PantallaPrincipal.getInstancia().actualizarZonaDescanso(humanosZonaDescanso);
     }
 
-    public void salirZonaDescanso() { 
+    public void salirZonaDescanso(String id) { 
         enCama.decrementAndGet();
+        humanosZonaDescanso.remove(id);
+        PantallaPrincipal.getInstancia().actualizarZonaDescanso(humanosZonaDescanso);
     }
 
-    public synchronized void irComedor() throws InterruptedException { 
+    public void irComedor(String id) throws InterruptedException { 
         enComedor.incrementAndGet();
         while (comida.get() == 0) {
             wait();
         }
         comida.decrementAndGet(); //comer 1 comida
+        humanosComedor.add(id);
+        PantallaPrincipal.getInstancia().actualizarComedor(humanosComedor);
     }
 
-    public void salirComedor() { 
+    public void salirComedor(String id) { 
         enComedor.decrementAndGet();
-
+        humanosComedor.remove(id);
+        PantallaPrincipal.getInstancia().actualizarComedor(humanosComedor);
     }
 
-    public void salirRefugio(int tunel) throws Exception {
+    public void salirRefugio(int tunel, String id) throws Exception {
         if (tunel >= 0 && tunel < tuneles.length) {
             tuneles[tunel].salirRefugio();
+            salirZonaComun(id); // Salir de la zona común al salir del refugio    Esta linea se ejecutara una vez que el humano haya entrado al túnel para salir
         } else {
             throw new IllegalArgumentException("Túnel inválido: " + tunel);
         }
@@ -80,6 +92,7 @@ public class Refugio {
     public void entrarRefugio(int tunel) throws Exception {
         if (tunel >= 0 && tunel < tuneles.length) {
             tuneles[tunel].entrarRefugio();
+            
         } else {
             throw new IllegalArgumentException("Túnel inválido: " + tunel);
         }

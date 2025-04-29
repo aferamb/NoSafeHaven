@@ -48,11 +48,13 @@ public class Zombie extends Thread {
                 // Asegúrate de que el zombie siempre sale de la zona exterior
             }
         }
+    }
 
+    public String getid() {
+        return id;
     }
 
     public void atacar(boolean matado, int tiempo, String hid) {
-
         try {
             sleep(tiempo);
         } catch (InterruptedException ex) {

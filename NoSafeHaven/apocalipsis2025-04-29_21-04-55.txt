@@ -1,0 +1,75 @@
+[2025-04-29 21:04:55] Creando zombie Z00000
+[2025-04-29 21:04:55] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 21:04:55] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 21:04:55] Creando humano H00001
+[2025-04-29 21:04:55] H00001 entra en la zona comun.
+[2025-04-29 21:04:56] H00001 sale de la zona comun.
+[2025-04-29 21:04:56] H00001 intenta salir del refugio por el tunel 1.
+[2025-04-29 21:04:57] Creando humano H00002
+[2025-04-29 21:04:57] H00002 entra en la zona comun.
+[2025-04-29 21:04:57] Z00000 abandona la zona exterior 0.
+[2025-04-29 21:04:57] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 21:04:57] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 21:04:58] Creando humano H00003
+[2025-04-29 21:04:58] H00003 entra en la zona comun.
+[2025-04-29 21:04:59] Z00000 abandona la zona exterior 0.
+[2025-04-29 21:04:59] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 21:04:59] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 21:05:00] Creando humano H00004
+[2025-04-29 21:05:00] H00004 entra en la zona comun.
+[2025-04-29 21:05:01] Z00000 abandona la zona exterior 3.
+[2025-04-29 21:05:01] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:01] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 21:05:02] Creando humano H00005
+[2025-04-29 21:05:02] H00005 entra en la zona comun.
+[2025-04-29 21:05:03] Creando humano H00006
+[2025-04-29 21:05:03] H00006 entra en la zona comun.
+[2025-04-29 21:05:04] Z00000 abandona la zona exterior 2.
+[2025-04-29 21:05:04] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 21:05:04] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 21:05:05] Creando humano H00007
+[2025-04-29 21:05:05] H00007 entra en la zona comun.
+[2025-04-29 21:05:07] Z00000 abandona la zona exterior 0.
+[2025-04-29 21:05:07] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:07] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 21:05:07] Creando humano H00008
+[2025-04-29 21:05:07] H00008 entra en la zona comun.
+[2025-04-29 21:05:09] Creando humano H00009
+[2025-04-29 21:05:09] H00009 entra en la zona comun.
+[2025-04-29 21:05:09] Z00000 abandona la zona exterior 2.
+[2025-04-29 21:05:09] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 21:05:09] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 21:05:11] Creando humano H00010
+[2025-04-29 21:05:11] H00010 entra en la zona comun.
+[2025-04-29 21:05:11] Z00000 abandona la zona exterior 1.
+[2025-04-29 21:05:11] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:11] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 21:05:13] Creando humano H00011
+[2025-04-29 21:05:13] H00011 entra en la zona comun.
+[2025-04-29 21:05:14] Z00000 abandona la zona exterior 2.
+[2025-04-29 21:05:14] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:14] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 21:05:14] Creando humano H00012
+[2025-04-29 21:05:14] H00012 entra en la zona comun.
+[2025-04-29 21:05:16] Creando humano H00013
+[2025-04-29 21:05:16] H00013 entra en la zona comun.
+[2025-04-29 21:05:17] Z00000 abandona la zona exterior 2.
+[2025-04-29 21:05:17] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:17] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 21:05:18] Creando humano H00014
+[2025-04-29 21:05:18] H00014 entra en la zona comun.
+[2025-04-29 21:05:19] Z00000 abandona la zona exterior 2.
+[2025-04-29 21:05:19] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:19] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 21:05:20] Creando humano H00015
+[2025-04-29 21:05:20] H00015 entra en la zona comun.
+[2025-04-29 21:05:21] Z00000 abandona la zona exterior 2.
+[2025-04-29 21:05:21] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 21:05:21] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 21:05:21] Creando humano H00016
+[2025-04-29 21:05:21] H00016 entra en la zona comun.
+[2025-04-29 21:05:23] Creando humano H00017
+[2025-04-29 21:05:23] H00017 entra en la zona comun.
+[2025-04-29 21:05:24] Z00000 abandona la zona exterior 3.
+[2025-04-29 21:05:24] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 21:05:24] Z00000 esta buscando cerebros en la zona exterior 2.

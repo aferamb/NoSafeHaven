@@ -30,7 +30,7 @@ public class Humano extends Thread {
             try {
                 Log.escribir(id + " entra en la zona comun.");
                 System.out.println(id + " entra en la zona comun.");
-                refugio.irZonaComun();
+                refugio.irZonaComun(id);
                 sleep((int) (Math.random() * 1000 + 1000)); //en zona comun 1 a 2 seg
                 Log.escribir(id + " sale de la zona comun.");
                 System.out.println(id + " sale de la zona comun.");
@@ -38,9 +38,9 @@ public class Humano extends Thread {
                 int tunel = (int) (Math.random() * 4); //elegir entre los tuneles 0-3 para salir del refugio
                 Log.escribir(id + " intenta salir del refugio por el tunel " + tunel + ".");
                 System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
-                refugio.salirRefugio(tunel);
+                refugio.salirRefugio(tunel, id); // "sale" de la zona comun y espera en la entrada del tunel
                 sleep(1000); //esperar 1seg cruzar tunel
-                refugio.salirTunel(tunel);
+                refugio.salirTunel(tunel); // sale del tunel y llega a la zona exterior
                 Log.escribir(id + " ha salido del refugio por el tunel " + tunel + ".");
                 System.out.println(id + " ha salido del refugio por el tunel " + tunel + ".");
 
@@ -91,29 +91,29 @@ public class Humano extends Thread {
                         System.out.println(id + " fue herido, no trae comida.");
                     }
 
-                    refugio.irZonaDescanso();
+                    refugio.irZonaDescanso(id);
                     Log.escribir(id + " entra en la zona de descanso.");
                     System.out.println(id + " entra en la zona de descanso.");
                     sleep((int) (Math.random() * 2000 + 2000)); //en zona descanso 2-4 seg
-                    refugio.salirZonaDescanso();
+                    refugio.salirZonaDescanso(id);
                     Log.escribir(id + " sale de la zona de descanso.");
                     System.out.println(id + " sale de la zona de descanso.");
 
-                    refugio.irComedor();
+                    refugio.irComedor(id);
                     Log.escribir(id + " entra en el comedor.");
                     System.out.println(id + " entra en el comedor.");
                     sleep((int) (Math.random() * 2000 + 3000)); //comiendo 3-5 seg
-                    refugio.salirComedor();
+                    refugio.salirComedor(id);
                     Log.escribir(id + " sale del comedor.");
                     System.out.println(id + " sale del comedor.");
 
                     if (herido) {
-                        refugio.irZonaDescanso();
+                        refugio.irZonaDescanso(id);
                         Log.escribir(id + " esta herido y entra en la zona de descanso para curarse.");
                         System.out.println(id + " esta herido y entra en la zona de descanso para curarse.");
                         sleep((int) (Math.random() * 2000 + 3000)); //en zona descanso 3-5 seg
                         herido = false; //se cura
-                        refugio.salirZonaDescanso();
+                        refugio.salirZonaDescanso(id);
                         Log.escribir(id + " se ha curado y sale de la zona de descanso.");
                         System.out.println(id + " se ha curado y sale de la zona de descanso.");
                     }

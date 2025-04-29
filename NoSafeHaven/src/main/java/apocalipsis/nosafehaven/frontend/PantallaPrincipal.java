@@ -4,18 +4,44 @@
  */
 package apocalipsis.nosafehaven.frontend;
 
-import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author 05jan
  */
-public class PantallaPrincipal extends javax.swing.JFrame {
+public final class PantallaPrincipal extends javax.swing.JFrame {
 
-    public PantallaPrincipal() {
+     // Instancia estática y volatile para evitar problemas de visibilidad entre hilos
+    private static volatile PantallaPrincipal instancia;
+
+    // Constructor privado para evitar la instanciación directa
+    private PantallaPrincipal() {
         initComponents();
     }
+
+
+    // Método estático que obtiene la instancia del Singleton
+    public static PantallaPrincipal getInstancia() {
+        // Primero se verifica si la instancia ya está creada
+        PantallaPrincipal result = instancia;
+        if (result != null) {
+            return result; // Si la instancia ya está creada, se retorna
+        }
+        
+        // Si no, se sincroniza el bloque para garantizar que solo un hilo
+        // pueda crear la instancia a la vez
+        synchronized (PantallaPrincipal.class) {
+            if (instancia == null) {
+                // Doble comprobación: si la instancia aún es null, se crea
+                instancia = new PantallaPrincipal();
+            }
+            return instancia;
+        }
+    }
+
 
     public void actualizarComida(int comida) {
         SwingUtilities.invokeLater(() -> {
@@ -23,7 +49,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarZonaComun(ArrayList<String> listaIDs) {
+    public void actualizarZonaComun(CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
@@ -33,7 +59,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarComedor(ArrayList<String> listaIDs) {
+    public void actualizarComedor(CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
@@ -43,17 +69,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarAreaDescanso(ArrayList<String> listaIDs) {
+    public void actualizarZonaDescanso(CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
                 sb.append(id).append("\n");
             }
-            AreaDescanso.setText(sb.toString());
+            ZonaDescanso.setText(sb.toString());
         });
     }
 
-    public void actualizarTunel(int tunel, ArrayList<String> listaIDs) {
+    public void actualizarTunel(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
@@ -76,7 +102,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarTunelMedio(int tunel, ArrayList<String> listaIDs) {
+    public void actualizarTunelMedio(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
@@ -99,7 +125,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarTunelFuera(int tunel, ArrayList<String> listaIDs) {
+    public void actualizarTunelFuera(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
@@ -122,7 +148,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void actualizarExterior(int exterior, ArrayList<String> listaIDs) {
+    public void actualizarExterior(int exterior, CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
@@ -161,7 +187,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Comedor = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        AreaDescanso = new javax.swing.JTextArea();
+        ZonaDescanso = new javax.swing.JTextArea();
         comida = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         Tuneles = new javax.swing.JPanel();
@@ -216,9 +242,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Comedor.setRows(5);
         jScrollPane2.setViewportView(Comedor);
 
-        AreaDescanso.setColumns(20);
-        AreaDescanso.setRows(5);
-        jScrollPane3.setViewportView(AreaDescanso);
+        ZonaDescanso.setColumns(20);
+        ZonaDescanso.setRows(5);
+        jScrollPane3.setViewportView(ZonaDescanso);
 
         comida.setText("Comida: 0");
 
@@ -238,12 +264,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RefugioLayout.createSequentialGroup()
                         .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(RefugioLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(comida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(RefugioLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(comida, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(16, 16, 16))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RefugioLayout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -534,7 +560,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        ArrayList<String> idsPrueba = new ArrayList<>();
+        CopyOnWriteArrayList<String> idsPrueba = new CopyOnWriteArrayList<>();
         idsPrueba.add("H001");
         idsPrueba.add("H002");
         idsPrueba.add("H003");
@@ -575,13 +601,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaPrincipal().setVisible(true);
+                PantallaPrincipal.getInstancia().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea AreaDescanso;
     private javax.swing.JTextArea Comedor;
     private javax.swing.JTextArea DentroT1;
     private javax.swing.JTextArea DentroT2;
@@ -607,6 +632,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel Tunel4;
     private javax.swing.JPanel Tuneles;
     private javax.swing.JTextArea ZonaComun;
+    private javax.swing.JTextArea ZonaDescanso;
     private javax.swing.JTextField comida;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
