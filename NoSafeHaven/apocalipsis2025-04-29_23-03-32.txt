@@ -1,0 +1,23 @@
+[2025-04-29 23:03:32] Creando zombie Z00000
+[2025-04-29 23:03:32] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 23:03:32] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 23:03:32] Creando humano H00001
+[2025-04-29 23:03:32] H00001 entra en la zona comun.
+[2025-04-29 23:03:33] Creando humano H00002
+[2025-04-29 23:03:33] H00002 entra en la zona comun.
+[2025-04-29 23:03:34] H00001 sale de la zona comun.
+[2025-04-29 23:03:34] H00001 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:03:34] Z00000 abandona la zona exterior 0.
+[2025-04-29 23:03:34] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:03:34] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:03:35] H00002 sale de la zona comun.
+[2025-04-29 23:03:35] H00002 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:03:35] Creando humano H00003
+[2025-04-29 23:03:35] H00003 entra en la zona comun.
+[2025-04-29 23:03:37] Creando humano H00004
+[2025-04-29 23:03:37] H00004 entra en la zona comun.
+[2025-04-29 23:03:37] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:03:37] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 23:03:37] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 23:03:37] H00003 sale de la zona comun.
+[2025-04-29 23:03:37] H00003 intenta salir del refugio por el tunel 3.

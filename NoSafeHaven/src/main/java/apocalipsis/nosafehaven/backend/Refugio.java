@@ -80,27 +80,29 @@ public class Refugio {
         PantallaPrincipal.getInstancia().actualizarComedor(humanosComedor);
     }
 
-    public void salirRefugio(int tunel, String id) throws Exception {
+    public void salirRefugio(int tunel, String idHumano) throws Exception {
         if (tunel >= 0 && tunel < tuneles.length) {
-            tuneles[tunel].salirRefugio();
-            salirZonaComun(id); // Salir de la zona común al salir del refugio    Esta linea se ejecutara una vez que el humano haya entrado al túnel para salir
+
+            // Si cambias el orden da las dos siguientes líneas, el humano aparece como que sale o no de la zona común para ir al túnel
+            salirZonaComun(idHumano); // Salir de la zona común al salir del refugio    Esta linea se ejecutara una vez que el humano haya entrado al túnel para salir
+            tuneles[tunel].salirRefugio(idHumano); // Salir del refugio y entrar
         } else {
             throw new IllegalArgumentException("Túnel inválido: " + tunel);
         }
     }
 
-    public void entrarRefugio(int tunel) throws Exception {
+    public void entrarRefugio(int tunel, String idHumano) throws Exception {
         if (tunel >= 0 && tunel < tuneles.length) {
-            tuneles[tunel].entrarRefugio();
-            
+            tuneles[tunel].entrarRefugio(idHumano);
+
         } else {
             throw new IllegalArgumentException("Túnel inválido: " + tunel);
         }
     }
 
-    public void salirTunel(int tunel) throws InterruptedException {
+    public void salirTunel(int tunel, String idHumano) throws InterruptedException {
         if (tunel >= 0 && tunel < tuneles.length) {
-            tuneles[tunel].salirTunel();
+            tuneles[tunel].salirTunel(idHumano);
         } else {
             throw new IllegalArgumentException("Túnel inválido: " + tunel);
         }

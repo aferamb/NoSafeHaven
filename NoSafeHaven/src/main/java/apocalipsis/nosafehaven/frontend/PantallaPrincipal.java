@@ -83,7 +83,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
             for (String id : listaIDs) {
-                sb.append(id); //.append("\n")
+                sb.append(id).append("\n");
             }
             switch (tunel) {
                 case 0:

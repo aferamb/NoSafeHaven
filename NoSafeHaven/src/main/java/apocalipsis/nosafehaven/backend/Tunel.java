@@ -4,10 +4,13 @@
  */
 package apocalipsis.nosafehaven.backend;
 
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
 public class Tunel {
 
@@ -18,6 +21,10 @@ public class Tunel {
     //private int dentro;
     private int humanosEntrando;
 
+    private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
+    private CopyOnWriteArrayList<String> humanosDentroRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
+
     private CyclicBarrier barrera = new CyclicBarrier(3);
     private int id;
 
@@ -25,7 +32,9 @@ public class Tunel {
         this.id = id;
     }
 
-    public void salirRefugio() throws Exception {
+    public void salirRefugio(String idHumano) throws Exception {
+        humanosSaliendoRef.add(idHumano);
+        PantallaPrincipal.getInstancia().actualizarTunel(id, humanosSaliendoRef);
         barrera.await();
         //cuando ya pasan 3 la barrera
         entrando.lock();
@@ -34,33 +43,46 @@ public class Tunel {
                 quiereSalir.await();
             }
             humanosDentro++;
+            humanosSaliendoRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
+            humanosDentroRef.add(idHumano); //añadimos el id del humano a la lista de ids
+            PantallaPrincipal.getInstancia().actualizarTunel(id, humanosSaliendoRef); //actualizo la pantalla del tunel
+            PantallaPrincipal.getInstancia().actualizarTunelMedio(id, humanosDentroRef); //actualizo la pantalla del refugio
         } finally {
             entrando.unlock();
         }
     }
 
-    public void entrarRefugio() throws InterruptedException {
+    public void entrarRefugio(String idHumano) throws InterruptedException {
         entrando.lock();
         try {
             if (humanosDentro > 0) {
                 humanosEntrando++; //evitar que se aumente cada bucle del while. solo se incrementa una vez
+                humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
+                PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
             }
             while (humanosDentro > 0) {
                 quiereEntrar.await();
             }
             humanosDentro++;
             humanosEntrando--;
+            humanosEntrandoRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
+            humanosDentroRef.add(idHumano); //añadimos el id del humano a la lista de ids
+            PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
+            PantallaPrincipal.getInstancia().actualizarTunelMedio(id, humanosDentroRef); //actualizo la pantalla del refugio
         } finally {
             entrando.unlock();
         }
     }
 
-    public void salirTunel() throws InterruptedException {
+    public void salirTunel(String idHumano) throws InterruptedException {
         //Thread.sleep(1000); //poner fuera de tunel
 
         entrando.lock();
         try {
             humanosDentro--;
+            humanosDentroRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
+            PantallaPrincipal.getInstancia().actualizarTunelMedio(id, humanosDentroRef); //actualizo la pantalla del refugio
+            PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
             if (humanosEntrando > 0) {
                 // Si siguen quedando humanos intentando entrar, priorizamos su entrada
                 quiereEntrar.signalAll();

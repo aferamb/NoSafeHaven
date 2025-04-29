@@ -40,7 +40,7 @@ public class Humano extends Thread {
                 System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
                 refugio.salirRefugio(tunel, id); // "sale" de la zona comun y espera en la entrada del tunel
                 sleep(1000); //esperar 1seg cruzar tunel
-                refugio.salirTunel(tunel); // sale del tunel y llega a la zona exterior
+                refugio.salirTunel(tunel, id); // sale del tunel y llega a la zona exterior
                 Log.escribir(id + " ha salido del refugio por el tunel " + tunel + ".");
                 System.out.println(id + " ha salido del refugio por el tunel " + tunel + ".");
 
@@ -74,10 +74,10 @@ public class Humano extends Thread {
                     tunel = (int) (Math.random() * 4); //cambiar el tunel para entrar
                     Log.escribir(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
-                    refugio.entrarRefugio(tunel); //... entra al tunel...
+                    refugio.entrarRefugio(tunel, id); //... entra al tunel...
                     sleep(1000); //esperar 1 seg cruzar tunel
                     
-                    refugio.salirTunel(tunel); //...llega a dentro del refugio
+                    refugio.salirTunel(tunel, id); //...llega a dentro del refugio
                     Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
                     System.out.println(id + " ha entrado al refugio por el tunel " + tunel + ".");
 

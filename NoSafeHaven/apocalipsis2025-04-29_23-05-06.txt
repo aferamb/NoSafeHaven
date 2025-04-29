@@ -1,0 +1,624 @@
+[2025-04-29 23:05:06] Creando zombie Z00000
+[2025-04-29 23:05:06] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 23:05:06] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 23:05:06] Creando humano H00001
+[2025-04-29 23:05:06] H00001 entra en la zona comun.
+[2025-04-29 23:05:08] Creando humano H00002
+[2025-04-29 23:05:08] H00002 entra en la zona comun.
+[2025-04-29 23:05:08] H00001 sale de la zona comun.
+[2025-04-29 23:05:08] H00001 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:09] Z00000 abandona la zona exterior 1.
+[2025-04-29 23:05:09] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 23:05:09] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 23:05:10] H00002 sale de la zona comun.
+[2025-04-29 23:05:10] H00002 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:10] Creando humano H00003
+[2025-04-29 23:05:10] H00003 entra en la zona comun.
+[2025-04-29 23:05:11] H00003 sale de la zona comun.
+[2025-04-29 23:05:11] H00003 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:11] Creando humano H00004
+[2025-04-29 23:05:11] H00004 entra en la zona comun.
+[2025-04-29 23:05:12] Z00000 abandona la zona exterior 2.
+[2025-04-29 23:05:12] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 23:05:12] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 23:05:13] H00004 sale de la zona comun.
+[2025-04-29 23:05:13] H00004 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:13] Creando humano H00005
+[2025-04-29 23:05:13] H00005 entra en la zona comun.
+[2025-04-29 23:05:14] H00005 sale de la zona comun.
+[2025-04-29 23:05:14] H00005 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:14] Z00000 abandona la zona exterior 0.
+[2025-04-29 23:05:14] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 23:05:14] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 23:05:15] Creando humano H00006
+[2025-04-29 23:05:15] H00006 entra en la zona comun.
+[2025-04-29 23:05:16] H00006 sale de la zona comun.
+[2025-04-29 23:05:16] H00006 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:17] Creando humano H00007
+[2025-04-29 23:05:17] H00007 entra en la zona comun.
+[2025-04-29 23:05:17] Z00000 abandona la zona exterior 0.
+[2025-04-29 23:05:17] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:17] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:18] H00007 sale de la zona comun.
+[2025-04-29 23:05:18] H00007 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:19] Creando humano H00008
+[2025-04-29 23:05:19] H00008 entra en la zona comun.
+[2025-04-29 23:05:19] H00007 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:19] H00007 busca comida en la zona exterior 0.
+[2025-04-29 23:05:20] H00008 sale de la zona comun.
+[2025-04-29 23:05:20] H00008 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:20] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:20] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 23:05:20] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 23:05:20] H00002 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:20] H00002 busca comida en la zona exterior 0.
+[2025-04-29 23:05:20] Creando humano H00009
+[2025-04-29 23:05:20] H00009 entra en la zona comun.
+[2025-04-29 23:05:21] H00005 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:21] H00005 busca comida en la zona exterior 0.
+[2025-04-29 23:05:22] H00009 sale de la zona comun.
+[2025-04-29 23:05:22] H00009 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:22] H00007 deja la zona exterior 0.
+[2025-04-29 23:05:22] H00007 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:22] Creando humano H00010
+[2025-04-29 23:05:22] H00010 entra en la zona comun.
+[2025-04-29 23:05:23] Z00000 abandona la zona exterior 1.
+[2025-04-29 23:05:23] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 23:05:23] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 23:05:23] H00007 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:23] H00007 deja comida en el refugio.
+[2025-04-29 23:05:23] H00007 entra en la zona de descanso.
+[2025-04-29 23:05:23] H00010 sale de la zona comun.
+[2025-04-29 23:05:23] H00010 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:24] Creando humano H00011
+[2025-04-29 23:05:24] H00011 entra en la zona comun.
+[2025-04-29 23:05:24] H00002 deja la zona exterior 0.
+[2025-04-29 23:05:24] H00002 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:24] H00005 deja la zona exterior 0.
+[2025-04-29 23:05:24] H00005 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:05:25] Z00000 abandona la zona exterior 1.
+[2025-04-29 23:05:25] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 23:05:25] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 23:05:25] H00002 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:25] H00002 deja comida en el refugio.
+[2025-04-29 23:05:25] H00002 entra en la zona de descanso.
+[2025-04-29 23:05:25] H00005 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:05:25] H00005 deja comida en el refugio.
+[2025-04-29 23:05:25] H00005 entra en la zona de descanso.
+[2025-04-29 23:05:26] Creando humano H00012
+[2025-04-29 23:05:26] H00012 entra en la zona comun.
+[2025-04-29 23:05:26] H00011 sale de la zona comun.
+[2025-04-29 23:05:26] H00011 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:27] H00007 sale de la zona de descanso.
+[2025-04-29 23:05:27] H00007 entra en el comedor.
+[2025-04-29 23:05:27] H00011 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:27] H00011 busca comida en la zona exterior 2.
+[2025-04-29 23:05:27] H00012 sale de la zona comun.
+[2025-04-29 23:05:27] H00012 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:27] Creando humano H00013
+[2025-04-29 23:05:27] H00013 entra en la zona comun.
+[2025-04-29 23:05:28] Z00000 abandona la zona exterior 1.
+[2025-04-29 23:05:28] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 23:05:28] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 23:05:28] H00003 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:28] H00003 busca comida en la zona exterior 2.
+[2025-04-29 23:05:28] H00012 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:28] H00012 busca comida en la zona exterior 3.
+[2025-04-29 23:05:29] H00005 sale de la zona de descanso.
+[2025-04-29 23:05:29] H00005 entra en el comedor.
+[2025-04-29 23:05:29] H00008 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:29] H00008 busca comida en la zona exterior 2.
+[2025-04-29 23:05:29] H00002 sale de la zona de descanso.
+[2025-04-29 23:05:29] H00002 entra en el comedor.
+[2025-04-29 23:05:29] Z00000 ha atacado y herido al humano H00011.
+[2025-04-29 23:05:29] H00013 sale de la zona comun.
+[2025-04-29 23:05:29] H00013 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:29] Creando humano H00014
+[2025-04-29 23:05:29] H00014 entra en la zona comun.
+[2025-04-29 23:05:29] H00001 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:29] H00001 busca comida en la zona exterior 3.
+[2025-04-29 23:05:30] H00006 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:30] H00006 busca comida en la zona exterior 3.
+[2025-04-29 23:05:30] H00007 sale del comedor.
+[2025-04-29 23:05:30] H00007 entra en la zona comun.
+[2025-04-29 23:05:31] H00014 sale de la zona comun.
+[2025-04-29 23:05:31] H00014 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:31] Creando humano H00015
+[2025-04-29 23:05:31] H00015 entra en la zona comun.
+[2025-04-29 23:05:31] H00011 deja la zona exterior 2.
+[2025-04-29 23:05:31] H00011 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:32] Z00000 abandona la zona exterior 2.
+[2025-04-29 23:05:32] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 23:05:32] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 23:05:32] H00014 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:32] H00014 busca comida en la zona exterior 1.
+[2025-04-29 23:05:32] H00005 sale del comedor.
+[2025-04-29 23:05:32] H00005 entra en la zona comun.
+[2025-04-29 23:05:32] H00007 sale de la zona comun.
+[2025-04-29 23:05:32] H00007 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:32] H00003 deja la zona exterior 2.
+[2025-04-29 23:05:32] H00003 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:32] H00015 sale de la zona comun.
+[2025-04-29 23:05:32] H00015 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:33] Creando humano H00016
+[2025-04-29 23:05:33] H00016 entra en la zona comun.
+[2025-04-29 23:05:33] H00012 deja la zona exterior 3.
+[2025-04-29 23:05:33] H00012 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:33] H00004 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:33] H00004 busca comida en la zona exterior 1.
+[2025-04-29 23:05:33] H00002 sale del comedor.
+[2025-04-29 23:05:33] H00002 entra en la zona comun.
+[2025-04-29 23:05:33] Z00000 ha matado al humano H00008. Total muertos: 1.
+[2025-04-29 23:05:33] H00005 sale de la zona comun.
+[2025-04-29 23:05:33] H00005 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:33] H00003 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:05:33] H00003 deja comida en el refugio.
+[2025-04-29 23:05:33] H00003 entra en la zona de descanso.
+[2025-04-29 23:05:33] H00008 deja la zona exterior 2.
+[2025-04-29 23:05:33] H00008 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:34] H00012 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:05:34] H00012 deja comida en el refugio.
+[2025-04-29 23:05:34] H00012 entra en la zona de descanso.
+[2025-04-29 23:05:34] H00010 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:34] H00010 busca comida en la zona exterior 1.
+[2025-04-29 23:05:34] H00002 sale de la zona comun.
+[2025-04-29 23:05:34] H00002 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:34] H00001 deja la zona exterior 3.
+[2025-04-29 23:05:34] H00001 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:34] H00006 deja la zona exterior 3.
+[2025-04-29 23:05:34] H00006 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:34] H00016 sale de la zona comun.
+[2025-04-29 23:05:34] H00016 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:34] Creando humano H00017
+[2025-04-29 23:05:34] H00017 entra en la zona comun.
+[2025-04-29 23:05:34] H00008 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:05:34] H00008 deja comida en el refugio.
+[2025-04-29 23:05:34] H00008 entra en la zona de descanso.
+[2025-04-29 23:05:35] H00002 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:35] H00002 busca comida en la zona exterior 0.
+[2025-04-29 23:05:35] H00014 deja la zona exterior 1.
+[2025-04-29 23:05:35] H00014 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:05:35] H00003 sale de la zona de descanso.
+[2025-04-29 23:05:35] H00003 entra en el comedor.
+[2025-04-29 23:05:35] H00017 sale de la zona comun.
+[2025-04-29 23:05:35] H00017 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:36] Z00000 abandona la zona exterior 2.
+[2025-04-29 23:05:36] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:36] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:36] H00009 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:36] H00009 busca comida en la zona exterior 0.
+[2025-04-29 23:05:36] Creando humano H00018
+[2025-04-29 23:05:36] H00018 entra en la zona comun.
+[2025-04-29 23:05:36] H00014 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:05:36] H00004 deja la zona exterior 1.
+[2025-04-29 23:05:36] H00014 deja comida en el refugio.
+[2025-04-29 23:05:36] H00004 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:36] H00014 entra en la zona de descanso.
+[2025-04-29 23:05:36] H00008 sale de la zona de descanso.
+[2025-04-29 23:05:36] H00008 entra en el comedor.
+[2025-04-29 23:05:37] H00013 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:37] H00013 busca comida en la zona exterior 0.
+[2025-04-29 23:05:37] H00010 deja la zona exterior 1.
+[2025-04-29 23:05:37] H00010 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:05:37] H00012 sale de la zona de descanso.
+[2025-04-29 23:05:37] H00012 entra en el comedor.
+[2025-04-29 23:05:37] H00004 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:05:37] H00004 deja comida en el refugio.
+[2025-04-29 23:05:37] H00004 entra en la zona de descanso.
+[2025-04-29 23:05:38] Creando humano H00019
+[2025-04-29 23:05:38] H00019 entra en la zona comun.
+[2025-04-29 23:05:38] H00010 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:05:38] H00010 deja comida en el refugio.
+[2025-04-29 23:05:38] H00010 entra en la zona de descanso.
+[2025-04-29 23:05:38] H00018 sale de la zona comun.
+[2025-04-29 23:05:38] H00018 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:39] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:39] Z00000 se dirige a la zona exterior 2.
+[2025-04-29 23:05:39] Z00000 esta buscando cerebros en la zona exterior 2.
+[2025-04-29 23:05:39] H00004 sale de la zona de descanso.
+[2025-04-29 23:05:39] H00004 entra en el comedor.
+[2025-04-29 23:05:39] H00019 sale de la zona comun.
+[2025-04-29 23:05:39] H00019 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:40] H00014 sale de la zona de descanso.
+[2025-04-29 23:05:40] H00014 entra en el comedor.
+[2025-04-29 23:05:40] H00003 sale del comedor.
+[2025-04-29 23:05:40] H00003 entra en la zona comun.
+[2025-04-29 23:05:40] H00002 deja la zona exterior 0.
+[2025-04-29 23:05:40] H00002 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:05:40] Creando humano H00020
+[2025-04-29 23:05:40] H00020 entra en la zona comun.
+[2025-04-29 23:05:40] H00012 sale del comedor.
+[2025-04-29 23:05:40] H00012 entra en la zona comun.
+[2025-04-29 23:05:40] H00013 deja la zona exterior 0.
+[2025-04-29 23:05:40] H00013 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:40] H00019 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:40] H00019 busca comida en la zona exterior 3.
+[2025-04-29 23:05:41] H00002 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:05:41] H00002 deja comida en el refugio.
+[2025-04-29 23:05:41] H00002 entra en la zona de descanso.
+[2025-04-29 23:05:41] Z00000 abandona la zona exterior 2.
+[2025-04-29 23:05:41] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:41] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:41] H00009 deja la zona exterior 0.
+[2025-04-29 23:05:41] H00009 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:41] H00013 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:41] H00013 deja comida en el refugio.
+[2025-04-29 23:05:41] H00013 entra en la zona de descanso.
+[2025-04-29 23:05:41] H00003 sale de la zona comun.
+[2025-04-29 23:05:41] H00003 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:41] Creando humano H00021
+[2025-04-29 23:05:41] H00021 entra en la zona comun.
+[2025-04-29 23:05:41] H00010 sale de la zona de descanso.
+[2025-04-29 23:05:41] H00010 entra en el comedor.
+[2025-04-29 23:05:41] H00008 sale del comedor.
+[2025-04-29 23:05:41] H00012 sale de la zona comun.
+[2025-04-29 23:05:41] H00012 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:41] H00007 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:41] H00007 busca comida en la zona exterior 3.
+[2025-04-29 23:05:42] Z00000 ha atacado y herido al humano H00019.
+[2025-04-29 23:05:42] H00020 sale de la zona comun.
+[2025-04-29 23:05:42] H00020 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:42] H00016 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:42] H00016 busca comida en la zona exterior 3.
+[2025-04-29 23:05:43] H00004 sale del comedor.
+[2025-04-29 23:05:43] H00004 entra en la zona comun.
+[2025-04-29 23:05:43] H00021 sale de la zona comun.
+[2025-04-29 23:05:43] H00021 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:43] Creando humano H00022
+[2025-04-29 23:05:43] H00022 entra en la zona comun.
+[2025-04-29 23:05:43] H00014 sale del comedor.
+[2025-04-29 23:05:43] H00014 entra en la zona comun.
+[2025-04-29 23:05:43] H00002 sale de la zona de descanso.
+[2025-04-29 23:05:43] H00002 entra en el comedor.
+[2025-04-29 23:05:44] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:44] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:44] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:44] H00021 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:44] H00021 busca comida en la zona exterior 2.
+[2025-04-29 23:05:44] H00004 sale de la zona comun.
+[2025-04-29 23:05:44] H00004 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:44] H00013 sale de la zona de descanso.
+[2025-04-29 23:05:44] H00013 entra en el comedor.
+[2025-04-29 23:05:45] Z00000 ha atacado y herido al humano H00007.
+[2025-04-29 23:05:45] H00014 sale de la zona comun.
+[2025-04-29 23:05:45] H00014 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:45] H00019 deja la zona exterior 3.
+[2025-04-29 23:05:45] H00019 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:45] H00022 sale de la zona comun.
+[2025-04-29 23:05:45] H00022 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:45] H00015 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:45] H00015 busca comida en la zona exterior 2.
+[2025-04-29 23:05:45] Creando humano H00023
+[2025-04-29 23:05:45] H00023 entra en la zona comun.
+[2025-04-29 23:05:45] H00007 deja la zona exterior 3.
+[2025-04-29 23:05:45] H00007 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:45] H00010 sale del comedor.
+[2025-04-29 23:05:45] H00010 entra en la zona comun.
+[2025-04-29 23:05:46] H00014 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:46] H00014 busca comida en la zona exterior 0.
+[2025-04-29 23:05:46] H00019 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:46] H00019 fue herido, no trae comida.
+[2025-04-29 23:05:46] H00019 entra en la zona de descanso.
+[2025-04-29 23:05:46] H00003 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:46] H00003 busca comida en la zona exterior 2.
+[2025-04-29 23:05:46] H00016 deja la zona exterior 3.
+[2025-04-29 23:05:46] H00016 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:46] H00002 sale del comedor.
+[2025-04-29 23:05:46] H00002 entra en la zona comun.
+[2025-04-29 23:05:47] H00006 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:05:47] H00006 deja comida en el refugio.
+[2025-04-29 23:05:47] H00006 entra en la zona de descanso.
+[2025-04-29 23:05:47] Creando humano H00024
+[2025-04-29 23:05:47] H00024 entra en la zona comun.
+[2025-04-29 23:05:47] H00023 sale de la zona comun.
+[2025-04-29 23:05:47] H00023 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:47] H00010 sale de la zona comun.
+[2025-04-29 23:05:47] H00010 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:47] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:47] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:47] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:47] H00016 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:47] H00016 deja comida en el refugio.
+[2025-04-29 23:05:47] H00016 entra en la zona de descanso.
+[2025-04-29 23:05:48] H00017 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:48] H00017 busca comida en la zona exterior 0.
+[2025-04-29 23:05:48] H00023 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:48] H00023 busca comida en la zona exterior 3.
+[2025-04-29 23:05:48] H00024 sale de la zona comun.
+[2025-04-29 23:05:48] H00024 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:48] H00013 sale del comedor.
+[2025-04-29 23:05:48] H00013 entra en la zona comun.
+[2025-04-29 23:05:48] H00002 sale de la zona comun.
+[2025-04-29 23:05:48] H00002 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:48] Creando humano H00025
+[2025-04-29 23:05:48] H00025 entra en la zona comun.
+[2025-04-29 23:05:49] H00021 deja la zona exterior 2.
+[2025-04-29 23:05:49] H00021 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:49] H00018 ha salido del refugio por el tunel 0.
+[2025-04-29 23:05:49] H00018 busca comida en la zona exterior 0.
+[2025-04-29 23:05:49] H00006 sale de la zona de descanso.
+[2025-04-29 23:05:49] H00006 entra en el comedor.
+[2025-04-29 23:05:49] H00012 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:49] H00012 busca comida en la zona exterior 3.
+[2025-04-29 23:05:49] H00024 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:49] H00024 busca comida en la zona exterior 1.
+[2025-04-29 23:05:49] H00019 sale de la zona de descanso.
+[2025-04-29 23:05:49] H00019 entra en el comedor.
+[2025-04-29 23:05:50] H00015 deja la zona exterior 2.
+[2025-04-29 23:05:50] H00015 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:05:50] H00016 sale de la zona de descanso.
+[2025-04-29 23:05:50] H00016 entra en el comedor.
+[2025-04-29 23:05:50] H00007 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:05:50] H00007 fue herido, no trae comida.
+[2025-04-29 23:05:50] H00007 entra en la zona de descanso.
+[2025-04-29 23:05:50] H00013 sale de la zona comun.
+[2025-04-29 23:05:50] H00013 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:50] H00022 ha salido del refugio por el tunel 3.
+[2025-04-29 23:05:50] H00022 busca comida en la zona exterior 3.
+[2025-04-29 23:05:50] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:50] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:50] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:50] H00005 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:50] H00005 busca comida en la zona exterior 1.
+[2025-04-29 23:05:50] Creando humano H00026
+[2025-04-29 23:05:50] H00026 entra en la zona comun.
+[2025-04-29 23:05:50] H00025 sale de la zona comun.
+[2025-04-29 23:05:50] H00025 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:50] H00003 deja la zona exterior 2.
+[2025-04-29 23:05:50] H00003 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:50] H00014 deja la zona exterior 0.
+[2025-04-29 23:05:50] H00014 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:05:51] H00015 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:05:51] H00015 deja comida en el refugio.
+[2025-04-29 23:05:51] H00015 entra en la zona de descanso.
+[2025-04-29 23:05:51] H00020 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:51] H00020 busca comida en la zona exterior 1.
+[2025-04-29 23:05:51] Z00000 ha atacado y herido al humano H00012.
+[2025-04-29 23:05:51] H00003 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:05:51] H00003 deja comida en el refugio.
+[2025-04-29 23:05:51] H00003 entra en la zona de descanso.
+[2025-04-29 23:05:51] H00023 deja la zona exterior 3.
+[2025-04-29 23:05:51] H00023 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:52] H00017 deja la zona exterior 0.
+[2025-04-29 23:05:52] H00017 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:52] Creando humano H00027
+[2025-04-29 23:05:52] H00027 entra en la zona comun.
+[2025-04-29 23:05:52] H00026 sale de la zona comun.
+[2025-04-29 23:05:52] H00026 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:52] H00012 deja la zona exterior 3.
+[2025-04-29 23:05:52] H00012 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:52] H00019 sale del comedor.
+[2025-04-29 23:05:52] H00019 esta herido y entra en la zona de descanso para curarse.
+[2025-04-29 23:05:52] H00023 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:52] H00023 deja comida en el refugio.
+[2025-04-29 23:05:52] H00023 entra en la zona de descanso.
+[2025-04-29 23:05:53] H00017 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:05:53] H00017 deja comida en el refugio.
+[2025-04-29 23:05:53] H00017 entra en la zona de descanso.
+[2025-04-29 23:05:53] H00015 sale de la zona de descanso.
+[2025-04-29 23:05:53] H00015 entra en el comedor.
+[2025-04-29 23:05:53] H00006 sale del comedor.
+[2025-04-29 23:05:53] H00006 entra en la zona comun.
+[2025-04-29 23:05:53] H00007 sale de la zona de descanso.
+[2025-04-29 23:05:53] H00007 entra en el comedor.
+[2025-04-29 23:05:53] H00018 deja la zona exterior 0.
+[2025-04-29 23:05:53] H00018 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:53] H00024 deja la zona exterior 1.
+[2025-04-29 23:05:53] H00024 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:53] H00005 deja la zona exterior 1.
+[2025-04-29 23:05:53] H00005 intenta entrar al refugio por el tunel 1.
+[2025-04-29 23:05:53] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:53] Z00000 se dirige a la zona exterior 1.
+[2025-04-29 23:05:53] Z00000 esta buscando cerebros en la zona exterior 1.
+[2025-04-29 23:05:53] H00016 sale del comedor.
+[2025-04-29 23:05:53] H00016 entra en la zona comun.
+[2025-04-29 23:05:54] H00027 sale de la zona comun.
+[2025-04-29 23:05:54] H00027 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:54] Creando humano H00028
+[2025-04-29 23:05:54] H00028 entra en la zona comun.
+[2025-04-29 23:05:54] H00003 sale de la zona de descanso.
+[2025-04-29 23:05:54] H00003 entra en el comedor.
+[2025-04-29 23:05:54] Z00000 ha matado al humano H00020. Total muertos: 2.
+[2025-04-29 23:05:54] H00022 deja la zona exterior 3.
+[2025-04-29 23:05:54] H00022 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:05:54] H00018 ha entrado al refugio por el tunel 1.
+[2025-04-29 23:05:54] H00018 deja comida en el refugio.
+[2025-04-29 23:05:54] H00018 entra en la zona de descanso.
+[2025-04-29 23:05:54] H00024 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:05:54] H00024 deja comida en el refugio.
+[2025-04-29 23:05:54] H00024 entra en la zona de descanso.
+[2025-04-29 23:05:55] H00020 deja la zona exterior 1.
+[2025-04-29 23:05:55] H00020 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:05:55] H00006 sale de la zona comun.
+[2025-04-29 23:05:55] H00006 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:05:55] H00022 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:05:55] H00022 deja comida en el refugio.
+[2025-04-29 23:05:55] H00022 entra en la zona de descanso.
+[2025-04-29 23:05:55] H00017 sale de la zona de descanso.
+[2025-04-29 23:05:55] H00017 entra en el comedor.
+[2025-04-29 23:05:55] H00016 sale de la zona comun.
+[2025-04-29 23:05:55] H00016 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:05:55] H00028 sale de la zona comun.
+[2025-04-29 23:05:55] H00028 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:56] H00019 se ha curado y sale de la zona de descanso.
+[2025-04-29 23:05:56] H00019 entra en la zona comun.
+[2025-04-29 23:05:56] Creando humano H00029
+[2025-04-29 23:05:56] H00029 entra en la zona comun.
+[2025-04-29 23:05:56] H00020 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:05:56] H00020 deja comida en el refugio.
+[2025-04-29 23:05:56] H00020 entra en la zona de descanso.
+[2025-04-29 23:05:56] H00016 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:56] H00016 busca comida en la zona exterior 2.
+[2025-04-29 23:05:56] H00023 sale de la zona de descanso.
+[2025-04-29 23:05:56] H00023 entra en el comedor.
+[2025-04-29 23:05:56] H00028 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:56] H00028 busca comida en la zona exterior 1.
+[2025-04-29 23:05:57] Z00000 abandona la zona exterior 1.
+[2025-04-29 23:05:57] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:57] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:57] H00024 sale de la zona de descanso.
+[2025-04-29 23:05:57] H00024 entra en el comedor.
+[2025-04-29 23:05:57] H00029 sale de la zona comun.
+[2025-04-29 23:05:57] H00029 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:57] H00019 sale de la zona comun.
+[2025-04-29 23:05:57] H00019 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:05:57] H00004 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:57] H00004 busca comida en la zona exterior 2.
+[2025-04-29 23:05:57] Creando humano H00030
+[2025-04-29 23:05:57] H00030 entra en la zona comun.
+[2025-04-29 23:05:57] H00015 sale del comedor.
+[2025-04-29 23:05:57] H00015 entra en la zona comun.
+[2025-04-29 23:05:57] H00025 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:57] H00025 busca comida en la zona exterior 1.
+[2025-04-29 23:05:57] H00007 sale del comedor.
+[2025-04-29 23:05:57] H00007 esta herido y entra en la zona de descanso para curarse.
+[2025-04-29 23:05:57] H00018 sale de la zona de descanso.
+[2025-04-29 23:05:57] H00018 entra en el comedor.
+[2025-04-29 23:05:58] H00022 sale de la zona de descanso.
+[2025-04-29 23:05:58] H00022 entra en el comedor.
+[2025-04-29 23:05:58] H00003 sale del comedor.
+[2025-04-29 23:05:58] H00003 entra en la zona comun.
+[2025-04-29 23:05:58] H00013 ha salido del refugio por el tunel 2.
+[2025-04-29 23:05:58] H00013 busca comida en la zona exterior 2.
+[2025-04-29 23:05:58] H00026 ha salido del refugio por el tunel 1.
+[2025-04-29 23:05:58] H00026 busca comida en la zona exterior 1.
+[2025-04-29 23:05:59] H00030 sale de la zona comun.
+[2025-04-29 23:05:59] H00030 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:59] H00020 sale de la zona de descanso.
+[2025-04-29 23:05:59] H00020 entra en el comedor.
+[2025-04-29 23:05:59] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:05:59] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:05:59] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:05:59] Creando humano H00031
+[2025-04-29 23:05:59] H00031 entra en la zona comun.
+[2025-04-29 23:05:59] H00015 sale de la zona comun.
+[2025-04-29 23:05:59] H00015 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:05:59] H00017 sale del comedor.
+[2025-04-29 23:05:59] H00017 entra en la zona comun.
+[2025-04-29 23:06:00] H00030 ha salido del refugio por el tunel 3.
+[2025-04-29 23:06:00] H00030 busca comida en la zona exterior 3.
+[2025-04-29 23:06:00] H00016 deja la zona exterior 2.
+[2025-04-29 23:06:00] H00016 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:06:00] H00028 deja la zona exterior 1.
+[2025-04-29 23:06:00] H00028 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:06:00] H00003 sale de la zona comun.
+[2025-04-29 23:06:00] H00003 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:06:00] H00031 sale de la zona comun.
+[2025-04-29 23:06:00] H00031 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:06:00] H00024 sale del comedor.
+[2025-04-29 23:06:00] H00024 entra en la zona comun.
+[2025-04-29 23:06:01] Creando humano H00032
+[2025-04-29 23:06:01] H00032 entra en la zona comun.
+[2025-04-29 23:06:01] H00010 ha salido del refugio por el tunel 3.
+[2025-04-29 23:06:01] H00010 busca comida en la zona exterior 3.
+[2025-04-29 23:06:01] H00023 sale del comedor.
+[2025-04-29 23:06:01] H00023 entra en la zona comun.
+[2025-04-29 23:06:01] H00028 ha entrado al refugio por el tunel 0.
+[2025-04-29 23:06:01] H00028 deja comida en el refugio.
+[2025-04-29 23:06:01] H00028 entra en la zona de descanso.
+[2025-04-29 23:06:01] H00017 sale de la zona comun.
+[2025-04-29 23:06:01] H00017 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:06:01] H00022 sale del comedor.
+[2025-04-29 23:06:01] H00022 entra en la zona comun.
+[2025-04-29 23:06:01] H00003 ha salido del refugio por el tunel 1.
+[2025-04-29 23:06:01] H00003 busca comida en la zona exterior 1.
+[2025-04-29 23:06:01] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:06:01] Z00000 se dirige a la zona exterior 3.
+[2025-04-29 23:06:01] Z00000 esta buscando cerebros en la zona exterior 3.
+[2025-04-29 23:06:01] H00013 deja la zona exterior 2.
+[2025-04-29 23:06:01] H00013 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:06:01] H00018 sale del comedor.
+[2025-04-29 23:06:01] H00018 entra en la zona comun.
+[2025-04-29 23:06:01] H00024 sale de la zona comun.
+[2025-04-29 23:06:01] H00024 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:06:01] H00026 deja la zona exterior 1.
+[2025-04-29 23:06:01] H00026 intenta entrar al refugio por el tunel 0.
+[2025-04-29 23:06:02] H00002 ha salido del refugio por el tunel 3.
+[2025-04-29 23:06:02] H00002 busca comida en la zona exterior 3.
+[2025-04-29 23:06:02] H00031 ha salido del refugio por el tunel 0.
+[2025-04-29 23:06:02] H00031 busca comida en la zona exterior 0.
+[2025-04-29 23:06:02] H00029 ha salido del refugio por el tunel 1.
+[2025-04-29 23:06:02] H00029 busca comida en la zona exterior 1.
+[2025-04-29 23:06:02] H00004 deja la zona exterior 2.
+[2025-04-29 23:06:02] H00004 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:06:02] H00023 sale de la zona comun.
+[2025-04-29 23:06:02] H00023 intenta salir del refugio por el tunel 0.
+[2025-04-29 23:06:02] H00007 se ha curado y sale de la zona de descanso.
+[2025-04-29 23:06:02] H00007 entra en la zona comun.
+[2025-04-29 23:06:02] H00032 sale de la zona comun.
+[2025-04-29 23:06:02] H00032 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:06:02] H00025 deja la zona exterior 1.
+[2025-04-29 23:06:02] H00025 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:06:02] H00018 sale de la zona comun.
+[2025-04-29 23:06:02] H00018 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:06:02] H00022 sale de la zona comun.
+[2025-04-29 23:06:02] H00022 intenta salir del refugio por el tunel 3.
+[2025-04-29 23:06:03] Creando humano H00033
+[2025-04-29 23:06:03] H00033 entra en la zona comun.
+[2025-04-29 23:06:03] Z00000 ha atacado y herido al humano H00030.
+[2025-04-29 23:06:03] H00027 ha salido del refugio por el tunel 0.
+[2025-04-29 23:06:03] H00027 busca comida en la zona exterior 0.
+[2025-04-29 23:06:03] H00019 ha salido del refugio por el tunel 1.
+[2025-04-29 23:06:03] H00019 busca comida en la zona exterior 1.
+[2025-04-29 23:06:03] H00004 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:06:03] H00004 deja comida en el refugio.
+[2025-04-29 23:06:03] H00004 entra en la zona de descanso.
+[2025-04-29 23:06:03] H00025 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:06:03] H00025 deja comida en el refugio.
+[2025-04-29 23:06:03] H00025 entra en la zona de descanso.
+[2025-04-29 23:06:03] H00020 sale del comedor.
+[2025-04-29 23:06:04] H00007 sale de la zona comun.
+[2025-04-29 23:06:04] H00007 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:06:04] H00030 deja la zona exterior 3.
+[2025-04-29 23:06:04] H00030 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:06:04] H00006 ha salido del refugio por el tunel 0.
+[2025-04-29 23:06:04] H00006 busca comida en la zona exterior 0.
+[2025-04-29 23:06:04] H00010 deja la zona exterior 3.
+[2025-04-29 23:06:04] H00010 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:06:04] H00033 sale de la zona comun.
+[2025-04-29 23:06:04] H00033 intenta salir del refugio por el tunel 2.
+[2025-04-29 23:06:04] H00003 deja la zona exterior 1.
+[2025-04-29 23:06:04] H00003 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:06:04] Creando humano H00034
+[2025-04-29 23:06:04] H00034 entra en la zona comun.
+[2025-04-29 23:06:05] Z00000 abandona la zona exterior 3.
+[2025-04-29 23:06:05] Z00000 se dirige a la zona exterior 0.
+[2025-04-29 23:06:05] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-29 23:06:05] H00028 sale de la zona de descanso.
+[2025-04-29 23:06:05] H00028 entra en el comedor.
+[2025-04-29 23:06:05] H00030 ha entrado al refugio por el tunel 2.
+[2025-04-29 23:06:05] H00030 fue herido, no trae comida.
+[2025-04-29 23:06:05] H00030 entra en la zona de descanso.
+[2025-04-29 23:06:05] H00002 deja la zona exterior 3.
+[2025-04-29 23:06:05] H00002 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:06:05] H00003 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:06:05] H00003 deja comida en el refugio.
+[2025-04-29 23:06:05] H00003 entra en la zona de descanso.
+[2025-04-29 23:06:05] H00031 deja la zona exterior 0.
+[2025-04-29 23:06:05] H00031 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:06:06] H00025 sale de la zona de descanso.
+[2025-04-29 23:06:06] H00025 entra en el comedor.
+[2025-04-29 23:06:06] H00033 ha salido del refugio por el tunel 2.
+[2025-04-29 23:06:06] H00033 busca comida en la zona exterior 2.
+[2025-04-29 23:06:06] H00034 sale de la zona comun.
+[2025-04-29 23:06:06] H00034 intenta salir del refugio por el tunel 1.
+[2025-04-29 23:06:06] Creando humano H00035
+[2025-04-29 23:06:06] H00035 entra en la zona comun.
+[2025-04-29 23:06:06] Z00000 ha matado al humano H00006. Total muertos: 3.
+[2025-04-29 23:06:06] H00029 deja la zona exterior 1.
+[2025-04-29 23:06:06] H00029 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:06:06] H00004 sale de la zona de descanso.
+[2025-04-29 23:06:06] H00004 entra en el comedor.
+[2025-04-29 23:06:06] H00031 ha entrado al refugio por el tunel 3.
+[2025-04-29 23:06:06] H00031 deja comida en el refugio.
+[2025-04-29 23:06:06] H00031 entra en la zona de descanso.
+[2025-04-29 23:06:06] H00019 deja la zona exterior 1.
+[2025-04-29 23:06:06] H00019 intenta entrar al refugio por el tunel 3.
+[2025-04-29 23:06:07] H00027 deja la zona exterior 0.
+[2025-04-29 23:06:07] H00027 intenta entrar al refugio por el tunel 2.
+[2025-04-29 23:06:07] H00024 ha salido del refugio por el tunel 2.
+[2025-04-29 23:06:07] H00024 busca comida en la zona exterior 2.
+[2025-04-29 23:06:07] H00034 ha salido del refugio por el tunel 1.
+[2025-04-29 23:06:07] H00034 busca comida en la zona exterior 1.
+[2025-04-29 23:06:07] H00030 sale de la zona de descanso.
+[2025-04-29 23:06:07] H00030 entra en el comedor.
