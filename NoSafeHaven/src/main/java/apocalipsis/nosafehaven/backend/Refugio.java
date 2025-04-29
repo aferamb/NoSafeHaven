@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package apocalipsis.nosafehaven;
+package apocalipsis.nosafehaven.backend;
 
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -16,8 +18,13 @@ public class Refugio {
     private AtomicInteger humanos = new AtomicInteger(0);
 
     private AtomicInteger enZonaComun = new AtomicInteger(0);
+    private ArrayList<String> humanosZonaComun = new ArrayList<>();
+
     private AtomicInteger enCama = new AtomicInteger(0);
+    private ArrayList<String> humanosZonaDescanso = new ArrayList<>();
+
     private AtomicInteger enComedor = new AtomicInteger(0);
+    private ArrayList<String> humanosComedor = new ArrayList<>();
 
     private Tunel[] tuneles = new Tunel[4]; // Array de túneles
 
@@ -29,6 +36,7 @@ public class Refugio {
 
     public synchronized void dejarComida() { 
         comida.addAndGet(2);
+        //PantallaPrincipal.actualizarComida(comida.get());
         notifyAll();
     }
 
