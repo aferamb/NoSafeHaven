@@ -19,7 +19,7 @@ public class Tunel {
     private Condition quiereEntrar = entrando.newCondition(); //prioridad
     private Condition quiereSalir = entrando.newCondition();
     //private int dentro;
-    private int humanosEntrando;
+    private int humanosEntrando = 0;
 
     private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz

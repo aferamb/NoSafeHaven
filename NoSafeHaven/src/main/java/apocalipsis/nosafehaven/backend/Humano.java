@@ -48,25 +48,29 @@ public class Humano extends Thread {
                 Log.escribir(id + " busca comida en la zona exterior " + tunel + ".");
                 System.out.println(id + " busca comida en la zona exterior " + tunel + ".");
 
+                //si le matan, no hace el sleep
+                try { // este sleep es peligroso, si un humano lo ataca se queda tiempo extra en la zona exterior y otr zombien lo puede volver a atacar
+                    sleep((int) (Math.random() * 2000 + 3000)); // en exterior 3-5 seg
+                } catch (InterruptedException e) {
+                    Log.escribir(id + " fue interrumpido mientras buscaba comida."+ e.getMessage());
+                    System.out.println(id + " fue interrumpido mientras buscaba comida."+ e.getMessage());
+                    e.printStackTrace();
+                }
+
                 if (herido || muerto) { //si le atacan, simula el tiempo del ataque
                     try {
                         sleep(tiempoAtaque);
                     } catch (InterruptedException ex) {
                         Log.escribir("Error al dormir el hilo en serAtacado: " + ex.getMessage());
                         System.out.println("Error al dormir el hilo en fun serAtacado: " + ex.getMessage());
+                        ex.printStackTrace();
                     }
                     tiempoAtaque = 0; //reinicio tiempoataque
                 }
 
                 if (!muerto) {
-                    //si le matan, no hace el sleep
-                    try { // este sleep es peligroso, si un humano lo ataca se queda tiempo extra en la zona exterior y otr zombien lo puede volver a atacar
-                        sleep((int) (Math.random() * 2000 + 3000)); // en exterior 3-5 seg
-                    } catch (InterruptedException e) {
-                        Log.escribir(id + " fue interrumpido mientras buscaba comida.");
-                        System.out.println(id + " fue interrumpido mientras buscaba comida.");
-                    }
-
+                    
+                    // habia un try
                     exterior.acabarHumano(this, tunel); //si no ha muerto, se va de la zona exterior...
                     Log.escribir(id + " deja la zona exterior " + tunel + ".");
                     System.out.println(id + " deja la zona exterior " + tunel + ".");
@@ -75,7 +79,7 @@ public class Humano extends Thread {
                     Log.escribir(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     refugio.entrarRefugio(tunel, id); //... entra al tunel...
-                    sleep(1000); //esperar 1 seg cruzar tunel
+                    sleep(1000); //esperar 1 seg cruzar tunel                           ///en pruebas
                     
                     refugio.salirTunel(tunel, id); //...llega a dentro del refugio
                     Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
@@ -99,6 +103,13 @@ public class Humano extends Thread {
                     Log.escribir(id + " sale de la zona de descanso.");
                     System.out.println(id + " sale de la zona de descanso.");
 
+                    try {
+                        refugio.irComedor(id);
+                    } catch (InterruptedException ie) {
+                        Log.escribir(id + " InterruptedException comedor " + ie.getMessage());
+                        System.out.println(id + " InterruptedException comedo" + ie.getMessage());
+                        ie.printStackTrace();
+                    }
                     refugio.irComedor(id);
                     Log.escribir(id + " entra en el comedor.");
                     System.out.println(id + " entra en el comedor.");
@@ -128,8 +139,8 @@ public class Humano extends Thread {
                 }
 
             } catch (InterruptedException ie) {
-                Log.escribir(id + " ha sido interrumpido.");
-                System.out.println(id + " ha sido interrumpido.");
+                Log.escribir(id + " ha sido interrumpido." + ie.getMessage());
+                System.out.println(id + " ha sido interrumpido. " + ie.getMessage());
             } catch (Exception e) {
                 Log.escribir("Error en el hilo de " + id + ": " + e.getMessage());
                 System.out.println("Error en el hilo de " + id + ": " + e.getMessage());
@@ -148,7 +159,7 @@ public class Humano extends Thread {
         }
         //try {sleep(tiempo);} catch (InterruptedException ex) {Log.escribir("Error al dormir el hilo en serAtacado: " + ex.getMessage());System.out.println("Error al dormir el hilo en fun serAtacado: " + ex.getMessage());}
         tiempoAtaque = tiempo;
-
+        //this.interrupt(); //interrumpe el hilo para que no se quede esperando en la zona exterior
     }
 
     public String getid() {
