@@ -233,15 +233,18 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1390, 690));
 
+        ZonaComun.setEditable(false);
         ZonaComun.setColumns(20);
         ZonaComun.setRows(5);
         jScrollPane1.setViewportView(ZonaComun);
         ZonaComun.getAccessibleContext().setAccessibleName("zonaComun");
 
+        Comedor.setEditable(false);
         Comedor.setColumns(20);
         Comedor.setRows(5);
         jScrollPane2.setViewportView(Comedor);
 
+        ZonaDescanso.setEditable(false);
         ZonaDescanso.setColumns(20);
         ZonaDescanso.setRows(5);
         jScrollPane3.setViewportView(ZonaDescanso);
@@ -290,8 +293,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        FueraT1.setEditable(false);
         FueraT1.setColumns(20);
+        FueraT1.setLineWrap(true);
         FueraT1.setRows(5);
+        FueraT1.setWrapStyleWord(true);
         jScrollPane5.setViewportView(FueraT1);
 
         MedioT1.setEditable(false);
@@ -332,8 +338,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        FueraT2.setEditable(false);
         FueraT2.setColumns(20);
+        FueraT2.setLineWrap(true);
         FueraT2.setRows(5);
+        FueraT2.setWrapStyleWord(true);
         jScrollPane6.setViewportView(FueraT2);
 
         MedioT2.setEditable(false);
@@ -374,8 +383,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        FueraT3.setEditable(false);
         FueraT3.setColumns(20);
+        FueraT3.setLineWrap(true);
         FueraT3.setRows(5);
+        FueraT3.setWrapStyleWord(true);
         jScrollPane9.setViewportView(FueraT3);
 
         MedioT3.setEditable(false);
@@ -416,8 +428,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        FueraT4.setEditable(false);
         FueraT4.setColumns(20);
+        FueraT4.setLineWrap(true);
         FueraT4.setRows(5);
+        FueraT4.setWrapStyleWord(true);
         jScrollPane8.setViewportView(FueraT4);
 
         MedioT4.setEditable(false);
@@ -487,19 +502,27 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        Exterior1.setEditable(false);
         Exterior1.setColumns(20);
+        Exterior1.setLineWrap(true);
         Exterior1.setRows(5);
         jScrollPane4.setViewportView(Exterior1);
 
+        Exterior2.setEditable(false);
         Exterior2.setColumns(20);
+        Exterior2.setLineWrap(true);
         Exterior2.setRows(5);
         jScrollPane7.setViewportView(Exterior2);
 
+        Exterior3.setEditable(false);
         Exterior3.setColumns(20);
+        Exterior3.setLineWrap(true);
         Exterior3.setRows(5);
         jScrollPane10.setViewportView(Exterior3);
 
+        Exterior4.setEditable(false);
         Exterior4.setColumns(20);
+        Exterior4.setLineWrap(true);
         Exterior4.setRows(5);
         jScrollPane11.setViewportView(Exterior4);
 

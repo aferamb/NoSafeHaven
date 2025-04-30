@@ -75,11 +75,11 @@ public class Humano extends Thread {
                     Log.escribir(id + " deja la zona exterior " + tunel + ".");
                     System.out.println(id + " deja la zona exterior " + tunel + ".");
                     
-                    tunel = (int) (Math.random() * 4); //cambiar el tunel para entrar
+                    //tunel = (int) (Math.random() * 4); //cambiar el tunel para entrar
                     Log.escribir(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
                     refugio.entrarRefugio(tunel, id); //... entra al tunel...
-                    sleep(1000); //esperar 1 seg cruzar tunel                           ///en pruebas
+                    sleep(1000); //esperar 1 seg cruzar tunel                          
                     
                     refugio.salirTunel(tunel, id); //...llega a dentro del refugio
                     Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
@@ -110,7 +110,7 @@ public class Humano extends Thread {
                         System.out.println(id + " InterruptedException comedo" + ie.getMessage());
                         ie.printStackTrace();
                     }
-                    refugio.irComedor(id);
+                    
                     Log.escribir(id + " entra en el comedor.");
                     System.out.println(id + " entra en el comedor.");
                     sleep((int) (Math.random() * 2000 + 3000)); //comiendo 3-5 seg
