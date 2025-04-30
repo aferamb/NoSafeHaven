@@ -64,7 +64,7 @@ public class Refugio {
         PantallaPrincipal.getInstancia().actualizarZonaDescanso(humanosZonaDescanso);
     }
 
-    public synchronized void irComedor(String id) throws InterruptedException { 
+    public void irComedor(String id) throws InterruptedException { 
         enComedor.incrementAndGet();
         while (comida.get() == 0) {
             wait();
