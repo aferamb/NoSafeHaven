@@ -8,12 +8,10 @@ import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author 05jan
- */
-public class Humano extends Thread {
 
+public class Humano extends Thread {
+    private static int velocidad=1;
+    
     private String id;
     private boolean herido = false;
     private boolean muerto = false;
@@ -48,7 +46,7 @@ public class Humano extends Thread {
                 PantallaPrincipal.getInstancia().parar();
 
                 try { // este sleep es peligroso, si un humano lo ataca se queda tiempo extra en la zona exterior y otr zombien lo puede volver a atacar
-                    sleep((int) (Math.random() * 2000 + 3000)); // en exterior 3-5 seg
+                    sleep((int) ((Math.random() * 2000 + 3000)/velocidad)); // en exterior 3-5 seg
                     PantallaPrincipal.getInstancia().parar();
                 } catch (InterruptedException e) {
                     Log.escribir(id + " fue interrumpido mientras buscaba comida." + e.getMessage());
@@ -109,19 +107,25 @@ public class Humano extends Thread {
     public void irZonaDescanso(int tiempomin) {
         PantallaPrincipal.getInstancia().parar();
         refugio.irZonaDescanso(id);
-        Log.escribir(id + " esta herido y entra en la zona de descanso para curarse.");
-        System.out.println(id + " esta herido y entra en la zona de descanso para curarse.");
+
+        if (herido) {
+            Log.escribir(id + " esta herido y entra en la zona de descanso para curarse.");
+            System.out.println(id + " esta herido y entra en la zona de descanso para curarse.");
+        } else {
+            Log.escribir(id + " entra en la zona de descanso.");
+            System.out.println(id + " entra en la zona de descanso.");
+        }
         PantallaPrincipal.getInstancia().parar();
         try {
-            sleep((int) (Math.random() * 2000 + tiempomin)); //en zona descanso 3-5 seg
+            sleep((int) ((Math.random() * 2000 + tiempomin)/velocidad)); //en zona descanso 3-5 seg
         } catch (InterruptedException ex) {
             Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
         }
         PantallaPrincipal.getInstancia().parar();
         herido = false; //se cura si esta herido
         refugio.salirZonaDescanso(id);
-        Log.escribir(id + " se ha curado y sale de la zona de descanso.");
-        System.out.println(id + " se ha curado y sale de la zona de descanso.");
+        Log.escribir(id + " sale de la zona de descanso.");
+        System.out.println(id + " sale de la zona de descanso.");
         PantallaPrincipal.getInstancia().parar();
     }
 
@@ -138,7 +142,7 @@ public class Humano extends Thread {
         System.out.println(id + " entra en el comedor.");
         PantallaPrincipal.getInstancia().parar();
         try {
-            sleep((int) (Math.random() * 2000 + 3000)); //comiendo 3-5 seg
+            sleep((int) ((Math.random() * 2000 + 3000)/velocidad)); //comiendo 3-5 seg
         } catch (InterruptedException ex) {
             Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -156,7 +160,7 @@ public class Humano extends Thread {
             System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
             refugio.entrarRefugio(tunel, id); //... entra al tunel...
             PantallaPrincipal.getInstancia().parar();
-            sleep(1000); //esperar 1 seg cruzar tunel
+            sleep(1000/velocidad); //esperar 1 seg cruzar tunel
             PantallaPrincipal.getInstancia().parar();
 
             refugio.salirTunel(tunel, id); //...llega a dentro del refugio
@@ -175,7 +179,7 @@ public class Humano extends Thread {
             System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
             refugio.salirRefugio(tunel, id); // "sale" de la zona comun y espera en la entrada del tunel
             PantallaPrincipal.getInstancia().parar();
-            sleep(1000); //esperar 1seg cruzar tunel
+            sleep(1000/velocidad); //esperar 1seg cruzar tunel
             PantallaPrincipal.getInstancia().parar();
             refugio.salirTunel(tunel, id); // sale del tunel y llega a la zona exterior
             Log.escribir(id + " ha salido del refugio por el tunel " + tunel + ".");
@@ -193,7 +197,7 @@ public class Humano extends Thread {
         refugio.irZonaComun(id);
         PantallaPrincipal.getInstancia().parar();
         try {
-            sleep((int) (Math.random() * 1000 + 1000)); //en zona comun 1 a 2 seg
+            sleep((int) ((Math.random() * 1000 + 1000)/velocidad)); //en zona comun 1 a 2 seg
         } catch (InterruptedException ex) {
             Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -239,5 +243,18 @@ public class Humano extends Thread {
     public void setRefugio(Refugio refugio) {
         this.refugio = refugio;
     }
+
+    public static int getVelocidad() {
+        return velocidad;
+    }
+
+    public static void setVelocidad(int velocidad) {
+        Humano.velocidad = velocidad;
+    }
+
+    
+    
+    
+    
 
 }

@@ -51,6 +51,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
                           <Component id="stopButton" min="-2" pref="94" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="velocidad1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="velocidad10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="velocidad50" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="57" max="32767" attributes="0"/>
@@ -66,8 +72,20 @@
                       <Component id="Exterior" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="Refugio" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="stopButton" min="-2" pref="97" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="stopButton" min="-2" pref="97" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="velocidad1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="velocidad10" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="velocidad50" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
                   <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -666,6 +684,30 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stopButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="velocidad1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Velocidad=x1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="velocidad1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="velocidad10">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Velocidad=x10"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="velocidad10ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="velocidad50">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Velocidad=x50"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="velocidad50ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

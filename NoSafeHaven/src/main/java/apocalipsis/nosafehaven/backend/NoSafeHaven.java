@@ -5,14 +5,12 @@ package apocalipsis.nosafehaven.backend;
 
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
-/**
- *
- * @author 05jan
- */
-public class NoSafeHaven {
 
+public class NoSafeHaven {
+/////////////////////////////////////////////////////////////////////////TODO: aumentar con boton velocidad de creacion de humanos!!
     public static void main(String[] args) {
-        // Crear el Refugio y el Exterior
+        
+        // Crear el Refugio 
         Refugio refugio = new Refugio();
 
         PantallaPrincipal.getInstancia().setVisible(true);
@@ -32,7 +30,7 @@ public class NoSafeHaven {
         System.out.println("Creando zombie Z00000");
         PantallaPrincipal.getInstancia().parar();
         // Crear un número de Humanos
-        int numHumanos = 100; // Puedes cambiar el número que quieras
+        int numHumanos = 1000; // Puedes cambiar el número que quieras
         for (int i = 1; i <= numHumanos; i++) {  // Empezar en 1 para que el id sea H00001, y no H00000 para no tener dos zombis con id Z00000
             String id = "H" + String.format("%05d", i); // Formatear el número con ceros a la izquierda
             Humano humano = new Humano(id, refugio, zonas, r);

@@ -7,14 +7,7 @@ package apocalipsis.nosafehaven.backend;
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
-/**
- *
- * @author 05jan
- */
 public class Refugio {
 
     private AtomicInteger comida = new AtomicInteger(0);

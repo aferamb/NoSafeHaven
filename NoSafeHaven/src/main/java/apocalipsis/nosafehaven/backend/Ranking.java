@@ -6,10 +6,7 @@ package apocalipsis.nosafehaven.backend;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author cristina
- */
+
 public class Ranking {
 
     private ArrayList<String> ranking = new ArrayList<>();

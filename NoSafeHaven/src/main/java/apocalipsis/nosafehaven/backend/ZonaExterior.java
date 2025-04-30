@@ -11,10 +11,6 @@ import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author cristina
- */
 public class ZonaExterior {
 
     private AtomicInteger ctdzombies = new AtomicInteger(0);
@@ -101,6 +97,7 @@ public class ZonaExterior {
 
     public synchronized void finAtaque() {
         notifyAll();
+        ///////////////////////////////////////////// ver si renta mas meter arriba synchronized(this){notifyAll();}
     }
 
 }
