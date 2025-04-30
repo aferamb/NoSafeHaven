@@ -7,6 +7,9 @@ package apocalipsis.nosafehaven.backend;
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
@@ -27,6 +30,7 @@ public class Refugio {
     private CopyOnWriteArrayList<String> humanosComedor = new CopyOnWriteArrayList<>();
 
     private Tunel[] tuneles = new Tunel[4]; // Array de túneles
+    
 
     public Refugio() {
         for (int i = 0; i < 4; i++) {

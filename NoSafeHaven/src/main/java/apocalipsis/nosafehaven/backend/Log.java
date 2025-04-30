@@ -19,14 +19,13 @@ public class Log {
     private static final String nombre_archivo = "apocalipsis" + fecha_archivo + ".txt";
     private static final Lock lock = new ReentrantLock(); // Protege el acceso concurrente
 
-    public static void escribir(String mensaje) {
-        lock.lock();
+    public synchronized static void escribir(String mensaje) {
+        
         try (PrintWriter out = new PrintWriter(new FileWriter(nombre_archivo, true))) { //try-with-resources para que Java automáticamente cierre el recurso cuando termina el bloque try
             String timestamp = LocalDateTime.now().format(formatoFecha);
             out.println("[" + timestamp + "] " + mensaje);
         } catch (IOException e) {
         } finally {
-            lock.unlock();
         }
     }
 }

@@ -55,16 +55,17 @@ public class Tunel {
     public void entrarRefugio(String idHumano) throws InterruptedException {
         entrando.lock();
         try {
-            if (humanosDentro > 0) {
+            //if (humanosDentro > 0) {
                 humanosEntrando++; //evitar que se aumente cada bucle del while. solo se incrementa una vez
                 humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
                 PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
-            }
+            //}
             while (humanosDentro > 0) {
                 quiereEntrar.await();
             }
-            humanosDentro++;
             humanosEntrando--;
+            humanosDentro++;
+            
             humanosEntrandoRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
             humanosDentroRef.add(idHumano); //añadimos el id del humano a la lista de ids
             PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
