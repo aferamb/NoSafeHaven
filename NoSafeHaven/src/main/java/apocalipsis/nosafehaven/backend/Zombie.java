@@ -15,12 +15,10 @@ public class Zombie extends Thread {
     private String id;
     private int bodycount = 0;
     private ZonaExterior[] zonas = new ZonaExterior[4];
-    private Parada p;
     private Ranking r;
 
-    public Zombie(String id, ZonaExterior[] zonas, Parada p, Ranking r) {
+    public Zombie(String id, ZonaExterior[] zonas,  Ranking r) {
         this.id = "Z" + id.substring(1); //id del humano sin la H
-        this.p = p;
         this.zonas = zonas;
         this.r = r;
     }
