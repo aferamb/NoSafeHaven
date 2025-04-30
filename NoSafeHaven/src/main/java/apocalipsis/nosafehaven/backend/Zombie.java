@@ -5,6 +5,8 @@
 package apocalipsis.nosafehaven.backend;
 
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
+import static java.lang.Thread.sleep;
+
 
 
 public class Zombie extends Thread {
@@ -14,7 +16,6 @@ public class Zombie extends Thread {
     private ZonaExterior[] zonas = new ZonaExterior[4];
     private Ranking r;
     
-    private static int velocidad=1;
 
     public Zombie(String id, ZonaExterior[] zonas,  Ranking r) {
         this.id = "Z" + id.substring(1); //id del humano sin la H
@@ -35,7 +36,7 @@ public class Zombie extends Thread {
                 PantallaPrincipal.getInstancia().parar();
                 zonas[zona].zombieAtacar(this);
                 PantallaPrincipal.getInstancia().parar();
-                sleep((int) ((Math.random() * 1000 + 2000)/velocidad)); //dormir 2-3 s
+                sleep((int) ((Math.random() * 1000 + 2000)/Velocidad.getVelocidad())); //dormir 2-3 s
                 PantallaPrincipal.getInstancia().parar();
                 zonas[zona].zombieIrse(this);
                 PantallaPrincipal.getInstancia().parar();
@@ -62,7 +63,7 @@ public class Zombie extends Thread {
 
     public void atacar(boolean matado, int tiempo, String hid) {
         try {
-            sleep((int)(tiempo/velocidad));
+            sleep((int)(tiempo/Velocidad.getVelocidad()));
         } catch (InterruptedException ex) {
         }
         if (matado) {
@@ -76,14 +77,6 @@ public class Zombie extends Thread {
         }
     }
 
-    public static int getVelocidad() {
-        return velocidad;
-    }
-
-    public static void setVelocidad(int velocidad) {
-        Zombie.velocidad = velocidad;
-    }
-    
-    
     
 }
+

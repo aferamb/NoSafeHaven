@@ -33,6 +33,7 @@ public class Refugio {
 
     public synchronized void dejarComida() { 
         comida.addAndGet(2);
+        System.out.println("  dejan 2 de comida!! "+comida.get());
         PantallaPrincipal.getInstancia().actualizarComida(comida.get());
         notifyAll();
     }
@@ -62,13 +63,17 @@ public class Refugio {
     }
 
     public synchronized void irComedor(String id) throws InterruptedException { 
+        System.out.println(id+ " llega al comedor..."+comida.get());
         enComedor.incrementAndGet();
-        while (comida.get() == 0) {
-            wait();
-        }
-        comida.decrementAndGet(); //comer 1 comida
         humanosComedor.add(id);
         PantallaPrincipal.getInstancia().actualizarComedor(humanosComedor);
+        while (comida.get() == 0) {
+            System.out.println(id+ " esta esperando por comida..."+comida.get());
+            wait();
+        }
+        System.out.println(id+ " come..."+comida.get());
+        comida.decrementAndGet(); //comer 1 comida
+        
     }
 
     public void salirComedor(String id) { 
