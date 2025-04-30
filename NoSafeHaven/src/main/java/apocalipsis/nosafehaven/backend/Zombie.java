@@ -4,6 +4,8 @@
  */
 package apocalipsis.nosafehaven.backend;
 
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
+
 /**
  *
  * @author 05jan
@@ -12,11 +14,15 @@ public class Zombie extends Thread {
 
     private String id;
     private int bodycount = 0;
-    private Exterior exterior;
+    private ZonaExterior[] zonas = new ZonaExterior[4];
+    private Parada p;
+    private Ranking r;
 
-    public Zombie(String id, Exterior exterior) {
+    public Zombie(String id, ZonaExterior[] zonas, Parada p, Ranking r) {
         this.id = "Z" + id.substring(1); //id del humano sin la H
-        this.exterior = exterior;
+        this.p = p;
+        this.zonas = zonas;
+        this.r = r;
     }
 
     @Override
@@ -24,15 +30,18 @@ public class Zombie extends Thread {
         while (true) {
             try {
                 int zona = (int) (Math.random() * 4); //seleccionar zona de 0-3
-                Log.escribir(id + " se dirige a la zona exterior " + zona + ".");
-                System.out.println(id + " se dirige a la zona exterior " + zona + ".");
 
                 Log.escribir(id + " esta buscando cerebros en la zona exterior " + zona + ".");
                 System.out.println(id + " está buscando cerebros en la zona exterior " + zona + ".");
-                exterior.buscarCerebros(this, zona); // si llega un humano a la zona despueas de que el; zombie revise este no es atacado !!!!!!!!!!!
-
+                PantallaPrincipal.getInstancia().parar();
+                zonas[zona].zombieLlegar(this);
+                PantallaPrincipal.getInstancia().parar();
+                zonas[zona].zombieAtacar(this);
+                PantallaPrincipal.getInstancia().parar();
                 sleep((int) (Math.random() * 1000 + 2000)); //dormir 2-3 s
-                exterior.acabarZombie(this, zona);
+                PantallaPrincipal.getInstancia().parar();
+                zonas[zona].zombieIrse(this);
+                PantallaPrincipal.getInstancia().parar();
                 Log.escribir(id + " abandona la zona exterior " + zona + ".");
                 System.out.println(id + " abandona la zona exterior " + zona + ".");
                 //vuelve a buscar zona. se podria repetir la misma (ver si seria necesario que fuera distinta a la anterior)
@@ -61,6 +70,7 @@ public class Zombie extends Thread {
         }
         if (matado) {
             bodycount++;
+            r.actualizarRanking(id, bodycount);
             Log.escribir(id + " ha matado al humano " + hid + ". Total muertos: " + bodycount + ".");
             System.out.println(id + " ha matado al humano " + hid + ". Total muertos: " + bodycount + ".");
         } else {
