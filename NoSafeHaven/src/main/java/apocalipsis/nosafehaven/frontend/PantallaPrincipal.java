@@ -4,7 +4,6 @@
  */
 package apocalipsis.nosafehaven.frontend;
 
-import apocalipsis.nosafehaven.backend.Parada;
 import java.awt.Color;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.locks.Condition;

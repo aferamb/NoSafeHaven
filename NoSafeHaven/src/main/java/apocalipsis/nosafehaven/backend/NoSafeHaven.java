@@ -18,7 +18,6 @@ public class NoSafeHaven {
         PantallaPrincipal.getInstancia().setVisible(true);
 
         ZonaExterior[] zonas = new ZonaExterior[4];
-        Parada p = new Parada();
         Ranking r = new Ranking();
 
         for (int i = 0; i < 4; i++) {
@@ -27,7 +26,7 @@ public class NoSafeHaven {
         }
 
         PantallaPrincipal.getInstancia().parar();
-        Zombie zombie = new Zombie("Z00000", zonas, p, r); // Crear paciente 0
+        Zombie zombie = new Zombie("Z00000", zonas, r); // Crear paciente 0
         zombie.start(); // Arrancar el hilo del Zombie
         Log.escribir("Creando zombie Z00000");
         System.out.println("Creando zombie Z00000");
@@ -36,7 +35,7 @@ public class NoSafeHaven {
         int numHumanos = 100; // Puedes cambiar el número que quieras
         for (int i = 1; i <= numHumanos; i++) {  // Empezar en 1 para que el id sea H00001, y no H00000 para no tener dos zombis con id Z00000
             String id = "H" + String.format("%05d", i); // Formatear el número con ceros a la izquierda
-            Humano humano = new Humano(id, refugio, zonas, p, r);
+            Humano humano = new Humano(id, refugio, zonas, r);
             humano.start(); // Arrancar cada hilo de Humano
             Log.escribir("Creando humano " + id);
             System.out.println("Creando humano " + id);

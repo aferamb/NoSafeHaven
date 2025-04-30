@@ -23,12 +23,9 @@ public class Humano extends Thread {
     private Refugio refugio;
     private ZonaExterior[] zonas = new ZonaExterior[4];
 
-    private Parada p;
-
-    public Humano(String id, Refugio refugio, ZonaExterior[] zonas, Parada p, Ranking r) {
+    public Humano(String id, Refugio refugio, ZonaExterior[] zonas, Ranking r) {
         this.id = id;
         this.refugio = refugio;
-        this.p = p;
         this.zonas = zonas;
         this.r = r;
     }
@@ -37,14 +34,14 @@ public class Humano extends Thread {
     public void run() {
         while (!muerto) {
             try {
-                
+
                 irZonaComun();
                 int tunel = (int) (Math.random() * 4); //elegir entre los tuneles 0-3 para salir del refugio
                 Log.escribir(id + " sale de la zona comun.");
                 System.out.println(id + " sale de la zona comun.");
                 salirRefugio(tunel);
                 PantallaPrincipal.getInstancia().parar();
-                
+
                 zonas[tunel].humanoLlegar(this);
                 Log.escribir(id + " busca comida en la zona exterior " + tunel + ".");
                 System.out.println(id + " busca comida en la zona exterior " + tunel + ".");
@@ -60,7 +57,7 @@ public class Humano extends Thread {
                     zonas[tunel].humanoAtacado(this);
                     PantallaPrincipal.getInstancia().parar();
                 }
-                
+
                 if (!muerto) {
                     //si no ha sido atacado, tiene que irse aún de la zona exterior...
                     if (!herido) {
@@ -82,7 +79,7 @@ public class Humano extends Thread {
                         Log.escribir(id + " fue herido, no trae comida.");
                         System.out.println(id + " fue herido, no trae comida.");
                     }
-                    
+
                     irZonaDescanso(2000);
                     irComedor();
                     if (herido) {
@@ -93,10 +90,10 @@ public class Humano extends Thread {
                     PantallaPrincipal.getInstancia().parar();
                     Log.escribir(id + " ha muerto y se convierte en ZOMBIE.");
                     System.out.println(id + " ha muerto y se convierte en ZOMBIE.");
-                    Zombie z = new Zombie(id, zonas, p, r);
+                    Zombie z = new Zombie(id, zonas, r);
                     z.start();
                     //acaba ejecucion. no vuelve a entrar al while."se convierte"
-                    
+
                 }
 
             } catch (Exception e) {
