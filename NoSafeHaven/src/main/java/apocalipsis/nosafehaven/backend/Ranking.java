@@ -10,6 +10,11 @@ import java.util.ArrayList;
 public class Ranking {
 
     private ArrayList<String> ranking = new ArrayList<>();
+    private Servidor servidor;
+
+    public Ranking(Servidor servidor) {
+        this.servidor = servidor;
+    }
 
     public synchronized void actualizarRanking(String id, int bodycount) {
         // Elimina si ya está
@@ -25,6 +30,8 @@ public class Ranking {
         if (ranking.size() > 3) {
             ranking.subList(3, ranking.size()).clear();
         }
+
+        servidor.actualizarRanking(ranking);
 
         // Mostrar
         System.out.println("RANKING:");

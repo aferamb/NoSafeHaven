@@ -16,21 +16,25 @@ public class ZonaExterior {
     private AtomicInteger ctdzombies = new AtomicInteger(0);
     private AtomicInteger ctdhumanos = new AtomicInteger(0);
     private int id;
+    private Servidor servidor;
 
     private CopyOnWriteArrayList<Humano> humanos = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<Zombie> zombies = new CopyOnWriteArrayList<>();
 
     private CopyOnWriteArrayList<String> listaIDs = new CopyOnWriteArrayList<>(); // IDs de los humanos y zombies en la zona exterior
 
-    public ZonaExterior(int id) {
+    public ZonaExterior(int id, Servidor servidor) {
         this.id = id;
+        this.servidor = servidor;
     }
+
 
     public void zombieLlegar(Zombie z) {
         ctdzombies.incrementAndGet();
         listaIDs.add(z.getid()); //añadimos el id del zombie a la lista de ids
         zombies.add(z);
         PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
+        servidor.actualizarDatosZombiesZonaRiesgo(id, ctdzombies.get()); //actualizo la capacidad de la zona exterior
 
     }
 
@@ -67,6 +71,7 @@ public class ZonaExterior {
         listaIDs.remove(z.getid()); //eliminamos el id del zombie de la lista de ids
         zombies.remove(z);
         PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
+        servidor.actualizarDatosZombiesZonaRiesgo(id, ctdzombies.get()); //actualizo la capacidad de la zona exterior
     }
 
     public void humanoLlegar(Humano h) {
@@ -74,6 +79,7 @@ public class ZonaExterior {
         listaIDs.add(h.getid()); //añadimos el id del humano a la lista de ids
         humanos.add(h);
         PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
+        servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
     }
 
     public void humanoIrse(Humano h) {
@@ -81,6 +87,7 @@ public class ZonaExterior {
         listaIDs.remove(h.getid()); //eliminamos el id del humano de la lista de ids
         humanos.remove(h);
         PantallaPrincipal.getInstancia().actualizarExterior(id, listaIDs); //actualizo la pantalla de la zona exterior
+        servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
     }
     
 

@@ -6,6 +6,7 @@ package apocalipsis.nosafehaven.backend;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -20,6 +21,7 @@ public class Tunel {
     private Condition quiereSalir = entrando.newCondition();
     //private int dentro;
     private int humanosEntrando = 0;
+    private AtomicInteger humanosTotalesEnTunel = new AtomicInteger(0); //total de humanos en el tunel
 
     private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
@@ -27,9 +29,16 @@ public class Tunel {
 
     private CyclicBarrier barrera = new CyclicBarrier(3);
     private int id;
+    private Servidor servidor;
 
-    public Tunel(int id) {
+    public Tunel(int id, Servidor servidor) {
+        this.servidor = servidor;
         this.id = id;
+    }
+
+    public void actulizarHumanosEnTunel() { // no creo que necesite synchronized, ya que lasvariables aqui y en destino son atomicas y el metodo llamado en servidor es synchronized
+        humanosTotalesEnTunel.set(humanosSaliendoRef.size() + humanosDentroRef.size() + humanosEntrandoRef.size());
+        servidor.actualizarDatosTuneles(id, humanosTotalesEnTunel.get());
     }
 
     public void salirRefugio(String idHumano) throws Exception {

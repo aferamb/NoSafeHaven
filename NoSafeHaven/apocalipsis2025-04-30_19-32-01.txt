@@ -1,0 +1,6 @@
+[2025-04-30 19:32:01] Creando zombie Z00000
+[2025-04-30 19:32:01] Z00000 esta buscando cerebros en la zona exterior 0.
+[2025-04-30 19:32:01] Creando humano H00001
+[2025-04-30 19:32:01] H00001 entra en la zona comun.
+[2025-04-30 19:32:02] H00001 sale de la zona comun.
+[2025-04-30 19:32:02] H00001 intenta salir del refugio por el tunel 2.

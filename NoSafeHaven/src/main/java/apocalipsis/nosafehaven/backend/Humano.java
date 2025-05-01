@@ -180,6 +180,7 @@ public class Humano extends Thread {
             PantallaPrincipal.getInstancia().parar();
 
             refugio.salirTunel(tunel, id); //...llega a dentro del refugio
+            refugio.humanoEntraRefugio(id); // aumentar el contador de humanos en el refugio
             Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
             System.out.println(id + " ha entrado al refugio por el tunel " + tunel + ".");
             PantallaPrincipal.getInstancia().parar();
@@ -198,6 +199,7 @@ public class Humano extends Thread {
             sleep(1000 / Velocidad.getVelocidad()); //esperar 1seg cruzar tunel
             PantallaPrincipal.getInstancia().parar();
             refugio.salirTunel(tunel, id); // sale del tunel y llega a la zona exterior
+            refugio.humanoSaleRefugio(id); // disminuir el contador de humanos en el refugio
             Log.escribir(id + " ha salido del refugio por el tunel " + tunel + ".");
             System.out.println(id + " ha salido del refugio por el tunel " + tunel + ".");
             PantallaPrincipal.getInstancia().parar();

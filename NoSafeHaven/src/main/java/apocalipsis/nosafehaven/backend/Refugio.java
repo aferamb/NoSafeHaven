@@ -23,19 +23,35 @@ public class Refugio {
     private CopyOnWriteArrayList<String> humanosComedor = new CopyOnWriteArrayList<>();
 
     private Tunel[] tuneles = new Tunel[4]; // Array de túneles
-    
+    private Servidor servidor;
 
-    public Refugio() {
+    public Refugio(Servidor servidor) {
         for (int i = 0; i < 4; i++) {
-            tuneles[i] = new Tunel(i);
+            tuneles[i] = new Tunel(i, servidor); // Inicializa cada túnel con su ID y el servidor`
         }
+        this.servidor = servidor;
     }
 
     public synchronized void dejarComida() { 
         comida.addAndGet(2);
         System.out.println("  dejan 2 de comida!! "+comida.get());
         PantallaPrincipal.getInstancia().actualizarComida(comida.get());
+        servidor.actualizarDatosComida(comida.get());
         notifyAll();
+    }
+
+    public void humanoEntraRefugio(String id) { 
+        humanos.incrementAndGet();
+        PantallaPrincipal.getInstancia().actualizarHumanos(humanos.get());
+        servidor.actualizarDatosRefugio(humanos.get());
+        System.out.println(id + " entra al refugio..."+humanos.get());
+    }
+
+    public void humanoSaleRefugio(String id) { 
+        humanos.decrementAndGet();
+        PantallaPrincipal.getInstancia().actualizarHumanos(humanos.get());
+        servidor.actualizarDatosRefugio(humanos.get());
+        System.out.println(id + " sale del refugio..."+humanos.get());
     }
 
     public void irZonaComun(String id) { 

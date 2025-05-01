@@ -53,6 +53,12 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public void actualizarHumanos(int humanos) {
+        SwingUtilities.invokeLater(() -> {
+            this.counterHumanos.setText("Humanos: " + humanos);
+        });
+    }
+
     public void actualizarZonaComun(CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
@@ -249,6 +255,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         velocidad1 = new javax.swing.JButton();
         velocidad10 = new javax.swing.JButton();
         velocidad50 = new javax.swing.JButton();
+        counterHumanos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -587,6 +594,14 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        counterHumanos.setEditable(false);
+        counterHumanos.setText("Humanos:");
+        counterHumanos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                counterHumanosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -601,7 +616,9 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
+                        .addGap(56, 56, 56)
+                        .addComponent(counterHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
                         .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(velocidad1)
@@ -628,7 +645,10 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(velocidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(velocidad10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(velocidad50, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(velocidad50, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(counterHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -668,6 +688,10 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     private void velocidad50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad50ActionPerformed
         Velocidad.setVelocidad(50);
     }//GEN-LAST:event_velocidad50ActionPerformed
+
+    private void counterHumanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counterHumanosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_counterHumanosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -747,6 +771,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextArea ZonaComun;
     private javax.swing.JTextArea ZonaDescanso;
     private javax.swing.JTextField comida;
+    private javax.swing.JTextField counterHumanos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
