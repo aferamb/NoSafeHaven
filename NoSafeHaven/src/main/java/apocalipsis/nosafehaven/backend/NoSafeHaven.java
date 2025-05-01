@@ -5,54 +5,63 @@ package apocalipsis.nosafehaven.backend;
 
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
-
 public class NoSafeHaven {
-/////////////////////////////////////////////////////////////////////////TODO: aumentar con boton velocidad de creacion de humanos!!
+
     public static void main(String[] args) {
-        
-        PantallaPrincipal.getInstancia().setVisible(true);
-        try{
+
+        try {
 
             Servidor servidor = new Servidor();
-            //servidor.iniciarServidor(5000);
+            PantallaPrincipal.getInstancia().setServidor(servidor);
 
-            Cliente cliente = new Cliente();
-            cliente.run();
+            servidor.iniciarServidor(5000);
 
-            Refugio refugio = new Refugio(servidor);
+            if (servidor.getConectado()) { //si no está conectado por que hay 2 o más servidores a la vez y no pueden usar el mismo puerto, no ejecuta el resto del código
+                PantallaPrincipal.getInstancia().setVisible(true);
 
-            ZonaExterior[] zonas = new ZonaExterior[4];
-            Ranking r = new Ranking(servidor);
+                EstadoPausa ep = new EstadoPausa();
+                servidor.setEstadopausa(ep);
 
-            for (int i = 0; i < 4; i++) {
-                zonas[i] = new ZonaExterior(i, servidor);
-            }
+                Refugio refugio = new Refugio(servidor);
 
-            PantallaPrincipal.getInstancia().parar();
-            Zombie zombie = new Zombie("Z00000", zonas, r); // Crear paciente 0
-            zombie.start(); // Arrancar el hilo del Zombie
-            Log.escribir("Creando zombie Z00000");
-            System.out.println("Creando zombie Z00000");
-            PantallaPrincipal.getInstancia().parar();
-            // Crear un número de Humanos
-            int numHumanos = 1000; // Puedes cambiar el número que quieras
-            for (int i = 1; i <= numHumanos; i++) {  // Empezar en 1 para que el id sea H00001, y no H00000 para no tener dos zombis con id Z00000
-                String id = "H" + String.format("%05d", i); // Formatear el número con ceros a la izquierda
-                Humano humano = new Humano(id, refugio, zonas, r);
-                humano.start(); // Arrancar cada hilo de Humano
-                Log.escribir("Creando humano " + id);
-                System.out.println("Creando humano " + id);
-                PantallaPrincipal.getInstancia().parar();
-                try {
-                    Thread.sleep((int) (Math.random() * 500 + 1500)); //en zona comun 0,5 a 2 seg
-                } catch (Exception e) {
+                ZonaExterior[] zonas = new ZonaExterior[4];
+                Ranking r = new Ranking(servidor);
+
+                for (int i = 0; i < 4; i++) {
+                    zonas[i] = new ZonaExterior(i, servidor);
                 }
+
+                ep.parar();
+                Zombie zombie = new Zombie("Z00000", zonas, r, ep); // Crear paciente 0
+                zombie.start(); // Arrancar el hilo del Zombie
+                Log.escribir("Creando zombie Z00000");
+                System.out.println("Creando zombie Z00000");
+
+                ep.parar();
+                int numHumanos = 1000; // Puedes cambiar el número que quieras
+                for (int i = 1; i <= numHumanos; i++) {  // Empezar en 1 para que el id sea H00001, y no H00000 para no tener dos zombis con id Z00000
+                    if (ep.estaDesconectado()) {
+                        break;
+                    } else {
+                        String id = "H" + String.format("%05d", i); // Formatear el número con ceros a la izquierda
+                        Humano humano = new Humano(id, refugio, zonas, r, ep);
+                        humano.start(); // Arrancar cada hilo de Humano
+                        Log.escribir("Creando humano " + id);
+                        System.out.println("Creando humano " + id);
+                        ep.parar();
+                        try {
+                            Thread.sleep((int) (Math.random() * 500 + 1500)); //en zona comun 0,5 a 2 seg
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            } else {
+                System.out.println("no se pudo crear el servidor");
+                System.exit(0);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.escribir("Error en el main: " + e.getMessage());
             System.out.println("Error en el main " + e.getMessage());
-        }finally{
-            //nada xd
         }
     }
 }

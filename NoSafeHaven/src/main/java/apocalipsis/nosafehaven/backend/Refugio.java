@@ -33,10 +33,10 @@ public class Refugio {
     }
 
     public synchronized void dejarComida() { 
-        comida.addAndGet(2);
-        System.out.println("  dejan 2 de comida!! "+comida.get());
-        PantallaPrincipal.getInstancia().actualizarComida(comida.get());
-        servidor.actualizarDatosComida(comida.get());
+        int c=comida.addAndGet(2);
+        System.out.println("  dejan 2 de comida!! "+c);
+        PantallaPrincipal.getInstancia().actualizarComida(c);
+        servidor.actualizarDatosComida(c);
         notifyAll();
     }
 
@@ -89,6 +89,8 @@ public class Refugio {
         }
         System.out.println(id+ " come..."+comida.get());
         comida.decrementAndGet(); //comer 1 comida
+        PantallaPrincipal.getInstancia().actualizarComida(comida.get());
+        servidor.actualizarDatosComida(comida.get());
         
     }
 
@@ -103,6 +105,7 @@ public class Refugio {
 
             // Si cambias el orden da las dos siguientes líneas, el humano aparece como que sale o no de la zona común para ir al túnel
             salirZonaComun(idHumano); // Salir de la zona común al salir del refugio    Esta linea se ejecutara una vez que el humano haya entrado al túnel para salir
+            humanoSaleRefugio(idHumano); // disminuir el contador de humanos en el refugio
             tuneles[tunel].salirRefugio(idHumano); // Salir del refugio y entrar
         } else {
             throw new IllegalArgumentException("Túnel inválido: " + tunel);

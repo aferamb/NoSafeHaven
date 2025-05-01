@@ -7,30 +7,35 @@ package apocalipsis.nosafehaven.backend;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-
 /**
  *
  * CLASE POR SI LA NECESITAS EN LUGAR DE HACERLO EN PANTALLA para rmi
- * 
- * codigo regalo:
- * Humano humano = new Humano(id, refugio, zonas, r, estadoPausa);
- * 
- * en la pantalla:
- * private EstadoPausa estadoPausa;
- * public void setEstadoPausa(EstadoPausa estadoPausa) {
-    this.estadoPausa = estadoPausa;
-}
- * 
+ *
+ * codigo regalo: Humano humano = new Humano(id, refugio, zonas, r,
+ * estadoPausa);
+ *
+ * en la pantalla: private EstadoPausa estadoPausa; public void
+ * setEstadoPausa(EstadoPausa estadoPausa) { this.estadoPausa = estadoPausa; }
+ *
  * osea, pasar la instancia a TODO (humanos, zombies y pantalla)
- * 
- * 
- * 
+ *
+ *
+ *
  */
 public class EstadoPausa {
 
     private final ReentrantLock pauseLock = new ReentrantLock();
     private final Condition pauseCondition = pauseLock.newCondition();
     private volatile boolean paused = false;
+    private volatile boolean desconectado = false;
+
+    public void desconectar() {
+        desconectado = true;
+    }
+
+    public boolean estaDesconectado() {
+        return desconectado;
+    }
 
     public void pausar() {
         pauseLock.lock();
@@ -68,4 +73,3 @@ public class EstadoPausa {
     }
 
 }
-

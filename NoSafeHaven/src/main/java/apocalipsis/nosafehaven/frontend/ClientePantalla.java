@@ -4,7 +4,9 @@
  */
 package apocalipsis.nosafehaven.frontend;
 
+import apocalipsis.nosafehaven.backend.Cliente;
 import java.awt.Color;
+import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
@@ -15,9 +17,15 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
     public static volatile boolean paused = false;
 
+    private Cliente cliente;
+
     // Constructor privado para evitar la instanciación directa
     private ClientePantalla() {
         initComponents();
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     // Método estático que obtiene la instancia del Singleton
@@ -39,97 +47,91 @@ public final class ClientePantalla extends javax.swing.JFrame {
         }
     }
 
-    public void actualizarComida(int comida) {
+    public void actualizarComida(String comida) {
         SwingUtilities.invokeLater(() -> {
             this.comida.setText("Comida: " + comida);
         });
     }
 
-    public void actualizarZonaComun(int num) {
+    public void actualizarRefugio(String num) {
         SwingUtilities.invokeLater(() -> {
-            this.ZCNumH.setText("Nº humanos: " + num);
+            this.NumHumanos.setText("Nº humanos: " + num);
         });
     }
 
-    public void actualizarComedor(int num) {
-        SwingUtilities.invokeLater(() -> {
-            this.ComNumH.setText("Nº humanos: " + num);
-        });
-    }
-
-    public void actualizarZonaDescanso(int num) {
-        SwingUtilities.invokeLater(() -> {
-            this.ZDNumH.setText("Nº humanos: " + num);
-        });
-    }
-
-    public void actualizarTunelMedio(int tunel, int num) {
+    public void actualizarTunel(int tunel, String num) {
         SwingUtilities.invokeLater(() -> {
 
             switch (tunel) {
                 case 0:
-                    Dentro1.setText("Nº humanos: " + num);
+                    T1.setText("Nº humanos: " + num);
                     break;
                 case 1:
-                    Dentro2.setText("Nº humanos: " + num);
+                    T2.setText("Nº humanos: " + num);
                     break;
                 case 2:
-                    Dentro3.setText("Nº humanos: " + num);
+                    T3.setText("Nº humanos: " + num);
                     break;
                 case 3:
-                    Dentro4.setText("Nº humanos: " + num);
+                    T4.setText("Nº humanos: " + num);
                     break;
             }
         });
     }
 
-    public void actualizarTunelFuera(int tunel, int num) {
-        SwingUtilities.invokeLater(() -> {
-
-            switch (tunel) {
-                case 0:
-                    Fuera1.setText("Nº humanos: " + num);
-                    break;
-                case 1:
-                    Fuera2.setText("Nº humanos: " + num);
-                    break;
-                case 2:
-                    Fuera3.setText("Nº humanos: " + num);
-                    break;
-                case 3:
-                    Fuera4.setText("Nº humanos: " + num);
-                    break;
-            }
-        });
-    }
-
-    public void actualizarExterior(int exterior, int numZ, int numH) {
+    public void actualizarExteriorHumanos(int exterior, String numH) {
         SwingUtilities.invokeLater(() -> {
             switch (exterior) {
                 case 0:
-                    NZ1.setText("Nº Zombies: " + numZ);
                     NH1.setText("Nº humanos: " + numH);
                     break;
                 case 1:
-                    NZ2.setText("Nº Zombies: " + numZ);
                     NH2.setText("Nº humanos: " + numH);
                     break;
                 case 2:
-                    NZ3.setText("Nº Zombies: " + numZ);
                     NH3.setText("Nº humanos: " + numH);
                     break;
                 case 3:
-                    NZ4.setText("Nº Zombies: " + numZ);
                     NH4.setText("Nº humanos: " + numH);
                     break;
             }
         });
     }
 
-    public void actualizarRanking(String sz1, String sz2, String sz3) {
-        z1.setText(sz1);
-        z2.setText(sz2);
-        z3.setText(sz3);
+    public void actualizarExteriorZombies(int exterior, String numZ) {
+        SwingUtilities.invokeLater(() -> {
+            switch (exterior) {
+                case 0:
+                    NZ1.setText("Nº Zombies: " + numZ);
+                    break;
+                case 1:
+                    NZ2.setText("Nº Zombies: " + numZ);
+                    break;
+                case 2:
+                    NZ3.setText("Nº Zombies: " + numZ);
+                    break;
+                case 3:
+                    NZ4.setText("Nº Zombies: " + numZ);
+                    break;
+            }
+        });
+    }
+
+    public void actualizarRanking(int ranking, String valor) {
+        SwingUtilities.invokeLater(() -> {
+            switch (ranking) {
+                case 1:
+                    z1.setText(valor);
+                    break;
+                case 2:
+                    z2.setText(valor);
+                    break;
+                case 3:
+                    z3.setText(valor);
+                    break;
+
+            }
+        });
 
     }
 
@@ -145,32 +147,22 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Refugio = new javax.swing.JPanel();
         comedor = new javax.swing.JPanel();
-        ComNumH = new javax.swing.JTextField();
+        NumHumanos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         comida = new javax.swing.JTextField();
-        zonaComun = new javax.swing.JPanel();
-        ZCNumH = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        zonaDescanso = new javax.swing.JPanel();
-        ZDNumH = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         Tuneles = new javax.swing.JPanel();
         Tunel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        Dentro1 = new javax.swing.JTextField();
-        Fuera1 = new javax.swing.JTextField();
+        T1 = new javax.swing.JTextField();
         Tunel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        Dentro2 = new javax.swing.JTextField();
-        Fuera2 = new javax.swing.JTextField();
+        T2 = new javax.swing.JTextField();
         Tunel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        Dentro3 = new javax.swing.JTextField();
-        Fuera3 = new javax.swing.JTextField();
+        T3 = new javax.swing.JTextField();
         Tunel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        Dentro4 = new javax.swing.JTextField();
-        Fuera4 = new javax.swing.JTextField();
+        T4 = new javax.swing.JTextField();
         Exterior = new javax.swing.JPanel();
         E1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -194,21 +186,29 @@ public final class ClientePantalla extends javax.swing.JFrame {
         z1 = new javax.swing.JTextField();
         z2 = new javax.swing.JTextField();
         z3 = new javax.swing.JTextField();
+        velocidad50 = new javax.swing.JButton();
+        velocidad1 = new javax.swing.JButton();
+        velocidad10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1390, 690));
 
         comedor.setBackground(new java.awt.Color(255, 255, 204));
 
-        ComNumH.setText("Nº humanos:");
-        ComNumH.addActionListener(new java.awt.event.ActionListener() {
+        NumHumanos.setText("Nº humanos:");
+        NumHumanos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComNumHActionPerformed(evt);
+                NumHumanosActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Comedor");
+        jLabel1.setText("Refugio");
 
         comida.setText("Comida: 0");
 
@@ -220,7 +220,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(comedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comida, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComNumH, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NumHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
             .addGroup(comedorLayout.createSequentialGroup()
                 .addGap(86, 86, 86)
@@ -233,79 +233,10 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ComNumH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NumHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(comida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
-
-        zonaComun.setBackground(new java.awt.Color(255, 255, 204));
-
-        ZCNumH.setText("Nº humanos:");
-        ZCNumH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZCNumHActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Zona común");
-
-        javax.swing.GroupLayout zonaComunLayout = new javax.swing.GroupLayout(zonaComun);
-        zonaComun.setLayout(zonaComunLayout);
-        zonaComunLayout.setHorizontalGroup(
-            zonaComunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(zonaComunLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, zonaComunLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(ZCNumH, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-        );
-        zonaComunLayout.setVerticalGroup(
-            zonaComunLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, zonaComunLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ZCNumH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        zonaDescanso.setBackground(new java.awt.Color(255, 255, 204));
-
-        ZDNumH.setText("Nº humanos:");
-        ZDNumH.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZDNumHActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("Zona de descanso");
-
-        javax.swing.GroupLayout zonaDescansoLayout = new javax.swing.GroupLayout(zonaDescanso);
-        zonaDescanso.setLayout(zonaDescansoLayout);
-        zonaDescansoLayout.setHorizontalGroup(
-            zonaDescansoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(zonaDescansoLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addGroup(zonaDescansoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, zonaDescansoLayout.createSequentialGroup()
-                        .addComponent(ZDNumH, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, zonaDescansoLayout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))))
-        );
-        zonaDescansoLayout.setVerticalGroup(
-            zonaDescansoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, zonaDescansoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ZDNumH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout RefugioLayout = new javax.swing.GroupLayout(Refugio);
@@ -314,39 +245,25 @@ public final class ClientePantalla extends javax.swing.JFrame {
             RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RefugioLayout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(zonaDescanso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(zonaComun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(comedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
         RefugioLayout.setVerticalGroup(
             RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RefugioLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(zonaComun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(60, 60, 60)
                 .addComponent(comedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(zonaDescanso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         Tunel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel8.setText("Tunel 1");
 
-        Dentro1.setText("Nº humanos dentro:");
-        Dentro1.addActionListener(new java.awt.event.ActionListener() {
+        T1.setText("Nº humanos dentro:");
+        T1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dentro1ActionPerformed(evt);
-            }
-        });
-
-        Fuera1.setText("Nº humanos fuera:");
-        Fuera1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fuera1ActionPerformed(evt);
+                T1ActionPerformed(evt);
             }
         });
 
@@ -356,10 +273,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
             Tunel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(Tunel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Fuera1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Dentro1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(T1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,27 +286,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Fuera1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(T1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         Tunel2.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel9.setText("Tunel 2");
 
-        Dentro2.setText("Nº humanos dentro:");
-        Dentro2.addActionListener(new java.awt.event.ActionListener() {
+        T2.setText("Nº humanos dentro:");
+        T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dentro2ActionPerformed(evt);
-            }
-        });
-
-        Fuera2.setText("Nº humanos fuera:");
-        Fuera2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fuera2ActionPerformed(evt);
+                T2ActionPerformed(evt);
             }
         });
 
@@ -401,10 +307,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
             Tunel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel2Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(Tunel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Fuera2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Dentro2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(T2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,27 +320,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Fuera2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(T2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         Tunel3.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel10.setText("Tunel 3");
 
-        Dentro3.setText("Nº humanos dentro:");
-        Dentro3.addActionListener(new java.awt.event.ActionListener() {
+        T3.setText("Nº humanos dentro:");
+        T3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dentro3ActionPerformed(evt);
-            }
-        });
-
-        Fuera3.setText("Nº humanos fuera:");
-        Fuera3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fuera3ActionPerformed(evt);
+                T3ActionPerformed(evt);
             }
         });
 
@@ -446,9 +341,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
             Tunel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel3Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(Tunel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Fuera3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Dentro3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(T3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -461,27 +354,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dentro3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Fuera3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(T3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         Tunel4.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel11.setText("Tunel 4");
 
-        Dentro4.setText("Nº humanos dentro:");
-        Dentro4.addActionListener(new java.awt.event.ActionListener() {
+        T4.setText("Nº humanos dentro:");
+        T4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Dentro4ActionPerformed(evt);
-            }
-        });
-
-        Fuera4.setText("Nº humanos fuera:");
-        Fuera4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Fuera4ActionPerformed(evt);
+                T4ActionPerformed(evt);
             }
         });
 
@@ -491,10 +375,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
             Tunel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel4Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(Tunel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Fuera4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Dentro4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(T4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -506,10 +388,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Dentro4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Fuera4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(T4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout TunelesLayout = new javax.swing.GroupLayout(Tuneles);
@@ -528,15 +408,15 @@ public final class ClientePantalla extends javax.swing.JFrame {
         TunelesLayout.setVerticalGroup(
             TunelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TunelesLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(Tunel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Tunel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Tunel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Tunel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         E1.setBackground(new java.awt.Color(204, 255, 255));
@@ -789,6 +669,27 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        velocidad50.setText("Velocidad=x50");
+        velocidad50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                velocidad50ActionPerformed(evt);
+            }
+        });
+
+        velocidad1.setText("Velocidad=x1");
+        velocidad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                velocidad1ActionPerformed(evt);
+            }
+        });
+
+        velocidad10.setText("Velocidad=x10");
+        velocidad10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                velocidad10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -796,14 +697,24 @@ public final class ClientePantalla extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(Refugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31)
-                .addComponent(Tuneles, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addComponent(Refugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(71, 71, 71)
+                        .addComponent(Tuneles, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(velocidad1)
+                        .addGap(18, 18, 18)
+                        .addComponent(velocidad10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(velocidad50)
+                        .addGap(103, 103, 103)))
                 .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -820,14 +731,19 @@ public final class ClientePantalla extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(Refugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(velocidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(velocidad10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(velocidad50, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(Tuneles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(86, 86, 86))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -839,10 +755,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         paused = !paused;  // Alterna estado de pausa/reanudación
         if (!paused) {
-            // TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            cliente.enviarComando("REANUDAR");
             stopButton.setBackground(Color.red);
             System.out.println("reanudar");
         } else {
+             cliente.enviarComando("PAUSAR");
             stopButton.setBackground(Color.green);
             System.out.println("parandoo");
         }
@@ -864,53 +781,52 @@ public final class ClientePantalla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NH4ActionPerformed
 
-    private void ComNumHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComNumHActionPerformed
+    private void NumHumanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumHumanosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComNumHActionPerformed
+    }//GEN-LAST:event_NumHumanosActionPerformed
 
-    private void ZCNumHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZCNumHActionPerformed
+    private void T1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ZCNumHActionPerformed
+    }//GEN-LAST:event_T1ActionPerformed
 
-    private void ZDNumHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZDNumHActionPerformed
+    private void T2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ZDNumHActionPerformed
+    }//GEN-LAST:event_T2ActionPerformed
 
-    private void Dentro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dentro1ActionPerformed
+    private void T3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Dentro1ActionPerformed
+    }//GEN-LAST:event_T3ActionPerformed
 
-    private void Fuera1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuera1ActionPerformed
+    private void T4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Fuera1ActionPerformed
-
-    private void Dentro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dentro2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Dentro2ActionPerformed
-
-    private void Fuera2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuera2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Fuera2ActionPerformed
-
-    private void Dentro3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dentro3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Dentro3ActionPerformed
-
-    private void Fuera3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuera3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Fuera3ActionPerformed
-
-    private void Dentro4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dentro4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Dentro4ActionPerformed
-
-    private void Fuera4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Fuera4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Fuera4ActionPerformed
+    }//GEN-LAST:event_T4ActionPerformed
 
     private void z2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_z2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_z2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            cliente.desconectar();
+        } catch (IOException ex) {
+            System.err.println("Error al desconectar cliente: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_formWindowClosing
+
+    private void velocidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad1ActionPerformed
+        System.out.println("velocidad=1");
+        cliente.enviarComando("VELOCIDAD=1");
+    }//GEN-LAST:event_velocidad1ActionPerformed
+
+    private void velocidad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad10ActionPerformed
+         System.out.println("velocidad=10");
+        cliente.enviarComando("VELOCIDAD=10");
+    }//GEN-LAST:event_velocidad10ActionPerformed
+
+    private void velocidad50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad50ActionPerformed
+         System.out.println("velocidad=50");
+        cliente.enviarComando("VELOCIDAD=50");
+    }//GEN-LAST:event_velocidad50ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -979,20 +895,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ComNumH;
-    private javax.swing.JTextField Dentro1;
-    private javax.swing.JTextField Dentro2;
-    private javax.swing.JTextField Dentro3;
-    private javax.swing.JTextField Dentro4;
     private javax.swing.JPanel E1;
     private javax.swing.JPanel E2;
     private javax.swing.JPanel E3;
     private javax.swing.JPanel E4;
     private javax.swing.JPanel Exterior;
-    private javax.swing.JTextField Fuera1;
-    private javax.swing.JTextField Fuera2;
-    private javax.swing.JTextField Fuera3;
-    private javax.swing.JTextField Fuera4;
     private javax.swing.JTextField NH1;
     private javax.swing.JTextField NH2;
     private javax.swing.JTextField NH3;
@@ -1001,14 +908,17 @@ public final class ClientePantalla extends javax.swing.JFrame {
     private javax.swing.JTextField NZ2;
     private javax.swing.JTextField NZ3;
     private javax.swing.JTextField NZ4;
+    private javax.swing.JTextField NumHumanos;
     private javax.swing.JPanel Refugio;
+    private javax.swing.JTextField T1;
+    private javax.swing.JTextField T2;
+    private javax.swing.JTextField T3;
+    private javax.swing.JTextField T4;
     private javax.swing.JPanel Tunel1;
     private javax.swing.JPanel Tunel2;
     private javax.swing.JPanel Tunel3;
     private javax.swing.JPanel Tunel4;
     private javax.swing.JPanel Tuneles;
-    private javax.swing.JTextField ZCNumH;
-    private javax.swing.JTextField ZDNumH;
     private javax.swing.JPanel comedor;
     private javax.swing.JTextField comida;
     private javax.swing.JLabel jLabel1;
@@ -1019,17 +929,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton stopButton;
+    private javax.swing.JButton velocidad1;
+    private javax.swing.JButton velocidad10;
+    private javax.swing.JButton velocidad50;
     private javax.swing.JTextField z1;
     private javax.swing.JTextField z2;
     private javax.swing.JTextField z3;
-    private javax.swing.JPanel zonaComun;
-    private javax.swing.JPanel zonaDescanso;
     // End of variables declaration//GEN-END:variables
 }

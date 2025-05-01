@@ -4,10 +4,7 @@
  */
 package apocalipsis.nosafehaven.backend;
 
-import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 import static java.lang.Thread.sleep;
-
-
 
 public class Zombie extends Thread {
 
@@ -15,31 +12,32 @@ public class Zombie extends Thread {
     private int bodycount = 0;
     private ZonaExterior[] zonas = new ZonaExterior[4];
     private Ranking r;
-    
+    private EstadoPausa estadoPausa;
 
-    public Zombie(String id, ZonaExterior[] zonas,  Ranking r) {
+    public Zombie(String id, ZonaExterior[] zonas, Ranking r, EstadoPausa estadoPausa) {
         this.id = "Z" + id.substring(1); //id del humano sin la H
         this.zonas = zonas;
         this.r = r;
+        this.estadoPausa = estadoPausa;
     }
 
     @Override
     public void run() {
-        while (true) {
+        while (!estadoPausa.estaDesconectado()) {
             try {
                 int zona = (int) (Math.random() * 4); //seleccionar zona de 0-3
 
                 Log.escribir(id + " esta buscando cerebros en la zona exterior " + zona + ".");
                 System.out.println(id + " está buscando cerebros en la zona exterior " + zona + ".");
-                PantallaPrincipal.getInstancia().parar();
+                estadoPausa.parar();
                 zonas[zona].zombieLlegar(this);
-                PantallaPrincipal.getInstancia().parar();
+                estadoPausa.parar();
                 zonas[zona].zombieAtacar(this);
-                PantallaPrincipal.getInstancia().parar();
-                sleep((int) ((Math.random() * 1000 + 2000)/Velocidad.getVelocidad())); //dormir 2-3 s
-                PantallaPrincipal.getInstancia().parar();
+                estadoPausa.parar();
+                sleep((int) ((Math.random() * 1000 + 2000) / Velocidad.getVelocidad())); //dormir 2-3 s
+                estadoPausa.parar();
                 zonas[zona].zombieIrse(this);
-                PantallaPrincipal.getInstancia().parar();
+                estadoPausa.parar();
                 Log.escribir(id + " abandona la zona exterior " + zona + ".");
                 System.out.println(id + " abandona la zona exterior " + zona + ".");
                 //vuelve a buscar zona. se podria repetir la misma (ver si seria necesario que fuera distinta a la anterior)
@@ -63,7 +61,7 @@ public class Zombie extends Thread {
 
     public void atacar(boolean matado, int tiempo, String hid) {
         try {
-            sleep((int)(tiempo/Velocidad.getVelocidad()));
+            sleep((int) (tiempo / Velocidad.getVelocidad()));
         } catch (InterruptedException ex) {
         }
         if (matado) {
@@ -77,6 +75,4 @@ public class Zombie extends Thread {
         }
     }
 
-    
 }
-

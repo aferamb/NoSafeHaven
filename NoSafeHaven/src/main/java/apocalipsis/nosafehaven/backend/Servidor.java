@@ -13,7 +13,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
 /**
  *
  * @author 05jan
@@ -36,31 +35,46 @@ public class Servidor {
     private AtomicInteger numHumZR3 = new AtomicInteger(0);
 
     private AtomicInteger numZomZR0 = new AtomicInteger(0);
-    private AtomicInteger numZomZR1 = new AtomicInteger(0); 
+    private AtomicInteger numZomZR1 = new AtomicInteger(0);
     private AtomicInteger numZomZR2 = new AtomicInteger(0);
     private AtomicInteger numZomZR3 = new AtomicInteger(0);
     private String ranking1;
-    private String ranking2;   
+    private String ranking2;
     private String ranking3;
 
     Socket clienteSocket;
     private PrintWriter salida;
     private BufferedReader entrada;
 
+    private EstadoPausa estadoPausa;
+
+    private boolean conectado = false;
+
     public Servidor() {
         // Constructor vacío
     }
 
+    public void setEstadopausa(EstadoPausa estadoPausa) {
+        this.estadoPausa = estadoPausa;
+    }
+
+    public boolean getConectado() {
+        return conectado;
+    }
+
     public void iniciarServidor(int puerto) {
         // Iniciar el servidor y esperar conexiones de clientes
-        try (ServerSocket serverSocket = new ServerSocket(puerto)) {
-            // imprimir el puerto y la dirección IP del servidor para la conexión del cliente
-            System.out.println("Servidor iniciado en: " + serverSocket.getInetAddress().getHostAddress() + ":" + puerto);
-            System.out.println("Servidor iniciado en el puerto: " + puerto);
+        //Apertura de Sockets (en la parte del servidor)
+        try (ServerSocket serverSocket = new ServerSocket(puerto)) { //Creamos un objeto ServerSocket para que esté atento a las conexiones de clientes potenciales
+
+            // Imprimir el puerto y la dirección IP del servidor para la conexión del cliente
+            System.out.println("Servidor iniciado en: " + serverSocket.getInetAddress().getHostAddress() + ":" + puerto); ////////////////////////////?
             System.out.println("Esperando conexión del cliente...");
 
+            //Crear objeto Socket para poder enviar y recibir datos
             clienteSocket = serverSocket.accept();
             System.out.println("Cliente conectado.");
+            conectado = true;
 
             salida = new PrintWriter(clienteSocket.getOutputStream(), true);
             entrada = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()));
@@ -69,20 +83,28 @@ public class Servidor {
             //try (BufferedReader tempEntrada = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()))) {
             //    entrada = tempEntrada;
             //}
-
             servidorActivo = true;
             // Hilo para escuchar comandos del cliente
             Thread comandos = new Thread(() -> {
                 try {
                     String linea;
                     while ((linea = entrada.readLine()) != null) {
-                        if (linea.equalsIgnoreCase("PARAR")) {
-                            // comando para parar la simulación
-                            System.out.println("Simulación pausada por el cliente.");
+                        if (linea.equalsIgnoreCase("PAUSAR")) {
+                            estadoPausa.pausar();
+                            System.out.println("Pausado por cliente.");
                         } else if (linea.equalsIgnoreCase("REANUDAR")) {
-                            // comanode para reanudar la simulación
-                            System.out.println("Simulación reanudada por el cliente.");
+                            estadoPausa.reanudar();
+                            System.out.println("Reanudado por cliente.");
+                        } else if (linea.startsWith("VELOCIDAD=")) {
+                            try {
+                                int v = Integer.parseInt(linea.split("=")[1]);
+                                Velocidad.setVelocidad(v);
+                                System.out.println("Velocidad cambiada a " + v + " por cliente.");
+                            } catch (NumberFormatException e) {
+                                System.out.println("Velocidad inválida.");
+                            }
                         } else if (linea.equalsIgnoreCase("SALIR")) {
+                            estadoPausa.desconectar();
                             salida.close();
                             entrada.close();
                             clienteSocket.close();
@@ -99,9 +121,9 @@ public class Servidor {
                 }
             });
             comandos.start();
-            
+
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 
@@ -111,33 +133,33 @@ public class Servidor {
             return;
         }
         //try {
-            // Construcción del mensaje
-            StringBuilder mensaje = new StringBuilder();  // igual guardarlo todo en array list y luego pasarlo a stringbuilder es mejor xd
-            mensaje.append("numHumRefu=").append(numHumRefu).append(";");
-            mensaje.append("comida=").append(comida).append(";");
+        // Construcción del mensaje
+        StringBuilder mensaje = new StringBuilder();  // igual guardarlo todo en array list y luego pasarlo a stringbuilder es mejor xd
+        mensaje.append("numHumRefu=").append(numHumRefu).append(";");
+        mensaje.append("comida=").append(comida).append(";");
 
-            mensaje.append("numHumT0=").append(numHumT0).append(";");
-            mensaje.append("numHumT1=").append(numHumT1).append(";");
-            mensaje.append("numHumT2=").append(numHumT2).append(";");
-            mensaje.append("numHumT3=").append(numHumT3).append(";");
+        mensaje.append("numHumT0=").append(numHumT0).append(";");
+        mensaje.append("numHumT1=").append(numHumT1).append(";");
+        mensaje.append("numHumT2=").append(numHumT2).append(";");
+        mensaje.append("numHumT3=").append(numHumT3).append(";");
 
-            mensaje.append("numHumZR0=").append(numHumZR0).append(";");
-            mensaje.append("numHumZR1=").append(numHumZR1).append(";");
-            mensaje.append("numHumZR2=").append(numHumZR2).append(";");
-            mensaje.append("numHumZR3=").append(numHumZR3).append(";");
+        mensaje.append("numHumZR0=").append(numHumZR0).append(";");
+        mensaje.append("numHumZR1=").append(numHumZR1).append(";");
+        mensaje.append("numHumZR2=").append(numHumZR2).append(";");
+        mensaje.append("numHumZR3=").append(numHumZR3).append(";");
 
-            mensaje.append("numZomZR0=").append(numZomZR0).append(";");
-            mensaje.append("numZomZR1=").append(numZomZR1).append(";");
-            mensaje.append("numZomZR2=").append(numZomZR2).append(";");
-            mensaje.append("numZomZR3=").append(numZomZR3).append(";");
+        mensaje.append("numZomZR0=").append(numZomZR0).append(";");
+        mensaje.append("numZomZR1=").append(numZomZR1).append(";");
+        mensaje.append("numZomZR2=").append(numZomZR2).append(";");
+        mensaje.append("numZomZR3=").append(numZomZR3).append(";");
 
-            mensaje.append("ranking1=").append(ranking1).append(";");
-            mensaje.append("ranking2=").append(ranking2).append(";");
-            mensaje.append("ranking3=").append(ranking3).append(";");
+        mensaje.append("ranking1=").append(ranking1).append(";");
+        mensaje.append("ranking2=").append(ranking2).append(";");
+        mensaje.append("ranking3=").append(ranking3).append(";");
 
-            // Enviar mensaje
-            salida.println(mensaje.toString());
-            System.out.println("Enviado al cliente: " + mensaje);
+        // Enviar mensaje
+        salida.println("data" + mensaje.toString());
+        System.out.println("Enviado al cliente: " + mensaje);
         //} catch (IOException e) {
         //    e.printStackTrace();
         //}
@@ -225,7 +247,7 @@ public class Servidor {
         }
         enviarDatosAlCliente();
     }
-    
+
     public void enviarComando(String comando) {
         if (salida != null) {
             salida.println(comando);
@@ -234,12 +256,16 @@ public class Servidor {
     }
 
     public void desconectar() throws IOException {
-        enviarComando("SALIR");
-        if (clienteSocket != null){
+
+        if (clienteSocket != null) {
+            enviarComando("SALIR");
+            estadoPausa.desconectar();
             salida.close();
             entrada.close();
             clienteSocket.close();
+            System.out.println("servidor desconectado.");
+        } else {
+            System.out.println("no hay cliente.");
         }
-        System.out.println("Cliente desconectado.");
     }
 }

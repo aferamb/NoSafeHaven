@@ -4,28 +4,28 @@
  */
 package apocalipsis.nosafehaven.frontend;
 
+import apocalipsis.nosafehaven.backend.Servidor;
 import apocalipsis.nosafehaven.backend.Velocidad;
-import java.awt.Color;
+import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.SwingUtilities;
 
 public final class PantallaPrincipal extends javax.swing.JFrame {
 
+    private Servidor servidor; //para desconectar al pulsar cerrar
+
     // Instancia estática y volatile para evitar problemas de visibilidad entre hilos
     private static volatile PantallaPrincipal instancia;
 
-    private boolean estaParado = false;
-
-    public static final ReentrantLock pauseLock = new ReentrantLock();
-    public static final Condition pauseCondition = pauseLock.newCondition();
-    public static volatile boolean paused = false;
 
     // Constructor privado para evitar la instanciación directa
     private PantallaPrincipal() {
         initComponents();
+    }
+
+    public void setServidor(Servidor servidor) {
+        this.servidor = servidor;
     }
 
     // Método estático que obtiene la instancia del Singleton
@@ -181,20 +181,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void parar() {
-        pauseLock.lock();
-        try {
-            while (paused) {
-                try {
-                    pauseCondition.await();
-                } catch (InterruptedException ex) {
-                }
-            }
-        } finally {
-            pauseLock.unlock();
-        }
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -251,13 +237,14 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         Exterior3 = new javax.swing.JTextArea();
         jScrollPane11 = new javax.swing.JScrollPane();
         Exterior4 = new javax.swing.JTextArea();
-        stopButton = new javax.swing.JButton();
-        velocidad1 = new javax.swing.JButton();
-        velocidad10 = new javax.swing.JButton();
-        velocidad50 = new javax.swing.JButton();
         counterHumanos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1390, 690));
 
@@ -566,34 +553,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        stopButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton1_1.jpg"))); // NOI18N
-        stopButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopButtonActionPerformed(evt);
-            }
-        });
-
-        velocidad1.setText("Velocidad=x1");
-        velocidad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                velocidad1ActionPerformed(evt);
-            }
-        });
-
-        velocidad10.setText("Velocidad=x10");
-        velocidad10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                velocidad10ActionPerformed(evt);
-            }
-        });
-
-        velocidad50.setText("Velocidad=x50");
-        velocidad50.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                velocidad50ActionPerformed(evt);
-            }
-        });
-
         counterHumanos.setEditable(false);
         counterHumanos.setText("Humanos:");
         counterHumanos.addActionListener(new java.awt.event.ActionListener() {
@@ -607,25 +566,17 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
                         .addComponent(Refugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(Tuneles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(counterHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(92, 92, 92)
-                        .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(velocidad1)
-                        .addGap(18, 18, 18)
-                        .addComponent(velocidad10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(velocidad50)))
+                        .addGap(23, 23, 23)
+                        .addComponent(counterHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -636,20 +587,9 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                     .addComponent(Tuneles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Refugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(velocidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(velocidad10, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(velocidad50, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(counterHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(counterHumanos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -657,41 +597,17 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
-
-        pauseLock.lock();
-        try {
-            paused = !paused;  // Alterna estado de pausa/reanudación
-            if (!paused) {
-                // Si se reanuda, despertar todos los hilos en espera
-                pauseCondition.signalAll();
-                stopButton.setBackground(Color.red);
-                System.out.println("reanudar");
-            } else {
-                stopButton.setBackground(Color.green);
-                System.out.println("parandoo");
-            }
-            // Si se detiene, los hilos comprobarán el flag y esperarán
-        } finally {
-            pauseLock.unlock();
-        }
-    }//GEN-LAST:event_stopButtonActionPerformed
-
-    private void velocidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad1ActionPerformed
-        Velocidad.setVelocidad(1);
-    }//GEN-LAST:event_velocidad1ActionPerformed
-
-    private void velocidad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad10ActionPerformed
-        Velocidad.setVelocidad(10);
-    }//GEN-LAST:event_velocidad10ActionPerformed
-
-    private void velocidad50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad50ActionPerformed
-        Velocidad.setVelocidad(50);
-    }//GEN-LAST:event_velocidad50ActionPerformed
-
     private void counterHumanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counterHumanosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_counterHumanosActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            servidor.desconectar();
+        } catch (IOException ex) {
+            System.err.println("Error al desconectar servidor: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -792,9 +708,5 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JButton stopButton;
-    private javax.swing.JButton velocidad1;
-    private javax.swing.JButton velocidad10;
-    private javax.swing.JButton velocidad50;
     // End of variables declaration//GEN-END:variables
 }
