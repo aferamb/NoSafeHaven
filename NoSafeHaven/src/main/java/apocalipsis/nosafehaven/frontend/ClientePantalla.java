@@ -759,7 +759,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
             stopButton.setBackground(Color.red);
             System.out.println("reanudar");
         } else {
-             cliente.enviarComando("PAUSAR");
+            cliente.enviarComando("PAUSAR");
             stopButton.setBackground(Color.green);
             System.out.println("parandoo");
         }
@@ -806,10 +806,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_z2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        try {
-            cliente.desconectar();
-        } catch (IOException ex) {
-            System.err.println("Error al desconectar cliente: " + ex.getMessage());
+        if (cliente != null) {
+            try {
+                cliente.desconectar();
+            } catch (IOException ex) {
+                System.err.println("Error al desconectar cliente: " + ex.getMessage());
+            }
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -819,12 +821,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_velocidad1ActionPerformed
 
     private void velocidad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad10ActionPerformed
-         System.out.println("velocidad=10");
+        System.out.println("velocidad=10");
         cliente.enviarComando("VELOCIDAD=10");
     }//GEN-LAST:event_velocidad10ActionPerformed
 
     private void velocidad50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad50ActionPerformed
-         System.out.println("velocidad=50");
+        System.out.println("velocidad=50");
         cliente.enviarComando("VELOCIDAD=50");
     }//GEN-LAST:event_velocidad50ActionPerformed
 

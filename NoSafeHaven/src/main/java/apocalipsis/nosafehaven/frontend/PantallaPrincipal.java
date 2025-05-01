@@ -18,7 +18,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     // Instancia estática y volatile para evitar problemas de visibilidad entre hilos
     private static volatile PantallaPrincipal instancia;
 
-
     // Constructor privado para evitar la instanciación directa
     private PantallaPrincipal() {
         initComponents();
@@ -602,10 +601,12 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_counterHumanosActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        try {
-            servidor.desconectar();
-        } catch (IOException ex) {
-            System.err.println("Error al desconectar servidor: " + ex.getMessage());
+        if (servidor != null) {
+            try {
+                servidor.desconectar();
+            } catch (IOException ex) {
+                System.err.println("Error al desconectar servidor: " + ex.getMessage());
+            }
         }
     }//GEN-LAST:event_formWindowClosing
 
