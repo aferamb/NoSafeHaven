@@ -16,7 +16,8 @@ public class Log {
 
     private static final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final String fecha_archivo = LocalDateTime.now().format(formatoFecha).replace(":", "-").replace(" ", "_");
-    private static final String nombre_archivo = "apocalipsis" + fecha_archivo + ".txt";
+    private static final String carpeta = "logs/";
+    private static final String nombre_archivo = carpeta+"apocalipsis" + fecha_archivo + ".txt";
     private static final Lock lock = new ReentrantLock(); // Protege el acceso concurrente
 
     public synchronized static void escribir(String mensaje) {
