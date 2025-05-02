@@ -5,11 +5,9 @@
 package apocalipsis.nosafehaven.frontend;
 
 import apocalipsis.nosafehaven.backend.Servidor;
-import apocalipsis.nosafehaven.backend.Velocidad;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public final class PantallaPrincipal extends javax.swing.JFrame {
@@ -243,26 +241,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public void esperarInicioServidor() {
-        botonPuerto.addActionListener(e -> {
-        try {
-            int puerto = Integer.parseInt(puertoTextField.getText());
-            if (servidor.getConectado()) {
-                JOptionPane.showMessageDialog(this, "Servidor ya iniciado.");
-            } else if (puerto < 1024 || puerto > 65535) {
-                JOptionPane.showMessageDialog(this, "Puerto fuera de rango. Debe estar entre 1024 y 65535.");
-            } else {
-                servidor.iniciarServidor(puerto);
-            }
-        } catch (NumberFormatException nex) {
-            JOptionPane.showMessageDialog(this, "Puerto inválido.");
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Error al iniciar el servidor: " + ex.getMessage());
-        }
-    });
-    }
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -335,8 +313,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        puertoTextField = new javax.swing.JTextField();
-        botonPuerto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -827,27 +803,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                         .addGap(17, 17, 17))))
         );
 
-        puertoTextField.setText("Puerto para conexion");
-        puertoTextField.setMinimumSize(new java.awt.Dimension(100, 22));
-        puertoTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                puertoTextFieldMouseClicked(evt);
-            }
-        });
-        puertoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                puertoTextFieldActionPerformed(evt);
-            }
-        });
-
-        botonPuerto.setText("Listo");
-        botonPuerto.setToolTipText("");
-        botonPuerto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonPuertoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -859,11 +814,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(Tuneles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonPuerto)
-                    .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -876,12 +827,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                             .addComponent(Refugio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(puertoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonPuerto)))
+                        .addComponent(Exterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -903,19 +849,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowClosing
-
-    private void puertoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puertoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_puertoTextFieldActionPerformed
-
-    private void botonPuertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPuertoActionPerformed
-        
-    }//GEN-LAST:event_botonPuertoActionPerformed
-
-    private void puertoTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_puertoTextFieldMouseClicked
-        puertoTextField.setText("");
-        // Opcionalmente: remover el listener para que no borre más veces
-    }//GEN-LAST:event_puertoTextFieldMouseClicked
 
     /**
      * @param args the command line arguments
@@ -998,7 +931,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel Tuneles;
     private javax.swing.JTextArea ZonaComun;
     private javax.swing.JTextArea ZonaDescanso;
-    private javax.swing.JButton botonPuerto;
     private javax.swing.JTextField comida;
     private javax.swing.JTextField counterHumanos;
     private javax.swing.JLabel jLabel1;
@@ -1032,6 +964,5 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextField puertoTextField;
     // End of variables declaration//GEN-END:variables
 }

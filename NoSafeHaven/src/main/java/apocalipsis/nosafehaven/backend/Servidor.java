@@ -57,10 +57,6 @@ public class Servidor {
             salida = new PrintWriter(clienteSocket.getOutputStream(), true);
             entrada = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()));
 
-            //   Otra forma de crear el BufferedReader
-            //try (BufferedReader tempEntrada = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()))) {
-            //    entrada = tempEntrada;
-            //}
             // Hilo para escuchar comandos del cliente
             Thread comandos = new Thread(() -> {
                 try {
@@ -95,7 +91,7 @@ public class Servidor {
                         }
                     }
                 } catch (IOException e) {
-                    System.out.println("Conexión cerrada por el cliente.");
+                    System.out.println("Cerrado");
                 }
             });
             comandos.start();
@@ -146,9 +142,9 @@ public class Servidor {
             salida.close();
             entrada.close();
             clienteSocket.close();
-            System.out.println("servidor desconectado.");
+            System.out.println("Servidor desconectado.");
         } else {
-            System.out.println("no hay cliente.");
+            System.out.println("No hay cliente.");
         }
     }
 }

@@ -16,17 +16,16 @@ import java.net.Socket;
  *
  * @author 05jan
  */
-public class Cliente{ // el tread es porque no sabia como hacer para que el cliente se quedara escuchando al servidor sin crear hilos a parte
-
+public class Cliente{ 
     private Socket socket;
     private PrintWriter salida;
     private BufferedReader entrada;
     private boolean conectado = false;
-    //private Scanner scanner = new Scanner(System.in);
 
 
     public void conectarAlServidor(String host, int puerto){
         //Apertura de sockets (en la parte cliente)
+        
         try {
             // Crear un socket para conectarse al servidor
             socket = new Socket(host, puerto);
@@ -36,13 +35,15 @@ public class Cliente{ // el tread es porque no sabia como hacer para que el clie
             entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             salida = new PrintWriter(socket.getOutputStream(), true);
             conectado = true;
-            iniciarRecepcion();
+            //iniciarRecepcion();
+            
+            
         } catch (IOException e) {
             System.out.println("Error al conectar al servidor: " + e.getMessage());
-            return;
+            
         } catch (Exception e) {
             System.out.println("Error al conectar al servidor: " + e.getMessage());
-            return;
+            
         }
     }
 
@@ -56,10 +57,8 @@ public class Cliente{ // el tread es porque no sabia como hacer para que el clie
                         salida.close();
                         entrada.close();
                         socket.close();
-                        ClientePantalla.getInstancia().apagar();
-                        System.out.println("conexion detenido por el servidor.");
-                        System.out.println(" desconectado.");
-                        break;
+                        System.out.println("Conexion detenida por el servidor.");
+                        System.exit(0);
 
                     } else if (linea.length() >= 4 && linea.substring(0, 4).equals("data")) {
                         String datos = linea.substring(4);
@@ -117,7 +116,7 @@ public class Cliente{ // el tread es porque no sabia como hacer para que el clie
                     }
                 }
             } catch (IOException e) {
-                System.out.println("Conexión cerrada por el servidor.");
+                System.out.println("Cerrado");
             }
         }
         );

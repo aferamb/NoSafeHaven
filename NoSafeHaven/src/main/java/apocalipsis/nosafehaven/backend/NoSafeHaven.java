@@ -3,6 +3,7 @@
  */
 package apocalipsis.nosafehaven.backend;
 
+import apocalipsis.nosafehaven.frontend.JDialogServidor;
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
 public class NoSafeHaven {
@@ -10,19 +11,37 @@ public class NoSafeHaven {
     public static void main(String[] args) {
 
         try {
-
             Servidor servidor = new Servidor();
             PantallaPrincipal.getInstancia().setServidor(servidor);
 
-            PantallaPrincipal.getInstancia().setVisible(true);
-            PantallaPrincipal.getInstancia().esperarInicioServidor(); // Esperar a que el servidor esté listo antes de mostrar la pantalla principal
-            while (!servidor.getConectado()) {
-                // Esperar a que el servidor esté configurado y lanzado
-                Thread.sleep(1); // Esperar un poco antes de volver a comprobar
-            }
-            // servidor.iniciarServidor(5000);
+            int intentos = 3;
+            boolean conectado = false;
+            while (intentos > 0 && !conectado) {
+                JDialogServidor dialogo = new JDialogServidor(null, true); // modal
+                dialogo.setLocationRelativeTo(null);  // centrado
+                dialogo.setVisible(true);  // esto bloquea hasta que se cierre
 
-            if (servidor.getConectado()) { //si no está conectado por que hay 2 o más servidores a la vez y no pueden usar el mismo puerto, no ejecuta el resto del código
+                if (dialogo.isConfirmado()) {
+                    int puerto = dialogo.getPuerto();
+                    servidor.iniciarServidor(puerto);
+                    if (servidor.getConectado()) {
+                        System.out.println("Perfecto. Conectado");
+                        conectado = true;
+                    } else {
+                        System.out.println("No se inició la conexión. Intentos: " + (intentos - 1));
+                        intentos--;
+                    }
+
+                } else {
+                    System.out.println("No se inició la conexión. Intentos: " + (intentos - 1));
+                    intentos--;
+                }
+
+            }
+
+            //servidor.iniciarServidor(5000);
+
+            if (conectado) { //si no está conectado por que hay 2 o más servidores a la vez y no pueden usar el mismo puerto, no ejecuta el resto del código
                 PantallaPrincipal.getInstancia().setVisible(true);
 
                 EstadoPausa ep = new EstadoPausa();
@@ -56,7 +75,7 @@ public class NoSafeHaven {
                         System.out.println("Creando humano " + id);
                         ep.parar();
                         try {
-                            Thread.sleep((int) (Math.random() * 500 + 1500)); //en zona comun 0,5 a 2 seg
+                            Thread.sleep((int) (Math.random() * 500 + 1500)/Velocidad.getVelocidad()); 
                         } catch (Exception e) {
                         }
                     }
