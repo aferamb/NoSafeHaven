@@ -16,32 +16,34 @@ import java.net.Socket;
  *
  * @author 05jan
  */
-public class Cliente extends Thread { // el tread es porque no sabia como hacer para que el cliente se quedara escuchando al servidor sin crear hilos a parte
+public class Cliente{ // el tread es porque no sabia como hacer para que el cliente se quedara escuchando al servidor sin crear hilos a parte
 
     private Socket socket;
     private PrintWriter salida;
     private BufferedReader entrada;
+    private boolean conectado = false;
     //private Scanner scanner = new Scanner(System.in);
 
-    public void run() {
+
+    public void conectarAlServidor(String host, int puerto){
+        //Apertura de sockets (en la parte cliente)
         try {
-            conectarAlServidor("localhost", 5000);
-            System.out.println("conectado!!!!!!!!!!!!!!!!!!");
+            // Crear un socket para conectarse al servidor
+            socket = new Socket(host, puerto);
+            System.out.println("Conectado al servidor en " + host + ":" + puerto);
+
+            //Creación de streams de entrada (en cliente)
+            entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            salida = new PrintWriter(socket.getOutputStream(), true);
+            conectado = true;
+            iniciarRecepcion();
         } catch (IOException e) {
             System.out.println("Error al conectar al servidor: " + e.getMessage());
+            return;
+        } catch (Exception e) {
+            System.out.println("Error al conectar al servidor: " + e.getMessage());
+            return;
         }
-
-    }
-
-    public void conectarAlServidor(String host, int puerto) throws IOException {
-        //Apertura de sockets (en la parte cliente)
-        socket = new Socket(host, puerto);
-        System.out.println("Conectado al servidor en " + host + ":" + puerto);
-
-        //Creación de streams de entrada (en cliente)
-        entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        salida = new PrintWriter(socket.getOutputStream(), true);
-        iniciarRecepcion();
     }
 
     public void iniciarRecepcion() {
@@ -54,6 +56,7 @@ public class Cliente extends Thread { // el tread es porque no sabia como hacer 
                         salida.close();
                         entrada.close();
                         socket.close();
+                        ClientePantalla.getInstancia().apagar();
                         System.out.println("conexion detenido por el servidor.");
                         System.out.println(" desconectado.");
                         break;
@@ -61,60 +64,56 @@ public class Cliente extends Thread { // el tread es porque no sabia como hacer 
                     } else if (linea.length() >= 4 && linea.substring(0, 4).equals("data")) {
                         String datos = linea.substring(4);
 
-                        System.out.println("\n--- Datos recibidos ---");
-                        String[] partes = datos.split(";");
+                        if (datos.contains("=")) {
+                            String[] kv = datos.split("=", 2);
+                            String clave = kv[0];
+                            String valor = kv[1];
 
-                        for (String parte : partes) {
-                            if (parte.contains("=")) {
-                                String[] kv = parte.split("=", 2);
-                                String clave = kv[0];
-                                String valor = kv[1];
+                            if (clave.equals("numHumRefu")) {
+                                ClientePantalla.getInstancia().actualizarRefugio(valor);
+                            } else if (clave.equals("comida")) {
+                                ClientePantalla.getInstancia().actualizarComida(valor);
 
-                                if (clave.equals("numHumRefu")) {
-                                    ClientePantalla.getInstancia().actualizarRefugio(valor);
-                                } else if (clave.equals("comida")) {
-                                    ClientePantalla.getInstancia().actualizarComida(valor);
+                            } else if (clave.equals("numHumT0")) {
+                                ClientePantalla.getInstancia().actualizarTunel(0, valor);
+                            } else if (clave.equals("numHumT1")) {
+                                ClientePantalla.getInstancia().actualizarTunel(1, valor);
+                            } else if (clave.equals("numHumT2")) {
+                                ClientePantalla.getInstancia().actualizarTunel(2, valor);
+                            } else if (clave.equals("numHumT3")) {
+                                ClientePantalla.getInstancia().actualizarTunel(3, valor);
 
-                                } else if (clave.equals("numHumT0")) {
-                                    ClientePantalla.getInstancia().actualizarTunel(0, valor);
-                                } else if (clave.equals("numHumT1")) {
-                                    ClientePantalla.getInstancia().actualizarTunel(1, valor);
-                                } else if (clave.equals("numHumT2")) {
-                                    ClientePantalla.getInstancia().actualizarTunel(2, valor);
-                                } else if (clave.equals("numHumT3")) {
-                                    ClientePantalla.getInstancia().actualizarTunel(3, valor);
+                            } else if (clave.equals("numHumZR0")) {
+                                ClientePantalla.getInstancia().actualizarExteriorHumanos(0, valor);
+                            } else if (clave.equals("numHumZR1")) {
+                                ClientePantalla.getInstancia().actualizarExteriorHumanos(1, valor);
+                            } else if (clave.equals("numHumZR2")) {
+                                ClientePantalla.getInstancia().actualizarExteriorHumanos(2, valor);
+                            } else if (clave.equals("numHumZR3")) {
+                                ClientePantalla.getInstancia().actualizarExteriorHumanos(3, valor);
 
-                                } else if (clave.equals("numHumZR0")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorHumanos(0, valor);
-                                } else if (clave.equals("numHumZR1")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorHumanos(1, valor);
-                                } else if (clave.equals("numHumZR2")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorHumanos(2, valor);
-                                } else if (clave.equals("numHumZR3")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorHumanos(3, valor);
+                            } else if (clave.equals("numZomZR0")) {
+                                ClientePantalla.getInstancia().actualizarExteriorZombies(0, valor);
+                            } else if (clave.equals("numZomZR1")) {
+                                ClientePantalla.getInstancia().actualizarExteriorZombies(1, valor);
+                            } else if (clave.equals("numZomZR2")) {
+                                ClientePantalla.getInstancia().actualizarExteriorZombies(2, valor);
+                            } else if (clave.equals("numZomZR3")) {
+                                ClientePantalla.getInstancia().actualizarExteriorZombies(3, valor);
 
-                                } else if (clave.equals("numZomZR0")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorZombies(0, valor);
-                                } else if (clave.equals("numZomZR1")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorZombies(1, valor);
-                                } else if (clave.equals("numZomZR2")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorZombies(2, valor);
-                                } else if (clave.equals("numZomZR3")) {
-                                    ClientePantalla.getInstancia().actualizarExteriorZombies(3, valor);
-
-                                } else if (clave.equals("ranking1")) {
-                                    ClientePantalla.getInstancia().actualizarRanking(1, valor);
-                                } else if (clave.equals("ranking2")) {
-                                    ClientePantalla.getInstancia().actualizarRanking(2, valor);
-                                } else if (clave.equals("ranking3")) {
-                                    ClientePantalla.getInstancia().actualizarRanking(3, valor);
-                                } else {
-                                    System.out.println("Clave desconocida: " + clave);
-                                }
+                            } else if (clave.equals("ranking1")) {
+                                ClientePantalla.getInstancia().actualizarRanking(1, valor);
+                            } else if (clave.equals("ranking2")) {
+                                ClientePantalla.getInstancia().actualizarRanking(2, valor);
+                            } else if (clave.equals("ranking3")) {
+                                ClientePantalla.getInstancia().actualizarRanking(3, valor);
                             } else {
-                                System.out.println("Formato de datos incorrecto: " + parte);
+                                System.out.println("Clave desconocida: " + clave);
                             }
+                        } else {
+                            System.out.println("Formato de datos incorrecto: " + datos);
                         }
+
                     }
                 }
             } catch (IOException e) {
@@ -123,6 +122,10 @@ public class Cliente extends Thread { // el tread es porque no sabia como hacer 
         }
         );
         receptor.start();
+    }
+
+    public boolean getConectado() {
+        return conectado;
     }
 
     public void enviarComando(String comando) {
@@ -140,8 +143,9 @@ public class Cliente extends Thread { // el tread es porque no sabia como hacer 
             entrada.close();
             socket.close();
             System.out.println("Cliente desconectado.");
-        } else{System.out.println("Socket null.");}
-        
-        
+        } else {
+            System.out.println("Socket null.");
+        }
+
     }
 }

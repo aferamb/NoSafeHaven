@@ -11,36 +11,14 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
+
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
 /**
  *
  * @author 05jan
  */
 public class Servidor {
-
-    // privates
-    private boolean servidorActivo = false;
-    private AtomicInteger numHumRefu = new AtomicInteger(0);
-    private AtomicInteger comida = new AtomicInteger(0);
-
-    private AtomicInteger numHumT0 = new AtomicInteger(0);
-    private AtomicInteger numHumT1 = new AtomicInteger(0);
-    private AtomicInteger numHumT2 = new AtomicInteger(0);
-    private AtomicInteger numHumT3 = new AtomicInteger(0);
-
-    private AtomicInteger numHumZR0 = new AtomicInteger(0);
-    private AtomicInteger numHumZR1 = new AtomicInteger(0);
-    private AtomicInteger numHumZR2 = new AtomicInteger(0);
-    private AtomicInteger numHumZR3 = new AtomicInteger(0);
-
-    private AtomicInteger numZomZR0 = new AtomicInteger(0);
-    private AtomicInteger numZomZR1 = new AtomicInteger(0);
-    private AtomicInteger numZomZR2 = new AtomicInteger(0);
-    private AtomicInteger numZomZR3 = new AtomicInteger(0);
-    private String ranking1;
-    private String ranking2;
-    private String ranking3;
 
     Socket clienteSocket;
     private PrintWriter salida;
@@ -83,7 +61,6 @@ public class Servidor {
             //try (BufferedReader tempEntrada = new BufferedReader(new InputStreamReader(clienteSocket.getInputStream()))) {
             //    entrada = tempEntrada;
             //}
-            servidorActivo = true;
             // Hilo para escuchar comandos del cliente
             Thread comandos = new Thread(() -> {
                 try {
@@ -108,7 +85,8 @@ public class Servidor {
                             salida.close();
                             entrada.close();
                             clienteSocket.close();
-                            servidorActivo = false;
+                            conectado = false;
+                            PantallaPrincipal.getInstancia().apagar();
                             System.out.println("Servidor detenido por el cliente.");
                             System.out.println("Cliente desconectado.");
                             break;
@@ -127,125 +105,30 @@ public class Servidor {
         }
     }
 
-    private synchronized void enviarDatosAlCliente() { // cuidado, cada llamada de actualizar datos llama a este metodo SINCRONIZED
-        if (!servidorActivo) {
-            System.out.println("Servidor no activo. No se pueden enviar datos.");
-            return;
-        }
-        //try {
-        // Construcción del mensaje
-        StringBuilder mensaje = new StringBuilder();  // igual guardarlo todo en array list y luego pasarlo a stringbuilder es mejor xd
-        mensaje.append("numHumRefu=").append(numHumRefu).append(";");
-        mensaje.append("comida=").append(comida).append(";");
-
-        mensaje.append("numHumT0=").append(numHumT0).append(";");
-        mensaje.append("numHumT1=").append(numHumT1).append(";");
-        mensaje.append("numHumT2=").append(numHumT2).append(";");
-        mensaje.append("numHumT3=").append(numHumT3).append(";");
-
-        mensaje.append("numHumZR0=").append(numHumZR0).append(";");
-        mensaje.append("numHumZR1=").append(numHumZR1).append(";");
-        mensaje.append("numHumZR2=").append(numHumZR2).append(";");
-        mensaje.append("numHumZR3=").append(numHumZR3).append(";");
-
-        mensaje.append("numZomZR0=").append(numZomZR0).append(";");
-        mensaje.append("numZomZR1=").append(numZomZR1).append(";");
-        mensaje.append("numZomZR2=").append(numZomZR2).append(";");
-        mensaje.append("numZomZR3=").append(numZomZR3).append(";");
-
-        mensaje.append("ranking1=").append(ranking1).append(";");
-        mensaje.append("ranking2=").append(ranking2).append(";");
-        mensaje.append("ranking3=").append(ranking3).append(";");
-
-        // Enviar mensaje
-        salida.println("data" + mensaje.toString());
-        System.out.println("Enviado al cliente: " + mensaje);
-        //} catch (IOException e) {
-        //    e.printStackTrace();
-        //}
-    }
-
     public void actualizarDatosRefugio(int numHumanos) {
-        numHumRefu.set(numHumanos);
-        enviarDatosAlCliente();
+        salida.println("datanumHumRefu=" + numHumanos);
     }
 
     public void actualizarDatosComida(int comida) {
-        this.comida.set(comida);
-        enviarDatosAlCliente();
+        salida.println("datacomida=" + comida);
     }
 
     public void actualizarDatosTuneles(int tunel, int numHumanos) {
-        switch (tunel) {
-            case 0:
-                numHumT0.set(numHumanos);
-                break;
-            case 1:
-                numHumT1.set(numHumanos);
-                break;
-            case 2:
-                numHumT2.set(numHumanos);
-                break;
-            case 3:
-                numHumT3.set(numHumanos);
-                break;
-            default:
-                System.out.println("Túnel inválido: " + tunel);
-        }
-        enviarDatosAlCliente();
+        salida.println("datanumHumT" + tunel + "=" + numHumanos);
     }
 
     public void actualizarDatosHumanosZonaRiesgo(int zona, int numHumanos) {
-        switch (zona) {
-            case 0:
-                numHumZR0.set(numHumanos);
-                break;
-            case 1:
-                numHumZR1.set(numHumanos);
-                break;
-            case 2:
-                numHumZR2.set(numHumanos);
-                break;
-            case 3:
-                numHumZR3.set(numHumanos);
-                break;
-            default:
-                System.out.println("Zona inválida: " + zona);
-        }
-        enviarDatosAlCliente();
+        salida.println("datanumHumZR" + zona + "=" + numHumanos);
     }
 
     public void actualizarDatosZombiesZonaRiesgo(int zona, int numZombies) {
-        switch (zona) {
-            case 0:
-                numZomZR0.set(numZombies);
-                break;
-            case 1:
-                numZomZR1.set(numZombies);
-                break;
-            case 2:
-                numZomZR2.set(numZombies);
-                break;
-            case 3:
-                numZomZR3.set(numZombies);
-                break;
-            default:
-                System.out.println("Zona inválida: " + zona);
-        }
-        enviarDatosAlCliente();
+        salida.println("datanumZomZR" + zona + "=" + numZombies);
     }
 
     public void actualizarRanking(ArrayList<String> ranking) {
-        if (ranking.size() == 3) {
-            ranking1 = ranking.get(0);
-            ranking2 = ranking.get(1);
-            ranking3 = ranking.get(2);
-        } else {
-            ranking1 = "Nadie";
-            ranking2 = "Nadie";
-            ranking3 = "Nadie";
+        for (int i = 0; i < ranking.size(); i++) {
+            salida.println("dataranking" + (i + 1) + "=" + ranking.get(i));
         }
-        enviarDatosAlCliente();
     }
 
     public void enviarComando(String comando) {

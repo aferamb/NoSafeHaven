@@ -14,7 +14,13 @@ public class NoSafeHaven {
             Servidor servidor = new Servidor();
             PantallaPrincipal.getInstancia().setServidor(servidor);
 
-            servidor.iniciarServidor(5000);
+            PantallaPrincipal.getInstancia().setVisible(true);
+            PantallaPrincipal.getInstancia().esperarInicioServidor(); // Esperar a que el servidor esté listo antes de mostrar la pantalla principal
+            while (!servidor.getConectado()) {
+                // Esperar a que el servidor esté configurado y lanzado
+                Thread.sleep(1); // Esperar un poco antes de volver a comprobar
+            }
+            // servidor.iniciarServidor(5000);
 
             if (servidor.getConectado()) { //si no está conectado por que hay 2 o más servidores a la vez y no pueden usar el mismo puerto, no ejecuta el resto del código
                 PantallaPrincipal.getInstancia().setVisible(true);

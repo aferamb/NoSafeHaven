@@ -18,11 +18,7 @@ public class MainCliente {
 
         Cliente cliente = new Cliente();
         ClientePantalla.getInstancia().setCliente(cliente); //para llamar a desconectar desde la pantalla
-        cliente.start(); // porque Cliente extiende Thread
-        
-        SwingUtilities.invokeLater(() -> {
-            ClientePantalla.getInstancia().setVisible(true);
-        });
-        
+        ClientePantalla.getInstancia().setVisible(true);
+        ClientePantalla.getInstancia().esperarInicioCliente(); //para centrar la pantalla
     }
 }
