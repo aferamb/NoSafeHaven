@@ -211,12 +211,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(2048, 1152));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(2048, 1152));
 
         Refugio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Refugio.setOpaque(false);
 
-        velocidad1.setBackground(new java.awt.Color(204, 204, 204));
+        velocidad1.setBackground(new java.awt.Color(51, 204, 0));
         velocidad1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         velocidad1.setText("Velocidad=x1");
         velocidad1.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +224,6 @@ public final class ClientePantalla extends javax.swing.JFrame {
             }
         });
 
-        velocidad10.setBackground(new java.awt.Color(204, 204, 204));
         velocidad10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         velocidad10.setText("Velocidad=x10");
         velocidad10.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +232,6 @@ public final class ClientePantalla extends javax.swing.JFrame {
             }
         });
 
-        velocidad50.setBackground(new java.awt.Color(204, 204, 204));
         velocidad50.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         velocidad50.setText("Velocidad=x50");
         velocidad50.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +241,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
 
         stopButton.setBackground(new java.awt.Color(204, 0, 0));
-        stopButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton1_1.jpg"))); // NOI18N
+        stopButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton5.jpg"))); // NOI18N
         stopButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stopButtonActionPerformed(evt);
@@ -298,12 +295,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
         Tuneles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Tuneles.setOpaque(false);
 
-        Tunel1.setBackground(new java.awt.Color(204, 204, 204));
+        Tunel1.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel8.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel8.setText("Tunel 1");
 
         T1.setEditable(false);
+        T1.setBackground(new java.awt.Color(204, 204, 204));
+        T1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         T1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 T1ActionPerformed(evt);
@@ -333,12 +332,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        Tunel2.setBackground(new java.awt.Color(204, 204, 204));
+        Tunel2.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel9.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel9.setText("Tunel 2");
 
         T2.setEditable(false);
+        T2.setBackground(new java.awt.Color(204, 204, 204));
+        T2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         T2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 T2ActionPerformed(evt);
@@ -368,12 +369,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        Tunel3.setBackground(new java.awt.Color(204, 204, 204));
+        Tunel3.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel10.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel10.setText("Tunel 3");
 
         T3.setEditable(false);
+        T3.setBackground(new java.awt.Color(204, 204, 204));
+        T3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         T3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 T3ActionPerformed(evt);
@@ -403,12 +406,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        Tunel4.setBackground(new java.awt.Color(204, 204, 204));
+        Tunel4.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel11.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel11.setText("Tunel 4");
 
         T4.setEditable(false);
+        T4.setBackground(new java.awt.Color(204, 204, 204));
+        T4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         T4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 T4ActionPerformed(evt);
@@ -472,14 +477,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
         Exterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Exterior.setOpaque(false);
 
-        E1.setBackground(new java.awt.Color(204, 204, 204));
+        E1.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel2.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel2.setText("Zona exterior 1");
 
         NZ1.setEditable(false);
+        NZ1.setBackground(new java.awt.Color(204, 204, 204));
+        NZ1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         NH1.setEditable(false);
+        NH1.setBackground(new java.awt.Color(204, 204, 204));
+        NH1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NH1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NH1ActionPerformed(evt);
@@ -498,7 +507,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
                             .addComponent(NZ1)
                             .addComponent(NH1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
                     .addGroup(E1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
+                        .addGap(56, 56, 56)
                         .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -514,14 +523,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        E2.setBackground(new java.awt.Color(204, 204, 204));
+        E2.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel3.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel3.setText("Zona exterior 2");
 
         NZ2.setEditable(false);
+        NZ2.setBackground(new java.awt.Color(204, 204, 204));
+        NZ2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         NH2.setEditable(false);
+        NH2.setBackground(new java.awt.Color(204, 204, 204));
+        NH2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NH2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NH2ActionPerformed(evt);
@@ -535,14 +548,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
             .addGroup(E2Layout.createSequentialGroup()
                 .addGroup(E2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(E2Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel3))
-                    .addGroup(E2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(E2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(NZ2)
-                            .addComponent(NH2, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(NH2, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                    .addGroup(E2Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         E2Layout.setVerticalGroup(
             E2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -556,14 +569,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        E3.setBackground(new java.awt.Color(204, 204, 204));
+        E3.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel4.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel4.setText("Zona exterior 3");
 
         NZ3.setEditable(false);
+        NZ3.setBackground(new java.awt.Color(204, 204, 204));
+        NZ3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         NH3.setEditable(false);
+        NH3.setBackground(new java.awt.Color(204, 204, 204));
+        NH3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NH3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NH3ActionPerformed(evt);
@@ -582,7 +599,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
                             .addComponent(NH3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                             .addComponent(NZ3)))
                     .addGroup(E3Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
+                        .addGap(55, 55, 55)
                         .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -598,14 +615,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        E4.setBackground(new java.awt.Color(204, 204, 204));
+        E4.setBackground(new java.awt.Color(111, 124, 123));
 
         jLabel5.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
         jLabel5.setText("Zona exterior 4");
 
         NZ4.setEditable(false);
+        NZ4.setBackground(new java.awt.Color(204, 204, 204));
+        NZ4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         NH4.setEditable(false);
+        NH4.setBackground(new java.awt.Color(204, 204, 204));
+        NH4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NH4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NH4ActionPerformed(evt);
@@ -624,9 +645,9 @@ public final class ClientePantalla extends javax.swing.JFrame {
                             .addComponent(NH4, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
                             .addComponent(NZ4)))
                     .addGroup(E4Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(57, 57, 57)
                         .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         E4Layout.setVerticalGroup(
             E4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -680,8 +701,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jLabel12.setText("RANKING DE ZOMBIES");
 
         z1.setEditable(false);
+        z1.setBackground(new java.awt.Color(204, 204, 204));
+        z1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         z2.setEditable(false);
+        z2.setBackground(new java.awt.Color(204, 204, 204));
+        z2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         z2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 z2ActionPerformed(evt);
@@ -689,6 +714,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
 
         z3.setEditable(false);
+        z3.setBackground(new java.awt.Color(204, 204, 204));
+        z3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/primero.png"))); // NOI18N
 
@@ -749,7 +776,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apocalipse2.jpg"))); // NOI18N
         jLayeredPane1.add(jLabel15);
-        jLabel15.setBounds(-190, -20, 2048, 1152);
+        jLabel15.setBounds(-190, -40, 2048, 1152);
 
         jLabel17.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 48)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 51, 51));
@@ -761,9 +788,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         jPanel3.setOpaque(false);
 
-        comedor.setBackground(new java.awt.Color(204, 204, 204));
+        comedor.setBackground(new java.awt.Color(111, 124, 123));
 
         NumHumanos.setEditable(false);
+        NumHumanos.setBackground(new java.awt.Color(204, 204, 204));
+        NumHumanos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NumHumanos.setText("Nº humanos:");
         NumHumanos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -775,6 +804,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jLabel1.setText("Refugio");
 
         comida.setEditable(false);
+        comida.setBackground(new java.awt.Color(204, 204, 204));
+        comida.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         comida.setText("Comida: 0");
 
         javax.swing.GroupLayout comedorLayout = new javax.swing.GroupLayout(comedor);
@@ -826,7 +857,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel3.setBounds(280, 330, 280, 140);
 
         jPanel1.add(jLayeredPane1);
-        jLayeredPane1.setBounds(0, 6, 2048, 1152);
+        jLayeredPane1.setBounds(0, -2, 2048, 1160);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -907,16 +938,25 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void velocidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad1ActionPerformed
+        velocidad1.setBackground(Color.GREEN);
+        velocidad10.setBackground(Color.WHITE);
+        velocidad50.setBackground(Color.WHITE);
         System.out.println("velocidad=1");
         cliente.enviarComando("VELOCIDAD=1");
     }//GEN-LAST:event_velocidad1ActionPerformed
 
     private void velocidad10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad10ActionPerformed
+        velocidad1.setBackground(Color.WHITE);
+        velocidad10.setBackground(Color.GREEN);
+        velocidad50.setBackground(Color.WHITE);
         System.out.println("velocidad=10");
         cliente.enviarComando("VELOCIDAD=10");
     }//GEN-LAST:event_velocidad10ActionPerformed
 
     private void velocidad50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad50ActionPerformed
+        velocidad1.setBackground(Color.WHITE);
+        velocidad10.setBackground(Color.WHITE);
+        velocidad50.setBackground(Color.GREEN);
         System.out.println("velocidad=50");
         cliente.enviarComando("VELOCIDAD=50");
     }//GEN-LAST:event_velocidad50ActionPerformed
