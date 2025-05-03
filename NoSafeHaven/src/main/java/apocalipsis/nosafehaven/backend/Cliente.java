@@ -70,6 +70,10 @@ public class Cliente{
 
                             if (clave.equals("numHumRefu")) {
                                 ClientePantalla.getInstancia().actualizarRefugio(valor);
+                            } else if (clave.equals("numHumTotal")) {
+                                ClientePantalla.getInstancia().actualizarTotalHumanos(valor);
+                            } else if (clave.equals("numZomTotal")) {
+                                ClientePantalla.getInstancia().actualizarTotalZombies(valor);
                             } else if (clave.equals("comida")) {
                                 ClientePantalla.getInstancia().actualizarComida(valor);
 

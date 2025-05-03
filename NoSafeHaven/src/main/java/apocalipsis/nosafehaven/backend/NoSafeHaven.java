@@ -50,6 +50,7 @@ public class NoSafeHaven {
                 servidor.setEstadopausa(ep);
 
                 Refugio refugio = new Refugio(servidor);
+                servidor.setRefugio(refugio); // Asignar el refugio al servidor, para que pueda acceder a él en las conexiones pertinentes
 
                 ZonaExterior[] zonas = new ZonaExterior[4];
                 Ranking r = new Ranking(servidor);

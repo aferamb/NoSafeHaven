@@ -8,6 +8,8 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
+
 public class Humano extends Thread {
 
     private String id;
@@ -31,6 +33,7 @@ public class Humano extends Thread {
     @Override
     public void run() {
         estadoPausa.parar();
+        refugio.unHumanoMas(); //cuando llega un humano, el contador de humanos aumenta
         refugio.humanoEntraRefugio(id); //cuando llega un humano, el contador de humanos aumenta
         while (!muerto && !estadoPausa.estaDesconectado()) {
             try {
@@ -90,6 +93,8 @@ public class Humano extends Thread {
                     Log.escribir(id + " ha muerto y se convierte en ZOMBIE.");
                     System.out.println(id + " ha muerto y se convierte en ZOMBIE.");
                     Zombie z = new Zombie(id, zonas, r, estadoPausa);
+                    refugio.unHumanoMenos(); //cuando un humano muere, el contador de humanos disminuye
+                    refugio.unZombieMas(); //cuando un humano muere, el contador de zombis aumenta
                     z.start();
                     //acaba ejecucion. no vuelve a entrar al while."se convierte"
 
@@ -124,7 +129,7 @@ public class Humano extends Thread {
         System.out.println(id + " sale de la zona de descanso.");
         estadoPausa.parar();
     }
-
+    // este metodo es exactamente igual que el anterior, a excepcion de que quita el herido del set de humanos heridos
     public void irZonaDescansoHerido(int tiempomin) {
         estadoPausa.parar();
         refugio.irZonaDescanso(id);
@@ -140,6 +145,7 @@ public class Humano extends Thread {
         }
         estadoPausa.parar();
         herido = false; //se cura si esta herido
+        PantallaPrincipal.getInstancia().quitarHerido(id);
         refugio.salirZonaDescanso(id);
         Log.escribir(id + " sale de la zona de descanso.");
         System.out.println(id + " sale de la zona de descanso.");

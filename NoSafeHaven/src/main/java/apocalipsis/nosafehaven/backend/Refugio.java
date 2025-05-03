@@ -12,6 +12,8 @@ public class Refugio {
 
     private AtomicInteger comida = new AtomicInteger(0);
     private AtomicInteger humanos = new AtomicInteger(0);
+    private AtomicInteger humanosTotales = new AtomicInteger(0); // Total de humanos que han pasado por el refugio
+    private AtomicInteger zombiesTotales = new AtomicInteger(1); // Total de zombies que han pasado por el refugio
 
     private AtomicInteger enZonaComun = new AtomicInteger(0);
     private CopyOnWriteArrayList<String> humanosZonaComun = new CopyOnWriteArrayList<>(); // mejor que colleccion sincronizada mas rapida y eficaz
@@ -30,6 +32,47 @@ public class Refugio {
             tuneles[i] = new Tunel(i, servidor); // Inicializa cada túnel con su ID y el servidor`
         }
         this.servidor = servidor;
+    }
+
+    public void unHumanoMas() { 
+        humanosTotales.incrementAndGet();
+        System.out.println("  Un humano más en el mundo... "+humanosTotales.get());
+        Log.escribir("  Un humano más en el mundo... "+humanosTotales.get());
+        //PantallaPrincipal.getInstancia().actualizarHumanosTotales(humanosTotales.get());
+        servidor.actualizarDatosHumanosTotal(humanosTotales.get());
+    }
+
+    public void unHumanoMenos() { 
+        humanosTotales.decrementAndGet();
+        System.out.println("  Un humano menos en el mundo... "+humanosTotales.get());
+        Log.escribir("  Un humano menos en el mundo... "+humanosTotales.get());
+        //PantallaPrincipal.getInstancia().actualizarHumanosTotales(humanosTotales.get());
+        servidor.actualizarDatosHumanosTotal(humanosTotales.get());
+    }
+
+    public void unZombieMenos() { 
+        zombiesTotales.decrementAndGet();
+        System.out.println("  Un zombie menos en el mundo... "+zombiesTotales.get());
+        Log.escribir("  Un zombie menos en el mundo... "+zombiesTotales.get());
+        //PantallaPrincipal.getInstancia().actualizarZombiesTotales(zombiesTotales.get());
+        servidor.actualizarDatosZombiesTotal(zombiesTotales.get());
+    }
+
+    public void unZombieMas() { 
+        zombiesTotales.incrementAndGet();
+        System.out.println("  Un zombie más en el mundo... "+zombiesTotales.get());
+        Log.escribir("  Un zombie más en el mundo... "+zombiesTotales.get());
+        //PantallaPrincipal.getInstancia().actualizarZombiesTotales(zombiesTotales.get());
+        servidor.actualizarDatosZombiesTotal(zombiesTotales.get());
+    }
+
+    public synchronized void setComida(int comidaExtra) { 
+        int c=comida.addAndGet(comidaExtra);
+        System.out.println("  Llegan raciones de refugios aliados: "+comidaExtra+" de comida!!  "+c);
+        Log.escribir("  Llegan raciones de refugios aliados: "+comidaExtra+" de comida!!  "+c);
+        PantallaPrincipal.getInstancia().actualizarComida(c);
+        servidor.actualizarDatosComida(c);
+        notifyAll();
     }
 
     public synchronized void dejarComida() { 

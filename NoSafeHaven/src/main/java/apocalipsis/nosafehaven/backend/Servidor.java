@@ -28,6 +28,8 @@ public class Servidor {
 
     private boolean conectado = false;
 
+    private Refugio refugio;
+
     public Servidor() {
         // Constructor vacío
     }
@@ -38,6 +40,10 @@ public class Servidor {
 
     public boolean getConectado() {
         return conectado;
+    }
+
+    public void setRefugio(Refugio refugio) {
+        this.refugio = refugio;
     }
 
     public void iniciarServidor(int puerto) {
@@ -76,6 +82,14 @@ public class Servidor {
                             } catch (NumberFormatException e) {
                                 System.out.println("Velocidad inválida.");
                             }
+                        } else if (linea.startsWith("COMIDA_EXTRA=")) {
+                            try {
+                                int comida = Integer.parseInt(linea.split("=")[1]);
+                                refugio.setComida(comida);
+                                System.out.println("Comida cambiada a " + comida + " por cliente.");
+                            } catch (NumberFormatException e) {
+                                System.out.println("Comida inválida.");
+                            }
                         } else if (linea.equalsIgnoreCase("SALIR")) {
                             estadoPausa.desconectar();
                             salida.close();
@@ -107,6 +121,14 @@ public class Servidor {
 
     public void actualizarDatosComida(int comida) {
         salida.println("datacomida=" + comida);
+    }
+
+    public void actualizarDatosHumanosTotal(int numHumanos) {
+        salida.println("datanumHumTotal=" + numHumanos);
+    }
+
+    public void actualizarDatosZombiesTotal(int numZombies) {
+        salida.println("datanumZomTotal=" + numZombies);
     }
 
     public void actualizarDatosTuneles(int tunel, int numHumanos) {

@@ -59,6 +59,18 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
     }
 
+    public void actualizarTotalHumanos(String num) {
+        SwingUtilities.invokeLater(() -> {
+            this.humanos.setText(num);
+        });
+    }
+
+    public void actualizarTotalZombies(String num) {
+        SwingUtilities.invokeLater(() -> {
+            this.zombies.setText(num);
+        });
+    }
+
     public void actualizarTunel(int tunel, String num) {
         SwingUtilities.invokeLater(() -> {
 
@@ -152,6 +164,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
         velocidad50 = new javax.swing.JButton();
         stopButton = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        BotonComidaExtra = new javax.swing.JButton();
         Tuneles = new javax.swing.JPanel();
         Tunel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -197,6 +210,10 @@ public final class ClientePantalla extends javax.swing.JFrame {
         NumHumanos = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         comida = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        humanos = new javax.swing.JTextField();
+        zombies = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -252,6 +269,13 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Panel de control");
 
+        BotonComidaExtra.setText("+ 50 Comida");
+        BotonComidaExtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonComidaExtraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout RefugioLayout = new javax.swing.GroupLayout(Refugio);
         Refugio.setLayout(RefugioLayout);
         RefugioLayout.setHorizontalGroup(
@@ -262,11 +286,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RefugioLayout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(velocidad1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(velocidad10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(velocidad50, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(BotonComidaExtra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(velocidad1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(velocidad50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(velocidad10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -277,7 +301,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(RefugioLayout.createSequentialGroup()
                         .addComponent(velocidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -285,12 +309,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(velocidad50, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(stopButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(BotonComidaExtra)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Refugio, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(Refugio);
-        Refugio.setBounds(280, 120, 280, 197);
+        Refugio.setBounds(280, 120, 280, 250);
 
         Tuneles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Tuneles.setOpaque(false);
@@ -472,7 +498,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(Tuneles, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(Tuneles);
-        Tuneles.setBounds(600, 250, 300, 510);
+        Tuneles.setBounds(600, 300, 300, 510);
 
         Exterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Exterior.setOpaque(false);
@@ -772,7 +798,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(jPanel2);
-        jPanel2.setBounds(280, 480, 280, 280);
+        jPanel2.setBounds(280, 530, 280, 280);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apocalipse2.jpg"))); // NOI18N
         jLayeredPane1.add(jLabel15);
@@ -854,7 +880,51 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(jPanel3, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(jPanel3);
-        jPanel3.setBounds(280, 330, 280, 140);
+        jPanel3.setBounds(280, 380, 280, 140);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
+        jPanel4.setOpaque(false);
+
+        jLabel18.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        jLabel18.setText("Humanos VS  Zombies");
+
+        humanos.setEditable(false);
+        humanos.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+
+        zombies.setEditable(false);
+        zombies.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        zombies.setText("1");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(humanos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(zombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(humanos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zombies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.setLayer(jPanel4, javax.swing.JLayeredPane.PALETTE_LAYER);
+        jLayeredPane1.add(jPanel4);
+        jPanel4.setBounds(600, 190, 300, 100);
 
         jPanel1.add(jLayeredPane1);
         jLayeredPane1.setBounds(0, -2, 2048, 1160);
@@ -961,6 +1031,10 @@ public final class ClientePantalla extends javax.swing.JFrame {
         cliente.enviarComando("VELOCIDAD=50");
     }//GEN-LAST:event_velocidad50ActionPerformed
 
+    private void BotonComidaExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonComidaExtraActionPerformed
+        cliente.enviarComando("COMIDA_EXTRA=50");
+    }//GEN-LAST:event_BotonComidaExtraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1028,6 +1102,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonComidaExtra;
     private javax.swing.JPanel E1;
     private javax.swing.JPanel E2;
     private javax.swing.JPanel E3;
@@ -1054,6 +1129,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
     private javax.swing.JPanel Tuneles;
     private javax.swing.JPanel comedor;
     private javax.swing.JTextField comida;
+    private javax.swing.JTextField humanos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1062,6 +1138,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1074,6 +1151,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JButton stopButton;
     private javax.swing.JButton velocidad1;
     private javax.swing.JButton velocidad10;
@@ -1081,5 +1159,6 @@ public final class ClientePantalla extends javax.swing.JFrame {
     private javax.swing.JTextField z1;
     private javax.swing.JTextField z2;
     private javax.swing.JTextField z3;
+    private javax.swing.JTextField zombies;
     // End of variables declaration//GEN-END:variables
 }

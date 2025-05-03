@@ -6,6 +6,8 @@ package apocalipsis.nosafehaven.backend;
 
 import static java.lang.Thread.sleep;
 
+import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
+
 public class Zombie extends Thread {
 
     private String id;
@@ -60,6 +62,7 @@ public class Zombie extends Thread {
     }
 
     public void atacar(boolean matado, int tiempo, String hid) {
+        PantallaPrincipal.getInstancia().addHerido(hid);
         try {
             sleep((int) (tiempo / Velocidad.getVelocidad()));
         } catch (InterruptedException ex) {
