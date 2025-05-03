@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Refugio {
 
@@ -59,11 +61,11 @@ public class Refugio {
     }
 
     /**
-     * Reduce en uno el número total de humanos totales. Este
-     * método decrementa el contador de humanos totales, imprime un mensaje en
-     * la consola indicando la nueva cantidad de humanos y registra esta
-     * información en el log del sistema. Además, actualiza los datos del
-     * servidor relacionados con el total de humanos.
+     * Reduce en uno el número total de humanos totales. Este método decrementa
+     * el contador de humanos totales, imprime un mensaje en la consola
+     * indicando la nueva cantidad de humanos y registra esta información en el
+     * log del sistema. Además, actualiza los datos del servidor relacionados
+     * con el total de humanos.
      */
     public void unHumanoMenos() {
         humanosTotales.decrementAndGet();
@@ -275,22 +277,26 @@ public class Refugio {
      * identificador se utiliza para registrar y mostrar información sobre la
      * entrada del humano.
      */
-    public void irComedor(String id) throws InterruptedException {
+    public void irComedor(String id) {
         comidaLock.lock();
-        try{
-        System.out.println(id + " llega al comedor...Queda: " + comida.get());
-        enComedor.incrementAndGet();
-        humanosComedor.add(id);
-        PantallaPrincipal.getInstancia().actualizarComedor(humanosComedor);
-        while (comida.get() == 0) {
-            System.out.println(id + " esta esperando por comida... Queda: " + comida.get());
-            esperarComida.await();
-        }
-        int c=comida.decrementAndGet(); //comer 1 comida
-        System.out.println(id + " come... Queda: " + c);
-        PantallaPrincipal.getInstancia().actualizarComida(c);
-        servidor.actualizarDatosComida(c);
-        
+        try {
+            System.out.println(id + " llega al comedor...Queda: " + comida.get());
+            enComedor.incrementAndGet();
+            humanosComedor.add(id);
+            PantallaPrincipal.getInstancia().actualizarComedor(humanosComedor);
+            while (comida.get() == 0) {
+                System.out.println(id + " esta esperando por comida... Queda: " + comida.get());
+                try {
+                    esperarComida.await();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Refugio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            int c = comida.decrementAndGet(); //comer 1 comida
+            System.out.println(id + " come... Queda: " + c);
+            PantallaPrincipal.getInstancia().actualizarComida(c);
+            servidor.actualizarDatosComida(c);
+
         } finally {
             comidaLock.unlock();
         }
@@ -323,13 +329,12 @@ public class Refugio {
      * especificado.
      *
      * @param tunel El índice del túnel por el cual el humano saldrá. Debe estar
-     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). 
-     * @param idHumano El identificador único del humano que saldrá del refugio.
+     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). @param idH
+     * umano El identificador único del humano que saldrá del refugio.
      * @throws IllegalArgumentException Si el índice del túnel es inválido.
-     * @throws Exception Si ocurre un error al intentar que el humano salga de
-     * la zona común o del refugio.
+     *
      */
-    public void salirRefugio(int tunel, String idHumano) throws Exception {
+    public void salirRefugio(int tunel, String idHumano) {
         if (tunel >= 0 && tunel < tuneles.length) {
             // Si cambias el orden da las dos siguientes líneas, el humano aparece como que sale o no de la zona común para ir al túnel
             salirZonaComun(idHumano); // Salir de la zona común al salir del refugio
@@ -345,10 +350,11 @@ public class Refugio {
      *
      * @param tunel El índice del túnel por el cual el humano entrará. Debe
      * estar dentro del rango válido de túneles (0 <= túnel < tuneles.length).
-     * @param idHumano El identificador único del humano que entrará al refugio.
+     * @param idH
+     * umano El identificador único del humano que entrará al refugio.
      * @throws IllegalArgumentException Si el índice del túnel es inválido.
      */
-    public void entrarRefugio(int tunel, String idHumano) throws Exception {
+    public void entrarRefugio(int tunel, String idHumano) {
         if (tunel >= 0 && tunel < tuneles.length) {
             tuneles[tunel].entrarRefugio(idHumano);
 
@@ -361,11 +367,11 @@ public class Refugio {
      * Permite que un humano salga de un túnel específico.
      *
      * @param tunel El índice del túnel por el cual el humano saldrá. Debe estar
-     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). 
-     * @param idHumano El identificador único del humano que saldrá del túnel.
+     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). @param idH
+     * umano El identificador único del humano que saldrá del túnel.
      * @throws IllegalArgumentException Si el índice del túnel es inválido.
      */
-    public void salirTunel(int tunel, String idHumano) throws InterruptedException {
+    public void salirTunel(int tunel, String idHumano) {
         if (tunel >= 0 && tunel < tuneles.length) {
             tuneles[tunel].salirTunel(idHumano);
         } else {

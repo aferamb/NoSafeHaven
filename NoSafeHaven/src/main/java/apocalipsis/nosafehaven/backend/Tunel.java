@@ -6,12 +6,12 @@ package apocalipsis.nosafehaven.backend;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
+import java.util.concurrent.BrokenBarrierException;
 
 public class Tunel {
 
@@ -19,7 +19,7 @@ public class Tunel {
     private Lock entrando = new ReentrantLock();
     private Condition quiereEntrar = entrando.newCondition(); //prioridad
     private Condition quiereSalir = entrando.newCondition();
-    
+
     private int humanosEntrando = 0;
 
     private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
@@ -41,17 +41,25 @@ public class Tunel {
         servidor.actualizarDatosTuneles(id, humanosSaliendoRef.size() + humanosDentroRef.size() + humanosEntrandoRef.size());
     }
 
-    public void salirRefugio(String idHumano) throws Exception {
-        
+    public void salirRefugio(String idHumano) {
+
         humanosSaliendoRef.add(idHumano);
         actualizarHumanosEnTunel();
         PantallaPrincipal.getInstancia().actualizarTunel(id, humanosSaliendoRef);
-        barrera.await();
+        try {
+            barrera.await();
+        } catch (InterruptedException | BrokenBarrierException ex) {
+            System.out.println(ex);
+        }
         //cuando ya pasan 3 la barrera
         entrando.lock();
         try {
             while (humanosDentro > 0 || humanosEntrando > 0) {
-                quiereSalir.await();
+                try {
+                    quiereSalir.await();
+                } catch (InterruptedException ex) {
+                    System.out.println(ex);
+                }
             }
             humanosDentro++;
             humanosSaliendoRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
@@ -63,20 +71,24 @@ public class Tunel {
         }
     }
 
-    public void entrarRefugio(String idHumano) throws InterruptedException {
+    public void entrarRefugio(String idHumano) {
         entrando.lock();
         try {
-                humanosEntrando++; 
-                humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
-                actualizarHumanosEnTunel();
-                PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
-            
+            humanosEntrando++;
+            humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
+            actualizarHumanosEnTunel();
+            PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
+
             while (humanosDentro > 0) {
-                quiereEntrar.await();
+                try {
+                    quiereEntrar.await();
+                } catch (InterruptedException ex) {
+                    System.out.println(ex);
+                }
             }
             humanosEntrando--;
             humanosDentro++;
-            
+
             humanosEntrandoRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
             humanosDentroRef.add(idHumano); //añadimos el id del humano a la lista de ids
             PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
@@ -86,9 +98,7 @@ public class Tunel {
         }
     }
 
-    public void salirTunel(String idHumano) throws InterruptedException {
-        //Thread.sleep(1000); //poner fuera de tunel
-
+    public void salirTunel(String idHumano) {
         entrando.lock();
         try {
             humanosDentro--;

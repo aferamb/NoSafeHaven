@@ -56,9 +56,12 @@ public class Humano extends Thread {
                 } catch (InterruptedException e) {
                     Log.escribir(id + " fue interrumpido mientras buscaba comida." + e.getMessage());
                     System.out.println(id + " fue interrumpido mientras buscaba comida." + e.getMessage());
-                    //PantallaPrincipal.getInstancia().parar();
+
                     zonas[tunel].humanoAtacado(this);
                     estadoPausa.parar();
+                }
+                if (siendoAtacado) {
+                    zonas[tunel].humanoAtacado(this);
                 }
 
                 if (!muerto) {
@@ -102,7 +105,6 @@ public class Humano extends Thread {
             } catch (Exception e) {
                 Log.escribir("Error en el hilo de " + id + ": " + e.getMessage());
                 System.out.println("Error en el hilo de " + id + ": " + e.getMessage());
-                e.printStackTrace(); // muy importante para saber qué pasó
             } finally {
                 // 
             }
@@ -128,6 +130,7 @@ public class Humano extends Thread {
         System.out.println(id + " sale de la zona de descanso.");
         estadoPausa.parar();
     }
+
     // este metodo es exactamente igual que el anterior, a excepcion de que quita el herido del set de humanos heridos y los prints/logs son distintos
     public void irZonaDescansoHerido(int tiempomin) {
         estadoPausa.parar();
@@ -153,13 +156,7 @@ public class Humano extends Thread {
 
     public void irComedor() {
         estadoPausa.parar();
-        try {
-            refugio.irComedor(id);
-        } catch (InterruptedException ie) {
-            Log.escribir(id + " InterruptedException comedor " + ie.getMessage());
-            System.out.println(id + " InterruptedException comedor" + ie.getMessage());
-            ie.printStackTrace();
-        }
+        refugio.irComedor(id);
         Log.escribir(id + " entra en el comedor.");
         System.out.println(id + " entra en el comedor.");
         estadoPausa.parar();
@@ -176,45 +173,49 @@ public class Humano extends Thread {
     }
 
     public void entrarRefugio(int tunel) {
-        try {
-            estadoPausa.parar();
-            Log.escribir(id + " intenta entrar al refugio por el tunel " + tunel + ".");
-            System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
-            refugio.entrarRefugio(tunel, id); //... entra al tunel...
-            estadoPausa.parar();
-            sleep(1000 / Velocidad.getVelocidad()); //esperar 1 seg cruzar tunel
-            estadoPausa.parar();
 
-            refugio.salirTunel(tunel, id); //...llega a dentro del refugio
-            refugio.humanoEntraRefugio(id); // aumentar el contador de humanos en el refugio
-            Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
-            System.out.println(id + " ha entrado al refugio por el tunel " + tunel + ".");
-            estadoPausa.parar();
-        } catch (Exception ex) {
+        estadoPausa.parar();
+        Log.escribir(id + " intenta entrar al refugio por el tunel " + tunel + ".");
+        System.out.println(id + " intenta entrar al refugio por el tunel " + tunel + ".");
+        refugio.entrarRefugio(tunel, id); //... entra al tunel...
+        estadoPausa.parar();
+        try {
+            sleep(1000 / Velocidad.getVelocidad()); //esperar 1 seg cruzar tunel
+        } catch (InterruptedException ex) {
             Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
         }
+        estadoPausa.parar();
+
+        refugio.salirTunel(tunel, id); //...llega a dentro del refugio
+        refugio.humanoEntraRefugio(id); // aumentar el contador de humanos en el refugio
+        Log.escribir(id + " ha entrado al refugio por el tunel " + tunel + ".");
+        System.out.println(id + " ha entrado al refugio por el tunel " + tunel + ".");
+        estadoPausa.parar();
+
     }
 
     public void salirRefugio(int tunel) {
+
+        estadoPausa.parar();
+        Log.escribir(id + " intenta salir del refugio por el tunel " + tunel + ".");
+        System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
+
+        refugio.salirRefugio(tunel, id); // "sale" de la zona comun y espera en la entrada del tunel
+        //la llamada a refugio.humanoSalerefugio está dentro del propio metodo salirRefugio para que se refleje mejor en la interfaz 
+
+        estadoPausa.parar();
         try {
-            estadoPausa.parar();
-            Log.escribir(id + " intenta salir del refugio por el tunel " + tunel + ".");
-            System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
-
-            refugio.salirRefugio(tunel, id); // "sale" de la zona comun y espera en la entrada del tunel
-            //la llamada a refugio.humanoSalerefugio está dentro del propio metodo salirRefugio para que se refleje mejor en la interfaz 
-
-            estadoPausa.parar();
             sleep(1000 / Velocidad.getVelocidad()); //esperar 1seg cruzar tunel
-            estadoPausa.parar();
-            refugio.salirTunel(tunel, id); // sale del tunel y llega a la zona exterior
-
-            Log.escribir(id + " ha salido del refugio por el tunel " + tunel + ".");
-            System.out.println(id + " ha salido del refugio por el tunel " + tunel + ".");
-            estadoPausa.parar();
-        } catch (Exception ex) {
+        } catch (InterruptedException ex) {
             Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
         }
+        estadoPausa.parar();
+        refugio.salirTunel(tunel, id); // sale del tunel y llega a la zona exterior
+
+        Log.escribir(id + " ha salido del refugio por el tunel " + tunel + ".");
+        System.out.println(id + " ha salido del refugio por el tunel " + tunel + ".");
+        estadoPausa.parar();
+
     }
 
     public void irZonaComun() {

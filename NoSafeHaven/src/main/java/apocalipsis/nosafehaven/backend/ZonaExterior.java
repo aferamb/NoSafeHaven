@@ -52,15 +52,19 @@ public class ZonaExterior {
             } else {
                 h.setHerido(true);
             }
-            humanoIrse(h); //el humano ha muerto o se ha ido de la zona. Se borra para que otro zombie no se piense que siga vivo 
+            //el humano ha sido atacadoa. Se borra para que otro zombie no le ataque
             h.interrupt();
+            ctdhumanos.decrementAndGet();
+            listaIDsHumanos.remove(h.getid()); //eliminamos el id del humano de la lista de ids
+            humanos.remove(h);
 
             z.atacar(muerte, h.getid()); //Se le pasa el id del humano para los logs
             h.setSiendoAtacado(false);
+            PantallaPrincipal.getInstancia().actualizarExteriorHumanos(id, listaIDsHumanos); //actualizo la pantalla de la zona exterior
+            servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
+
             finAtaque();
-
         }
-
     }
 
     public void zombieIrse(Zombie z) {
@@ -85,7 +89,6 @@ public class ZonaExterior {
         humanos.remove(h);
         PantallaPrincipal.getInstancia().actualizarExteriorHumanos(id, listaIDsHumanos); //actualizo la pantalla de la zona exterior
         servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
-
     }
 
     public synchronized void humanoAtacado(Humano h) {
