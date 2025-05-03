@@ -77,7 +77,20 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     public void actualizarZonaComun(CopyOnWriteArrayList<String> listaIDs) {
-        actualizarTextPaneConColor(ZonaComun, listaIDs, heridos, 4); // 1 ID por línea
+        SwingUtilities.invokeLater(() -> {
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
+            for (String id : listaIDs) {
+                sb.append(id);
+                count++;
+                if (count % 4 == 0) {
+                    sb.append("\n");
+                } else {
+                    sb.append(" ");
+                }
+            }
+            ZonaComun.setText(sb.toString());
+        });
     }
 
     public void actualizarComedor(CopyOnWriteArrayList<String> listaIDs) {
@@ -140,37 +153,63 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     public void actualizarExteriorHumanos(int exterior, CopyOnWriteArrayList<String> listaIDs) {
-        switch (exterior) {
-            case 0:
-                actualizarTextPaneConColor(Exterior1, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-            case 1:
-                actualizarTextPaneConColor(Exterior2, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-            case 2:
-                actualizarTextPaneConColor(Exterior3, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-            case 3:
-                actualizarTextPaneConColor(Exterior4, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-        }
+        SwingUtilities.invokeLater(() -> {
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
+            for (String id : listaIDs) {
+                sb.append(id);
+                count++;
+                if (count % 3 == 0) {
+                    sb.append("\n");
+                } else {
+                    sb.append(" ");
+                }
+            }
+            switch (exterior) {
+                case 0:
+                    Exterior1.setText(sb.toString());
+                    break;
+                case 1:
+                    Exterior2.setText(sb.toString());
+                    break;
+                case 2:
+                    Exterior3.setText(sb.toString());
+                    break;
+                case 3:
+                    Exterior4.setText(sb.toString());
+                    break;
+            }
+        });
     }
 
     public void actualizarExteriorZombies(int exterior, CopyOnWriteArrayList<String> listaIDs) {
-        switch (exterior) {
-            case 0:
-                actualizarTextPaneConColor(ExteriorZ1, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-            case 1:
-                actualizarTextPaneConColor(ExteriorZ2, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-            case 2:
-                actualizarTextPaneConColor(ExteriorZ3, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-            case 3:
-                actualizarTextPaneConColor(ExteriorZ4, listaIDs, heridos, 3); // 3 IDs por línea
-                break;
-        }
+        SwingUtilities.invokeLater(() -> {
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
+            for (String id : listaIDs) {
+                sb.append(id);
+                count++;
+                if (count % 3 == 0) {
+                    sb.append("\n");
+                } else {
+                    sb.append(" ");
+                }
+            }
+            switch (exterior) {
+                case 0:
+                    ExteriorZ1.setText(sb.toString());
+                    break;
+                case 1:
+                    ExteriorZ2.setText(sb.toString());
+                    break;
+                case 2:
+                    ExteriorZ3.setText(sb.toString());
+                    break;
+                case 3:
+                    ExteriorZ4.setText(sb.toString());
+                    break;
+            }
+        });
     }
 
     public void addHerido(String id) {
