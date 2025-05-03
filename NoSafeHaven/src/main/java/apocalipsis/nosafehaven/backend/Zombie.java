@@ -25,7 +25,7 @@ public class Zombie extends Thread {
 
     @Override
     public void run() {
-        while (!estadoPausa.estaDesconectado()) {
+        while (true) {
             try {
                 int zona = (int) (Math.random() * 4); //seleccionar zona de 0-3
 
@@ -42,7 +42,7 @@ public class Zombie extends Thread {
                 estadoPausa.parar();
                 Log.escribir(id + " abandona la zona exterior " + zona + ".");
                 System.out.println(id + " abandona la zona exterior " + zona + ".");
-                //vuelve a buscar zona. se podria repetir la misma (ver si seria necesario que fuera distinta a la anterior)
+                //vuelve a buscar zona
 
             } catch (InterruptedException ie) {
                 Log.escribir(id + " ha sido interrumpido.");
@@ -51,8 +51,6 @@ public class Zombie extends Thread {
                 Log.escribir("Error en el hilo de " + id + ": " + e.getMessage());
                 e.printStackTrace(); // muy importante para saber qué pasó
                 System.out.println("Error en el hilo de " + id + ": " + e.getMessage());
-            } finally {
-                // Asegúrate de que el zombie siempre sale de la zona exterior
             }
         }
     }
@@ -61,10 +59,11 @@ public class Zombie extends Thread {
         return id;
     }
 
-    public void atacar(boolean matado, int tiempo, String hid) {
+    public void atacar(boolean matado, String hid) {
         PantallaPrincipal.getInstancia().addHerido(hid);
+        int tiempoAtaque = (int) (Math.random() * 1000 + 500); //0.5-1.5 seg
         try {
-            sleep((int) (tiempo / Velocidad.getVelocidad()));
+            sleep((int) (tiempoAtaque / Velocidad.getVelocidad()));
         } catch (InterruptedException ex) {
         }
         if (matado) {

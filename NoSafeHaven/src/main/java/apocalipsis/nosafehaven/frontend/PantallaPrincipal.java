@@ -60,10 +60,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
-    public void apagar() {
-        System.exit(0);
-    }
-
     public void actualizarComida(int comida) {
         SwingUtilities.invokeLater(() -> {
             this.comida.setText("Comida: " + comida);
@@ -220,7 +216,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
             heridosLock.unlock();
         }
     }
-    
+
     public void quitarHerido(String id) {
         heridosLock.lock();
         try {
@@ -881,6 +877,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                 System.err.println("Error al desconectar servidor: " + ex.getMessage());
             }
         }
+        System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
     /**

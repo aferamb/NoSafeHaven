@@ -35,19 +35,19 @@ public class MainCliente {
                     System.out.println("Perfecto. Conectado");
                     conectado = true;
                 } else {
-
-                    System.out.println("No se inició la conexión. Intentos: " + (intentos-1));
+                    System.out.println("No se inició la conexión. Intentos: " + (intentos - 1));
                     intentos--;
                 }
 
             } else if (!cerrar) { //si no se ha confirmado el dialogo y no se ha cerrado
-                System.out.println("No se inició la conexión. Intentos: " + (intentos-1));
+                System.out.println("No se inició la conexión. Intentos: " + (intentos - 1));
                 intentos--;
+            } else {
+                System.out.println("Cerrando...");
             }
 
         }
 
-        
         if (conectado) {
             cliente.iniciarRecepcion();
             ClientePantalla.getInstancia().setVisible(true);

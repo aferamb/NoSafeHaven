@@ -886,13 +886,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel4.setOpaque(false);
 
         jLabel18.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Humanos VS  Zombies");
 
         humanos.setEditable(false);
         humanos.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        humanos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         zombies.setEditable(false);
         zombies.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
+        zombies.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         zombies.setText("1");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -900,15 +903,15 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(humanos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(zombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addComponent(humanos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(zombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel18)
+                .addGap(59, 59, 59))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1005,6 +1008,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 System.err.println("Error al desconectar cliente: " + ex.getMessage());
             }
         }
+        System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
     private void velocidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_velocidad1ActionPerformed

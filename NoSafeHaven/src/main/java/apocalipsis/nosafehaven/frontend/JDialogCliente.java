@@ -6,10 +6,6 @@ package apocalipsis.nosafehaven.frontend;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author cristina
- */
 public class JDialogCliente extends javax.swing.JDialog {
 
     private String direccion;

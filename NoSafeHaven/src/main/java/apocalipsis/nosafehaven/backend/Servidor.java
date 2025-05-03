@@ -12,12 +12,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
-
-/**
- *
- * @author 05jan
- */
 public class Servidor {
 
     Socket clienteSocket;
@@ -85,20 +79,18 @@ public class Servidor {
                         } else if (linea.startsWith("COMIDA_EXTRA=")) {
                             try {
                                 int comida = Integer.parseInt(linea.split("=")[1]);
-                                refugio.setComida(comida);
-                                System.out.println("Comida cambiada a " + comida + " por cliente.");
+                                refugio.addComida(comida);
                             } catch (NumberFormatException e) {
                                 System.out.println("Comida inválida.");
                             }
                         } else if (linea.equalsIgnoreCase("SALIR")) {
-                            estadoPausa.desconectar();
                             salida.close();
                             entrada.close();
                             clienteSocket.close();
                             conectado = false;
-                            PantallaPrincipal.getInstancia().apagar();
                             System.out.println("Servidor detenido por el cliente.");
                             System.out.println("Cliente desconectado.");
+                            System.exit(0);
                             break;
                         } else {
                             System.out.println("Comando desconocido: " + linea);
@@ -160,7 +152,6 @@ public class Servidor {
 
         if (clienteSocket != null) {
             enviarComando("SALIR");
-            estadoPausa.desconectar();
             salida.close();
             entrada.close();
             clienteSocket.close();

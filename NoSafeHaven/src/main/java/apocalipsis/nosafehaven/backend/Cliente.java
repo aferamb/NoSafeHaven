@@ -10,22 +10,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-//import java.util.Scanner;
 
-/**
- *
- * @author 05jan
- */
-public class Cliente{ 
+public class Cliente {
+
     private Socket socket;
     private PrintWriter salida;
     private BufferedReader entrada;
     private boolean conectado = false;
 
-
-    public void conectarAlServidor(String host, int puerto){
+    public void conectarAlServidor(String host, int puerto) {
         //Apertura de sockets (en la parte cliente)
-        
+
         try {
             // Crear un socket para conectarse al servidor
             socket = new Socket(host, puerto);
@@ -35,21 +30,19 @@ public class Cliente{
             entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             salida = new PrintWriter(socket.getOutputStream(), true);
             conectado = true;
-            //iniciarRecepcion();
-            
-            
+
         } catch (IOException e) {
             System.out.println("Error al conectar al servidor: " + e.getMessage());
-            
+
         } catch (Exception e) {
             System.out.println("Error al conectar al servidor: " + e.getMessage());
-            
+
         }
     }
 
     public void iniciarRecepcion() {
         Thread receptor = new Thread(() -> {
-            System.out.println("empezamos!!!!!!!!!!!!!!!!!!");
+            System.out.println("Comienza la recepción");
             try {
                 String linea;
                 while ((linea = entrada.readLine()) != null) {   // cambia null por un mensaje de parada del hilo al cerrar el socket o servidor
@@ -139,7 +132,6 @@ public class Cliente{
     }
 
     public void desconectar() throws IOException {
-
         if (socket != null) {
             enviarComando("SALIR");
             salida.close();

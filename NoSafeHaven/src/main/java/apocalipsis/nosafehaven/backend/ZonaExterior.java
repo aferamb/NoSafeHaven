@@ -24,12 +24,10 @@ public class ZonaExterior {
     private CopyOnWriteArrayList<String> listaIDsHumanos = new CopyOnWriteArrayList<>(); // IDs de los humanos y zombies en la zona exterior
     private CopyOnWriteArrayList<String> listaIDsZombies = new CopyOnWriteArrayList<>(); // IDs de los humanos y zombies en la zona exterior
 
-
     public ZonaExterior(int id, Servidor servidor) {
         this.id = id;
         this.servidor = servidor;
     }
-
 
     public void zombieLlegar(Zombie z) {
         ctdzombies.incrementAndGet();
@@ -44,23 +42,20 @@ public class ZonaExterior {
         if (ctdhumanos.get() > 0) {
             int humano = (int) (Math.random() * ctdhumanos.get()); //humano en el array en la posicion "humano"
             Humano h = humanos.get(humano);
-            
-            
+
             h.setSiendoAtacado(true); //marcar que esta siendo atacado
 
             boolean muerte = false;  //inicializamos a que el humano sobrevive
             if (Math.random() > 0.66) { //1/3 de morir
                 muerte = true; //si se cumple, el humano muere y se transforma
                 h.setMuerto(true);
-
             } else {
                 h.setHerido(true);
             }
-            humanoIrse(h); //el humano ha muerto. lo borro para que otro zombie no se piense que siga vivo 
+            humanoIrse(h); //el humano ha muerto o se ha ido de la zona. Se borra para que otro zombie no se piense que siga vivo 
             h.interrupt();
 
-            int tiempoAtaque = (int) (Math.random() * 1000 + 500); //0.5-1.5 seg
-            z.atacar(muerte, tiempoAtaque, h.getid()); //Se le pasa el id del humano para los logs
+            z.atacar(muerte, h.getid()); //Se le pasa el id del humano para los logs
             h.setSiendoAtacado(false);
             finAtaque();
 
@@ -90,8 +85,8 @@ public class ZonaExterior {
         humanos.remove(h);
         PantallaPrincipal.getInstancia().actualizarExteriorHumanos(id, listaIDsHumanos); //actualizo la pantalla de la zona exterior
         servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
+
     }
-    
 
     public synchronized void humanoAtacado(Humano h) {
         while (h.isSiendoAtacado()) {

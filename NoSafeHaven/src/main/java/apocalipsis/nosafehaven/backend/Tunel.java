@@ -19,9 +19,8 @@ public class Tunel {
     private Lock entrando = new ReentrantLock();
     private Condition quiereEntrar = entrando.newCondition(); //prioridad
     private Condition quiereSalir = entrando.newCondition();
-    //private int dentro;
+    
     private int humanosEntrando = 0;
-    private AtomicInteger humanosTotalesEnTunel = new AtomicInteger(0); //total de humanos en el tunel
 
     private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
     private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
@@ -36,7 +35,7 @@ public class Tunel {
         this.id = id;
     }
 
-    public void actulizarHumanosEnTunel() { // no creo que necesite synchronized, ya que lasvariables aqui y en destino son atomicas y el metodo llamado en servidor es synchronized
+    public void actualizarHumanosEnTunel() { // no creo que necesite synchronized, ya que lasvariables aqui y en destino son atomicas y el metodo llamado en servidor es synchronized
         //humanosTotalesEnTunel.set(humanosSaliendoRef.size() + humanosDentroRef.size() + humanosEntrandoRef.size());
         //servidor.actualizarDatosTuneles(id, humanosTotalesEnTunel.get());
         servidor.actualizarDatosTuneles(id, humanosSaliendoRef.size() + humanosDentroRef.size() + humanosEntrandoRef.size());
@@ -45,7 +44,7 @@ public class Tunel {
     public void salirRefugio(String idHumano) throws Exception {
         
         humanosSaliendoRef.add(idHumano);
-        actulizarHumanosEnTunel();
+        actualizarHumanosEnTunel();
         PantallaPrincipal.getInstancia().actualizarTunel(id, humanosSaliendoRef);
         barrera.await();
         //cuando ya pasan 3 la barrera
@@ -69,7 +68,7 @@ public class Tunel {
         try {
                 humanosEntrando++; 
                 humanosEntrandoRef.add(idHumano); //añadimos el id del humano a la lista de ids
-                actulizarHumanosEnTunel();
+                actualizarHumanosEnTunel();
                 PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
             
             while (humanosDentro > 0) {
@@ -94,7 +93,7 @@ public class Tunel {
         try {
             humanosDentro--;
             humanosDentroRef.remove(idHumano); //eliminamos el id del humano de la lista de ids
-            actulizarHumanosEnTunel();
+            actualizarHumanosEnTunel();
             PantallaPrincipal.getInstancia().actualizarTunelMedio(id, humanosDentroRef); //actualizo la pantalla del refugio
             PantallaPrincipal.getInstancia().actualizarTunelFuera(id, humanosEntrandoRef); //actualizo la pantalla del tunel
             if (humanosEntrando > 0) {

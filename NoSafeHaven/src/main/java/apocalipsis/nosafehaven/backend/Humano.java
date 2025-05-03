@@ -35,7 +35,7 @@ public class Humano extends Thread {
         estadoPausa.parar();
         refugio.unHumanoMas(); //cuando llega un humano, el contador de humanos aumenta
         refugio.humanoEntraRefugio(id); //cuando llega un humano, el contador de humanos aumenta
-        while (!muerto && !estadoPausa.estaDesconectado()) {
+        while (!muerto) {
             try {
 
                 irZonaComun();
@@ -64,7 +64,6 @@ public class Humano extends Thread {
                 if (!muerto) {
                     //si no ha sido atacado, tiene que irse aún de la zona exterior...
                     if (!herido) {
-                        estadoPausa.parar();
                         zonas[tunel].humanoIrse(this);
                         Log.escribir(id + " deja la zona exterior " + tunel + ".");
                         System.out.println(id + " deja la zona exterior " + tunel + ".");
@@ -119,7 +118,7 @@ public class Humano extends Thread {
 
         estadoPausa.parar();
         try {
-            sleep((int) ((Math.random() * 2000 + tiempomin) / Velocidad.getVelocidad())); //en zona descanso 3-5 seg
+            sleep((int) ((Math.random() * 2000 + tiempomin) / Velocidad.getVelocidad())); //en zona descanso 2-4 seg
         } catch (InterruptedException ex) {
             Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -129,7 +128,7 @@ public class Humano extends Thread {
         System.out.println(id + " sale de la zona de descanso.");
         estadoPausa.parar();
     }
-    // este metodo es exactamente igual que el anterior, a excepcion de que quita el herido del set de humanos heridos
+    // este metodo es exactamente igual que el anterior, a excepcion de que quita el herido del set de humanos heridos y los prints/logs son distintos
     public void irZonaDescansoHerido(int tiempomin) {
         estadoPausa.parar();
         refugio.irZonaDescanso(id);
@@ -203,7 +202,7 @@ public class Humano extends Thread {
             System.out.println(id + " intenta salir del refugio por el tunel " + tunel + ".");
 
             refugio.salirRefugio(tunel, id); // "sale" de la zona comun y espera en la entrada del tunel
-            //la llamada a refugio.humanoSalerefugio está dentro del propio metodo salirRefugio para que se vea mejor en la interfaz 
+            //la llamada a refugio.humanoSalerefugio está dentro del propio metodo salirRefugio para que se refleje mejor en la interfaz 
 
             estadoPausa.parar();
             sleep(1000 / Velocidad.getVelocidad()); //esperar 1seg cruzar tunel
