@@ -15,6 +15,7 @@ public class JDialogCliente extends javax.swing.JDialog {
     private String direccion;
     private int puerto;
     private boolean confirmado = false;
+    private boolean quiereSalir = false; //para cerrar el dialogo sin confirmar
 
     /**
      * Creates new form JDialogCliente
@@ -34,6 +35,10 @@ public class JDialogCliente extends javax.swing.JDialog {
 
     public boolean isConfirmado() {
         return confirmado;
+    }
+
+    public boolean isQuiereSalir() {
+        return quiereSalir;
     }
 
     /**
@@ -61,11 +66,16 @@ public class JDialogCliente extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(630, 360));
         setMinimumSize(new java.awt.Dimension(630, 360));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setMaximumSize(new java.awt.Dimension(630, 360));
         jPanel1.setMinimumSize(new java.awt.Dimension(630, 360));
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(630, 360));
+        jPanel1.setPreferredSize(new java.awt.Dimension(630, 350));
 
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(630, 360));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(630, 360));
@@ -187,7 +197,9 @@ public class JDialogCliente extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,7 +210,9 @@ public class JDialogCliente extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -248,6 +262,12 @@ public class JDialogCliente extends javax.swing.JDialog {
     private void direccionTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_direccionTextFieldMouseClicked
         direccionTextField.setText("");
     }//GEN-LAST:event_direccionTextFieldMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        quiereSalir = true; //marcamos que quiere salir sin confirmar
+        //dispose(); //cerramos el dialogo
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

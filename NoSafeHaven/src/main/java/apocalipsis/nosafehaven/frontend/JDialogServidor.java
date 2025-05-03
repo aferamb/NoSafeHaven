@@ -14,6 +14,7 @@ public class JDialogServidor extends javax.swing.JDialog {
 
     private int puerto;
     private boolean confirmado = false;
+    private boolean quiereSalir = false;
 
     /**
      * Creates new form JDialogCliente
@@ -29,6 +30,10 @@ public class JDialogServidor extends javax.swing.JDialog {
 
     public boolean isConfirmado() {
         return confirmado;
+    }
+
+    public boolean isQuiereSalir() {
+        return quiereSalir;
     }
 
     /**
@@ -53,11 +58,15 @@ public class JDialogServidor extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(630, 360));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setMaximumSize(new java.awt.Dimension(630, 360));
         jPanel1.setMinimumSize(new java.awt.Dimension(630, 360));
         jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(630, 360));
 
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(630, 360));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(630, 360));
@@ -125,7 +134,7 @@ public class JDialogServidor extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,6 +182,13 @@ public class JDialogServidor extends javax.swing.JDialog {
     private void botonListoConexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonListoConexionMouseClicked
         //esperarInicioCliente();
     }//GEN-LAST:event_botonListoConexionMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        quiereSalir = true;
+        //dispose();  // Cierra el JDialog
+        //System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

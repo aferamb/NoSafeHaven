@@ -16,12 +16,14 @@ public class NoSafeHaven {
 
             int intentos = 3;
             boolean conectado = false;
-            while (intentos > 0 && !conectado) {
+            boolean cerrar = false;
+            while (intentos > 0 && !conectado && !cerrar) {
                 JDialogServidor dialogo = new JDialogServidor(null, true); // modal
                 dialogo.setLocationRelativeTo(null);  // centrado
                 dialogo.setVisible(true);  // esto bloquea hasta que se cierre
+                cerrar = dialogo.isQuiereSalir(); //si se cierra el dialogo, no se ejecuta el resto del código
 
-                if (dialogo.isConfirmado()) {
+                if (dialogo.isConfirmado() && !cerrar) { //si se ha confirmado el dialogo y no se ha cerrado
                     int puerto = dialogo.getPuerto();
                     servidor.iniciarServidor(puerto);
                     if (servidor.getConectado()) {
@@ -32,7 +34,7 @@ public class NoSafeHaven {
                         intentos--;
                     }
 
-                } else {
+                } else if (!cerrar) { //si no se ha confirmado el dialogo y no se ha cerrado
                     System.out.println("No se inició la conexión. Intentos: " + (intentos - 1));
                     intentos--;
                 }
