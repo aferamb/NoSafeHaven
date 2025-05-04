@@ -24,18 +24,21 @@ public class Zombie extends Thread {
     }
 
     /**
-     * Método que representa el comportamiento de un hilo de tipo Zombie.
-     * El zombie selecciona aleatoriamente una zona exterior para buscar cerebros,
-     * realiza acciones como llegar, atacar y abandonar la zona, y luego repite el proceso.
-     * 
+     * Método que representa el comportamiento de un hilo de tipo Zombie. El
+     * zombie selecciona aleatoriamente una zona exterior para buscar cerebros,
+     * realiza acciones como llegar, atacar y abandonar la zona, y luego repite
+     * el proceso.
+     *
      * El método incluye pausas controladas por el objeto `estadoPausa` y simula
-     * tiempos de espera aleatorios para representar el comportamiento del zombie.
-     * 
-     * Maneja las siguientes excepciones:
-     * - InterruptedException: Si el hilo es interrumpido durante su ejecución.
-     * - Exception: Para capturar y registrar cualquier otro error inesperado.
-     * 
-     * Las acciones del zombie se registran en el log y se imprimen en la consola.
+     * tiempos de espera aleatorios para representar el comportamiento del
+     * zombie.
+     *
+     * Maneja las siguientes excepciones: - InterruptedException: Si el hilo es
+     * interrumpido durante su ejecución. - Exception: Para capturar y registrar
+     * cualquier otro error inesperado.
+     *
+     * Las acciones del zombie se registran en el log y se imprimen en la
+     * consola.
      */
     @Override
     public void run() {
@@ -45,7 +48,6 @@ public class Zombie extends Thread {
 
                 Log.escribir(id + " esta buscando cerebros en la zona exterior " + zona + ".");
                 System.out.println(id + " está buscando cerebros en la zona exterior " + zona + ".");
-                estadoPausa.parar();
                 zonas[zona].zombieLlegar(this);
                 estadoPausa.parar();
                 zonas[zona].zombieAtacar(this);
@@ -53,9 +55,9 @@ public class Zombie extends Thread {
                 sleep((int) ((Math.random() * 1000 + 2000) / Velocidad.getVelocidad())); //dormir 2-3 s
                 estadoPausa.parar();
                 zonas[zona].zombieIrse(this);
-                estadoPausa.parar();
                 Log.escribir(id + " abandona la zona exterior " + zona + ".");
                 System.out.println(id + " abandona la zona exterior " + zona + ".");
+                estadoPausa.parar();
                 //vuelve a buscar zona
 
             } catch (InterruptedException ie) {
@@ -80,15 +82,15 @@ public class Zombie extends Thread {
 
     /**
      * Realiza un ataque de un zombie a un humano.
-     * 
-     * El método simula un ataque de un zombie a un humano. Si el humano es herido,
-     * se registra en la pantalla principal. Si el humano es matado, se incrementa
-     * el contador de muertes del zombie, se actualiza el ranking y se registra el
-     * evento en el log. El tiempo del ataque es aleatorio y depende de la velocidad
-     * configurada.
-     * 
+     *
+     * El método simula un ataque de un zombie a un humano. Si el humano es
+     * herido, se registra en la pantalla principal. Si el humano es matado, se
+     * incrementa el contador de muertes del zombie, se actualiza el ranking y
+     * se registra el evento en el log. El tiempo del ataque es aleatorio y
+     * depende de la velocidad configurada.
+     *
      * @param matado indica si el humano ha sido matado o herido.
-     * @param hid    el identificador del humano atacado.
+     * @param hid el identificador del humano atacado.
      */
     public void atacar(boolean matado, String hid) {
         PantallaPrincipal.getInstancia().addHerido(hid);

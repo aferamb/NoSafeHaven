@@ -32,31 +32,31 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     // Instancia estática y volatile para evitar problemas de visibilidad entre hilos
     private static volatile PantallaPrincipal instancia;
 
-
     /**
-     * Constructor privado de la clase PantallaPrincipal.
-     * Inicializa los componentes de la interfaz gráfica de usuario.
-     * Este constructor está diseñado para ser utilizado internamente
-     * y no permite la creación directa de instancias desde fuera de la clase.
+     * Constructor privado de la clase PantallaPrincipal. Inicializa los
+     * componentes de la interfaz gráfica de usuario. Este constructor está
+     * diseñado para ser utilizado internamente y no permite la creación directa
+     * de instancias desde fuera de la clase.
      */
     private PantallaPrincipal() {
         initComponents();
     }
 
-
     /**
      * Establece el servidor que será utilizado por la aplicación.
      *
-     * @param servidor El objeto de tipo Servidor que se asignará a esta instancia.
+     * @param servidor El objeto de tipo Servidor que se asignará a esta
+     * instancia.
      */
     public void setServidor(Servidor servidor) {
         this.servidor = servidor;
     }
 
     /**
-     * Método estático para obtener la instancia única de la clase PantallaPrincipal.
-     * Implementa el patrón Singleton con doble verificación para garantizar que 
-     * solo se cree una instancia de la clase, incluso en un entorno multihilo.
+     * Método estático para obtener la instancia única de la clase
+     * PantallaPrincipal. Implementa el patrón Singleton con doble verificación
+     * para garantizar que solo se cree una instancia de la clase, incluso en un
+     * entorno multihilo.
      *
      * @return La instancia única de PantallaPrincipal.
      */
@@ -79,8 +79,9 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza la etiqueta de comida en la interfaz gráfica con el valor proporcionado.
-     * Este método asegura que la actualización se realice en el hilo de eventos de Swing.
+     * Actualiza la etiqueta de comida en la interfaz gráfica con el valor
+     * proporcionado. Este método asegura que la actualización se realice en el
+     * hilo de eventos de Swing.
      *
      * @param comida El nuevo valor de comida que se mostrará en la etiqueta.
      */
@@ -91,10 +92,10 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contador de humanos en la interfaz gráfica con el valor proporcionado.
-     * Este método asegura que la actualización se realice en el hilo
-     * de eventos de Swing.
-     * 
+     * Actualiza el contador de humanos en la interfaz gráfica con el valor
+     * proporcionado. Este método asegura que la actualización se realice en el
+     * hilo de eventos de Swing.
+     *
      * @param humanos El nuevo valor de humanos que se mostrará en el contador.
      */
     public void actualizarHumanos(int humanos) {
@@ -104,63 +105,67 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contenido de la zona común en la interfaz gráfica con una lista de IDs.
-     * 
-     * La actualización de la interfaz gráfica se realiza en el hilo de eventos de Swing 
-     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el acceso a 
-     * componentes de la interfaz.
-     * 
-     * @param listaIDs La lista de IDs que se mostrará en la zona común.
-     *                 Se espera que la lista contenga los IDs de los humanos presentes en la zona común.
-     *              La lista se mostrará en la interfaz gráfica, separando los IDs por espacios y
-     *              agregando un salto de línea cada 4 IDs.
+     * Actualiza el contenido de la zona común en la interfaz gráfica con una
+     * lista de IDs.
+     *
+     * La actualización de la interfaz gráfica se realiza en el hilo de eventos
+     * de Swing utilizando SwingUtilities.invokeLater para garantizar la
+     * seguridad en el acceso a componentes de la interfaz.
+     *
+     * @param listaIDs La lista de IDs que se mostrará en la zona común. Se
+     * espera que la lista contenga los IDs de los humanos presentes en la zona
+     * común. La lista se mostrará en la interfaz gráfica, separando los IDs por
+     * espacios y agregando un salto de línea cada 4 IDs.
      */
     public void actualizarZonaComun(CopyOnWriteArrayList<String> listaIDs) {
-        SwingUtilities.invokeLater(() -> {
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-            for (String id : listaIDs) {
-                sb.append(id);
-                count++;
-                if (count % 4 == 0) {
-                    sb.append("\n");
-                } else {
-                    sb.append(" ");
-                }
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (String id : listaIDs) {
+            sb.append(id);
+            count++;
+            if (count % 4 == 0) {
+                sb.append("\n");
+            } else {
+                sb.append(" ");
             }
+        }
+        SwingUtilities.invokeLater(() -> {
             ZonaComun.setText(sb.toString());
         });
     }
 
-
     /**
-     * Actualiza el contenido del componente "Comedor" con una lista de IDs proporcionada.
-     * 
-     * @param listaIDs Una lista segura para subprocesos (CopyOnWriteArrayList) que contiene
-     *                 los IDs que se mostrarán en el componente "Comedor". Cada ID se mostrará
-     *                 en una línea separada.
+     * Actualiza el contenido del componente "Comedor" con una lista de IDs
+     * proporcionada.
+     *
+     * @param listaIDs Una lista segura para subprocesos (CopyOnWriteArrayList)
+     * que contiene los IDs que se mostrarán en el componente "Comedor". Cada ID
+     * se mostrará en una línea separada.
      */
     public void actualizarComedor(CopyOnWriteArrayList<String> listaIDs) {
         actualizarTextPaneConColor(Comedor, listaIDs, heridos, 4); // 1 ID por línea
     }
 
     /**
-     * Actualiza el contenido del componente "Zona de Descanso" con una lista de IDs proporcionada.
-     * 
-     * @param listaIDs Una lista segura para subprocesos (CopyOnWriteArrayList) que contiene
-     *                 los IDs que se mostrarán en el componente "Zona de Descanso". Cada ID se mostrará
-     *                 en una línea separada.
+     * Actualiza el contenido del componente "Zona de Descanso" con una lista de
+     * IDs proporcionada.
+     *
+     * @param listaIDs Una lista segura para subprocesos (CopyOnWriteArrayList)
+     * que contiene los IDs que se mostrarán en el componente "Zona de
+     * Descanso". Cada ID se mostrará en una línea separada.
      */
     public void actualizarZonaDescanso(CopyOnWriteArrayList<String> listaIDs) {
         actualizarTextPaneConColor(ZonaDescanso, listaIDs, heridos, 4); // 4 IDs por línea
     }
 
     /**
-     * Actualiza el contenido de un túnel específico con una lista de IDs proporcionada.
-     * Dependiendo del túnel especificado, se actualiza el componente gráfico correspondiente.
+     * Actualiza el contenido de un túnel específico con una lista de IDs
+     * proporcionada. Dependiendo del túnel especificado, se actualiza el
+     * componente gráfico correspondiente.
      *
      * @param tunel El número del túnel a actualizar (0, 1, 2 o 3).
-     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del túnel.
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el
+     * contenido del túnel.
      */
     public void actualizarTunel(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         switch (tunel) {
@@ -180,11 +185,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contenido del túnel medio con una lista de IDs proporcionada.
-     * Dependiendo del túnel especificado, se actualiza el componente gráfico correspondiente.
+     * Actualiza el contenido del túnel medio con una lista de IDs
+     * proporcionada. Dependiendo del túnel especificado, se actualiza el
+     * componente gráfico correspondiente.
      *
      * @param tunel El número del túnel a actualizar (0, 1, 2 o 3).
-     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del túnel medio.
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el
+     * contenido del túnel medio.
      */
     public void actualizarTunelMedio(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         switch (tunel) {
@@ -204,11 +211,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contenido del túnel fuera con una lista de IDs proporcionada.
-     * Dependiendo del túnel especificado, se actualiza el componente gráfico correspondiente.
+     * Actualiza el contenido del túnel fuera con una lista de IDs
+     * proporcionada. Dependiendo del túnel especificado, se actualiza el
+     * componente gráfico correspondiente.
      *
      * @param tunel El número del túnel a actualizar (0, 1, 2 o 3).
-     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del túnel fuera.
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el
+     * contenido del túnel fuera.
      */
     public void actualizarTunelFuera(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         switch (tunel) {
@@ -228,25 +237,27 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contenido de los exteriores con una lista de IDs proporcionada.
-     * Dependiendo del exterior especificado, se actualiza el componente gráfico correspondiente.
+     * Actualiza el contenido de los exteriores con una lista de IDs
+     * proporcionada. Dependiendo del exterior especificado, se actualiza el
+     * componente gráfico correspondiente.
      *
      * @param exterior El número del exterior a actualizar (0, 1, 2 o 3).
-     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del exterior.
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el
+     * contenido del exterior.
      */
     public void actualizarExteriorHumanos(int exterior, CopyOnWriteArrayList<String> listaIDs) {
-        SwingUtilities.invokeLater(() -> {
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-            for (String id : listaIDs) {
-                sb.append(id);
-                count++;
-                if (count % 3 == 0) {
-                    sb.append("\n");
-                } else {
-                    sb.append(" ");
-                }
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (String id : listaIDs) {
+            sb.append(id);
+            count++;
+            if (count % 3 == 0) {
+                sb.append("\n");
+            } else {
+                sb.append(" ");
             }
+        }
+        SwingUtilities.invokeLater(() -> {
             switch (exterior) {
                 case 0:
                     Exterior1.setText(sb.toString());
@@ -265,25 +276,27 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contenido de los exteriores con una lista de IDs de zombis proporcionada.
-     * Dependiendo del exterior especificado, se actualiza el componente gráfico correspondiente.
+     * Actualiza el contenido de los exteriores con una lista de IDs de zombis
+     * proporcionada. Dependiendo del exterior especificado, se actualiza el
+     * componente gráfico correspondiente.
      *
      * @param exterior El número del exterior a actualizar (0, 1, 2 o 3).
-     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del exterior.
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el
+     * contenido del exterior.
      */
     public void actualizarExteriorZombies(int exterior, CopyOnWriteArrayList<String> listaIDs) {
-        SwingUtilities.invokeLater(() -> {
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-            for (String id : listaIDs) {
-                sb.append(id);
-                count++;
-                if (count % 3 == 0) {
-                    sb.append("\n");
-                } else {
-                    sb.append(" ");
-                }
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (String id : listaIDs) {
+            sb.append(id);
+            count++;
+            if (count % 3 == 0) {
+                sb.append("\n");
+            } else {
+                sb.append(" ");
             }
+        }
+        SwingUtilities.invokeLater(() -> {
             switch (exterior) {
                 case 0:
                     ExteriorZ1.setText(sb.toString());
@@ -306,7 +319,8 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
      * utilizando un bloqueo para garantizar la sincronización en un entorno
      * concurrente.
      *
-     * @param id El identificador único del herido que se desea agregar a la lista.
+     * @param id El identificador único del herido que se desea agregar a la
+     * lista.
      */
     public void addHerido(String id) {
         heridosLock.lock();
@@ -318,11 +332,12 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Elimina un identificador de herido de la lista de heridos de manera segura
-     * utilizando un bloqueo para garantizar la sincronización en un entorno
-     * concurrente.
+     * Elimina un identificador de herido de la lista de heridos de manera
+     * segura utilizando un bloqueo para garantizar la sincronización en un
+     * entorno concurrente.
      *
-     * @param id El identificador único del herido que se desea eliminar de la lista.
+     * @param id El identificador único del herido que se desea eliminar de la
+     * lista.
      */
     public void quitarHerido(String id) {
         heridosLock.lock();
@@ -334,49 +349,45 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el contenido de un JTextPane con una lista de IDs, aplicando colores
-     * específicos según si los IDs están en un conjunto de IDs heridos. Además, organiza
-     * los IDs en líneas según el número especificado por parámetro.
+     * Actualiza el contenido de un JTextPane con una lista de IDs, aplicando
+     * colores específicos según si los IDs están en un conjunto de IDs heridos.
+     * Además, organiza los IDs en líneas según el número especificado por
+     * parámetro.
      *
-     * @param textPane   El JTextPane que se actualizará con el contenido.
-     * @param listaIDs   Una lista de IDs que se mostrarán en el JTextPane.
+     * @param textPane El JTextPane que se actualizará con el contenido.
+     * @param listaIDs Una lista de IDs que se mostrarán en el JTextPane.
      * @param idsHeridos Un conjunto de IDs que serán resaltados en color rojo.
-     * @param porLinea   Número de IDs que se mostrarán por línea. Si es 1, los IDs se
-     *                   separarán por espacios; si es mayor que 1, se insertará un salto
-     *                   de línea después de cada grupo de IDs.
+     * @param porLinea Número de IDs que se mostrarán por línea. Si es 1, los
+     * IDs se separarán por espacios; si es mayor que 1, se insertará un salto
+     * de línea después de cada grupo de IDs.
      */
     private void actualizarTextPaneConColor(JTextPane textPane, CopyOnWriteArrayList<String> listaIDs, Set<String> idsHeridos, int porLinea) {
-        SwingUtilities.invokeLater(() -> {
-            StyledDocument doc = textPane.getStyledDocument();
+        // Crear contenido completo fuera del EDT
+        javax.swing.text.StyledDocument nuevoDoc = new javax.swing.text.DefaultStyledDocument();
 
-            // Limpiar texto anterior
+        StyleConstants.setForeground(estiloNormal, Color.BLACK);
+        StyleConstants.setForeground(estiloHerido, Color.RED);
+
+        int count = 0;
+        for (String id : listaIDs) {
+            SimpleAttributeSet estilo = idsHeridos.contains(id) ? estiloHerido : estiloNormal;
             try {
-                doc.remove(0, doc.getLength());
+                nuevoDoc.insertString(nuevoDoc.getLength(), id, estilo);
+                count++;
+                if (porLinea == 1 && count % porLinea == 0) {
+                    nuevoDoc.insertString(nuevoDoc.getLength(), " ", estiloNormal);
+                } else if (porLinea > 0 && count % porLinea == 0) {
+                    nuevoDoc.insertString(nuevoDoc.getLength(), "\n", estiloNormal);
+                } else {
+                    nuevoDoc.insertString(nuevoDoc.getLength(), " ", estiloNormal);
+                }
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }
+        }
 
-            StyleConstants.setForeground(estiloNormal, Color.BLACK);
-            StyleConstants.setForeground(estiloHerido, Color.RED);
-
-            int count = 0;
-            for (String id : listaIDs) {
-                try {
-                    SimpleAttributeSet estilo = idsHeridos.contains(id) ? estiloHerido : estiloNormal;
-                    doc.insertString(doc.getLength(), id, estilo);
-                    count++;
-                    if (porLinea == 1 && count % porLinea == 0) {
-                        doc.insertString(doc.getLength(), " ", estiloNormal);
-                    } else if (porLinea > 0 && count % porLinea == 0) {
-                        doc.insertString(doc.getLength(), "\n", estiloNormal);
-                    } else {
-                        doc.insertString(doc.getLength(), " ", estiloNormal);
-                    }
-                } catch (BadLocationException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        // Reemplazar el documento completo en el EDT
+        SwingUtilities.invokeLater(() -> textPane.setDocument(nuevoDoc));
     }
 
     /**
@@ -487,6 +498,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jLabel1.setText("Zona Común");
 
         ZonaComun.setEditable(false);
+        ZonaComun.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane20.setViewportView(ZonaComun);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -524,6 +536,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         comida.setText("Comida: 0");
 
         Comedor.setEditable(false);
+        Comedor.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane24.setViewportView(Comedor);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -560,6 +573,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Zona de Descanso");
 
         ZonaDescanso.setEditable(false);
+        ZonaDescanso.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane1.setViewportView(ZonaDescanso);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -649,9 +663,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(MedioT1);
 
         DentroT1.setEditable(false);
+        DentroT1.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane21.setViewportView(DentroT1);
 
         FueraT1.setEditable(false);
+        FueraT1.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane16.setViewportView(FueraT1);
 
         javax.swing.GroupLayout Tunel1Layout = new javax.swing.GroupLayout(Tunel1);
@@ -690,9 +706,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(MedioT2);
 
         DentroT2.setEditable(false);
+        DentroT2.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane13.setViewportView(DentroT2);
 
         FueraT2.setEditable(false);
+        FueraT2.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane5.setViewportView(FueraT2);
 
         javax.swing.GroupLayout Tunel2Layout = new javax.swing.GroupLayout(Tunel2);
@@ -730,8 +748,10 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane22.setViewportView(MedioT3);
 
         DentroT3.setEditable(false);
+        DentroT3.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane14.setViewportView(DentroT3);
 
+        FueraT3.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane6.setViewportView(FueraT3);
 
         javax.swing.GroupLayout Tunel3Layout = new javax.swing.GroupLayout(Tunel3);
@@ -770,9 +790,11 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane23.setViewportView(MedioT4);
 
         DentroT4.setEditable(false);
+        DentroT4.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane17.setViewportView(DentroT4);
 
         FueraT4.setEditable(false);
+        FueraT4.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane8.setViewportView(FueraT4);
 
         javax.swing.GroupLayout Tunel4Layout = new javax.swing.GroupLayout(Tunel4);
@@ -861,27 +883,35 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jLabel8.setText("Zombies");
 
         Exterior1.setEditable(false);
+        Exterior1.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane9.setViewportView(Exterior1);
 
         Exterior2.setEditable(false);
+        Exterior2.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane4.setViewportView(Exterior2);
 
         Exterior3.setEditable(false);
+        Exterior3.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane7.setViewportView(Exterior3);
 
         Exterior4.setEditable(false);
+        Exterior4.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane10.setViewportView(Exterior4);
 
         ExteriorZ1.setEditable(false);
+        ExteriorZ1.setMargin(new java.awt.Insets(62, 20, 20, 20));
         jScrollPane11.setViewportView(ExteriorZ1);
 
         ExteriorZ2.setEditable(false);
+        ExteriorZ2.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane12.setViewportView(ExteriorZ2);
 
         ExteriorZ3.setEditable(false);
+        ExteriorZ3.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane25.setViewportView(ExteriorZ3);
 
         ExteriorZ4.setEditable(false);
+        ExteriorZ4.setMaximumSize(new java.awt.Dimension(62, 20));
         jScrollPane26.setViewportView(ExteriorZ4);
 
         javax.swing.GroupLayout ExteriorLayout = new javax.swing.GroupLayout(Exterior);

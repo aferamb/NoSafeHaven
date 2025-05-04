@@ -200,6 +200,9 @@
                         <Component class="javax.swing.JTextPane" name="ZonaComun">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -280,6 +283,9 @@
                         <Component class="javax.swing.JTextPane" name="Comedor">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -342,6 +348,9 @@
                         <Component class="javax.swing.JTextPane" name="ZonaDescanso">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -511,6 +520,9 @@
                         <Component class="javax.swing.JTextPane" name="DentroT1">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -525,6 +537,9 @@
                         <Component class="javax.swing.JTextPane" name="FueraT1">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -599,6 +614,9 @@
                         <Component class="javax.swing.JTextPane" name="DentroT2">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -613,6 +631,9 @@
                         <Component class="javax.swing.JTextPane" name="FueraT2">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -688,6 +709,9 @@
                         <Component class="javax.swing.JTextPane" name="DentroT3">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -700,6 +724,11 @@
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
                         <Component class="javax.swing.JTextPane" name="FueraT3">
+                          <Properties>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -769,6 +798,9 @@
                         <Component class="javax.swing.JTextPane" name="DentroT4">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -783,6 +815,9 @@
                         <Component class="javax.swing.JTextPane" name="FueraT4">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                              <Dimension value="[62, 20]"/>
+                            </Property>
                           </Properties>
                         </Component>
                       </SubComponents>
@@ -952,6 +987,9 @@
                     <Component class="javax.swing.JTextPane" name="Exterior1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -966,6 +1004,9 @@
                     <Component class="javax.swing.JTextPane" name="Exterior2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -980,6 +1021,9 @@
                     <Component class="javax.swing.JTextPane" name="Exterior3">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -994,6 +1038,9 @@
                     <Component class="javax.swing.JTextPane" name="Exterior4">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1008,6 +1055,9 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                          <Insets value="[62, 20, 20, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1022,6 +1072,9 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1036,6 +1089,9 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ3">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1050,6 +1106,9 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ4">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[62, 20]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
