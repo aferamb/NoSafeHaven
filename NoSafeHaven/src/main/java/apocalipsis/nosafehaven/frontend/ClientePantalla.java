@@ -15,7 +15,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
     // Instancia estática y volatile para evitar problemas de visibilidad entre hilos
     private static volatile ClientePantalla instancia;
 
-    public static volatile boolean paused = false;
+    private static volatile boolean paused = false;
 
     private Cliente cliente;
 

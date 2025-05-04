@@ -24,7 +24,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     private Servidor servidor; //para desconectar al pulsar cerrar
 
     private Set<String> heridos = new HashSet(); // Conjunto para almacenar los IDs de los heridos
-    public static final ReentrantLock heridosLock = new ReentrantLock();
+    private static final ReentrantLock heridosLock = new ReentrantLock();
 
     SimpleAttributeSet estiloNormal = new SimpleAttributeSet();
     SimpleAttributeSet estiloHerido = new SimpleAttributeSet();
@@ -901,7 +901,6 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         ExteriorZ1.setEditable(false);
         ExteriorZ1.setMaximumSize(new java.awt.Dimension(62, 20));
         ExteriorZ1.setMinimumSize(new java.awt.Dimension(62, 20));
-        ExteriorZ1.setPreferredSize(new java.awt.Dimension(62, 20));
         jScrollPane11.setViewportView(ExteriorZ1);
 
         ExteriorZ2.setEditable(false);
