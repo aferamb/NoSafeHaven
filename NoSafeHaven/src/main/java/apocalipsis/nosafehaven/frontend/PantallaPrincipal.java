@@ -581,7 +581,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(64, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(50, 50, 50))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -899,7 +899,9 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         jScrollPane10.setViewportView(Exterior4);
 
         ExteriorZ1.setEditable(false);
-        ExteriorZ1.setMargin(new java.awt.Insets(62, 20, 20, 20));
+        ExteriorZ1.setMaximumSize(new java.awt.Dimension(62, 20));
+        ExteriorZ1.setMinimumSize(new java.awt.Dimension(62, 20));
+        ExteriorZ1.setPreferredSize(new java.awt.Dimension(62, 20));
         jScrollPane11.setViewportView(ExteriorZ1);
 
         ExteriorZ2.setEditable(false);
