@@ -490,8 +490,8 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
                     .addGroup(RefugioLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(RefugioLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
@@ -518,7 +518,7 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(Refugio, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(Refugio);
-        Refugio.setBounds(210, 140, 289, 620);
+        Refugio.setBounds(210, 140, 291, 620);
 
         Tuneles.setBackground(new java.awt.Color(153, 102, 255));
         Tuneles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));

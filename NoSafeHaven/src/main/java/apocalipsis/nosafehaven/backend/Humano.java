@@ -60,18 +60,13 @@ public class Humano extends Thread {
                     zonas[tunel].humanoAtacado(this);
                     estadoPausa.parar();
                 }
-                if (siendoAtacado) {
-                    zonas[tunel].humanoAtacado(this);
-                }
+
+                zonas[tunel].humanoIrse(this);
 
                 if (!muerto) {
-                    //si no ha sido atacado, tiene que irse aún de la zona exterior...
-                    if (!herido) {
-                        zonas[tunel].humanoIrse(this);
-                        Log.escribir(id + " deja la zona exterior " + tunel + ".");
-                        System.out.println(id + " deja la zona exterior " + tunel + ".");
-                        estadoPausa.parar();
-                    }
+                    Log.escribir(id + " deja la zona exterior " + tunel + ".");
+                    System.out.println(id + " deja la zona exterior " + tunel + ".");
+
                     estadoPausa.parar();
                     entrarRefugio(tunel);
                     if (!herido) {

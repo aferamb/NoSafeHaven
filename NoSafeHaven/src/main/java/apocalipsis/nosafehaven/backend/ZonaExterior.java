@@ -84,11 +84,15 @@ public class ZonaExterior {
     }
 
     public void humanoIrse(Humano h) {
-        ctdhumanos.decrementAndGet();
-        listaIDsHumanos.remove(h.getid()); //eliminamos el id del humano de la lista de ids
-        humanos.remove(h);
-        PantallaPrincipal.getInstancia().actualizarExteriorHumanos(id, listaIDsHumanos); //actualizo la pantalla de la zona exterior
-        servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
+        if (!h.isMuerto() && !h.isHerido() && !h.isSiendoAtacado()) {
+            ctdhumanos.decrementAndGet();
+            listaIDsHumanos.remove(h.getid()); //eliminamos el id del humano de la lista de ids
+            humanos.remove(h);
+            PantallaPrincipal.getInstancia().actualizarExteriorHumanos(id, listaIDsHumanos); //actualizo la pantalla de la zona exterior
+            servidor.actualizarDatosHumanosZonaRiesgo(id, ctdhumanos.get()); //actualizo la capacidad de la zona exterior
+        } else if (h.isSiendoAtacado()) {
+            humanoAtacado(h);
+        }
     }
 
     public synchronized void humanoAtacado(Humano h) {
