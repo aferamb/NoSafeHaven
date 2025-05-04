@@ -155,6 +155,20 @@ public class JDialogServidor extends javax.swing.JDialog {
         puertoTextField.setText("");
     }//GEN-LAST:event_puertoTextFieldMouseClicked
 
+    /**
+     * Maneja el evento de acción del botón "Listo" para establecer la conexión.
+     * 
+     * Este método se ejecuta cuando el usuario hace clic en el botón "Listo" en la interfaz gráfica.
+     * Valida el puerto ingresado por el usuario, asegurándose de que esté dentro del rango permitido
+     * (1024–65535). Si el puerto es válido, lo asigna a la variable correspondiente y marca la conexión
+     * como confirmada. En caso de error, muestra un mensaje de advertencia o error al usuario.
+     * 
+     * @param evt El evento de acción generado por el clic del usuario en el botón.
+     * 
+     * Excepciones manejadas:
+     * - NumberFormatException: Si el texto ingresado no es un número válido.
+     * - Exception: Cualquier otro error inesperado durante la validación o el procesamiento.
+     */
     private void botonListoConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListoConexionActionPerformed
         try {
             int port = Integer.parseInt(puertoTextField.getText());

@@ -19,16 +19,29 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
     private Cliente cliente;
 
-    // Constructor privado para evitar la instanciación directa
+    /**
+     * Constructor privado para evitar la creación de instancias
+     */
     private ClientePantalla() {
         initComponents();
     }
 
+    /**
+     * Establece el cliente asociado a esta pantalla.
+     *
+     * @param cliente El objeto Cliente que se desea asociar.
+     */
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    // Método estático que obtiene la instancia del Singleton
+    /**
+     * Obtiene la instancia única de la clase ClientePantalla utilizando el patrón Singleton.
+     * Este método garantiza que solo se cree una única instancia de ClientePantalla,
+     * incluso en un entorno multihilo, mediante el uso de sincronización y doble comprobación.
+     *
+     * @return La instancia única de ClientePantalla.
+     */
     public static ClientePantalla getInstancia() {
         // Primero se verifica si la instancia ya está creada
         ClientePantalla result = instancia;
@@ -47,30 +60,70 @@ public final class ClientePantalla extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Actualiza el texto de la etiqueta de comida en la interfaz gráfica.
+     * Este método asegura que la actualización se realice en el hilo de
+     * despacho de eventos de Swing para evitar problemas de concurrencia.
+     *
+     * @param comida La cantidad o descripción de comida que se mostrará en la etiqueta.
+     */
     public void actualizarComida(String comida) {
         SwingUtilities.invokeLater(() -> {
             this.comida.setText("Comida: " + comida);
         });
     }
 
+    /**
+     * Actualiza la información del refugio en la interfaz gráfica de usuario.
+     * 
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
+     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
+     * 
+     * @param num El número de humanos en el refugio que se mostrará en la etiqueta.
+     */
     public void actualizarRefugio(String num) {
         SwingUtilities.invokeLater(() -> {
             this.NumHumanos.setText("Nº humanos: " + num);
         });
     }
 
+    /**
+     * Actualiza el número de humanos en la interfaz gráfica de usuario.
+     * 
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
+     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
+     * 
+     * @param num El número de humanos que se mostrará en la etiqueta.
+     */
     public void actualizarTotalHumanos(String num) {
         SwingUtilities.invokeLater(() -> {
             this.humanos.setText(num);
         });
     }
 
+    /**
+     * Actualiza el número de zombies en la interfaz gráfica de usuario.
+     * 
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
+     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
+     * 
+     * @param num El número de zombies que se mostrará en la etiqueta.
+     */
     public void actualizarTotalZombies(String num) {
         SwingUtilities.invokeLater(() -> {
             this.zombies.setText(num);
         });
     }
 
+    /**
+     * Actualiza el número de humanos en un túnel específico.
+     * 
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
+     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
+     * 
+     * @param tunel El número del túnel que se actualizará (0-3).
+     * @param num El número de humanos que se mostrará en la etiqueta del túnel.
+     */
     public void actualizarTunel(int tunel, String num) {
         SwingUtilities.invokeLater(() -> {
 
@@ -91,6 +144,17 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
     }
 
+    
+    /**
+     * Actualiza la información del número de humanos en un exterior específico de la interfaz gráfica.
+     *
+     * La actualización de la interfaz gráfica se realiza en el hilo de eventos de Swing
+     * utilizando {@code SwingUtilities.invokeLater} para garantizar la seguridad en el acceso
+     * a los componentes de la interfaz.
+     * 
+     * @param exterior El número del exterior que se actualizará (0-3).
+     * @param numH El número de humanos que se mostrará en la etiqueta del exterior.
+     */
     public void actualizarExteriorHumanos(int exterior, String numH) {
         SwingUtilities.invokeLater(() -> {
             switch (exterior) {
@@ -110,6 +174,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Actualiza la información del número de zombies en un exterior específico de la interfaz gráfica.
+     *
+     * La actualización de la interfaz gráfica se realiza en el hilo de eventos de Swing
+     * utilizando {@code SwingUtilities.invokeLater} para garantizar la seguridad en el acceso
+     * a los componentes de la interfaz.
+     * 
+     * @param exterior El número del exterior que se actualizará (0-3).
+     * @param numZ El número de zombies que se mostrará en la etiqueta del exterior.
+     */
     public void actualizarExteriorZombies(int exterior, String numZ) {
         SwingUtilities.invokeLater(() -> {
             switch (exterior) {
@@ -129,6 +203,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Actualiza el texto de un componente de la interfaz gráfica basado en el ranking proporcionado.
+     *      
+     * La actualización del texto se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
+     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la interfaz.
+     * 
+     * @param ranking El número del ranking (1, 2 o 3) que determina qué componente actualizar.
+     *                Debe ser un valor entero entre 1 y 3.
+     * @param valor   El texto que se establecerá en el componente correspondiente al ranking.
+     */
     public void actualizarRanking(int ranking, String valor) {
         SwingUtilities.invokeLater(() -> {
             switch (ranking) {
@@ -141,10 +225,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 case 3:
                     z3.setText(valor);
                     break;
-
             }
         });
-
     }
 
     /**

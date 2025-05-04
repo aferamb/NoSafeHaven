@@ -32,16 +32,34 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
     // Instancia estática y volatile para evitar problemas de visibilidad entre hilos
     private static volatile PantallaPrincipal instancia;
 
-    // Constructor privado para evitar la instanciación directa
+
+    /**
+     * Constructor privado de la clase PantallaPrincipal.
+     * Inicializa los componentes de la interfaz gráfica de usuario.
+     * Este constructor está diseñado para ser utilizado internamente
+     * y no permite la creación directa de instancias desde fuera de la clase.
+     */
     private PantallaPrincipal() {
         initComponents();
     }
 
+
+    /**
+     * Establece el servidor que será utilizado por la aplicación.
+     *
+     * @param servidor El objeto de tipo Servidor que se asignará a esta instancia.
+     */
     public void setServidor(Servidor servidor) {
         this.servidor = servidor;
     }
 
-    // Método estático que obtiene la instancia del Singleton
+    /**
+     * Método estático para obtener la instancia única de la clase PantallaPrincipal.
+     * Implementa el patrón Singleton con doble verificación para garantizar que 
+     * solo se cree una instancia de la clase, incluso en un entorno multihilo.
+     *
+     * @return La instancia única de PantallaPrincipal.
+     */
     public static PantallaPrincipal getInstancia() {
         // Primero se verifica si la instancia ya está creada
         PantallaPrincipal result = instancia;
@@ -60,18 +78,43 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Actualiza la etiqueta de comida en la interfaz gráfica con el valor proporcionado.
+     * Este método asegura que la actualización se realice en el hilo de eventos de Swing.
+     *
+     * @param comida El nuevo valor de comida que se mostrará en la etiqueta.
+     */
     public void actualizarComida(int comida) {
         SwingUtilities.invokeLater(() -> {
             this.comida.setText("Comida: " + comida);
         });
     }
 
+    /**
+     * Actualiza el contador de humanos en la interfaz gráfica con el valor proporcionado.
+     * Este método asegura que la actualización se realice en el hilo
+     * de eventos de Swing.
+     * 
+     * @param humanos El nuevo valor de humanos que se mostrará en el contador.
+     */
     public void actualizarHumanos(int humanos) {
         SwingUtilities.invokeLater(() -> {
             this.counterHumanos.setText("Humanos: " + humanos);
         });
     }
 
+    /**
+     * Actualiza el contenido de la zona común en la interfaz gráfica con una lista de IDs.
+     * 
+     * La actualización de la interfaz gráfica se realiza en el hilo de eventos de Swing 
+     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el acceso a 
+     * componentes de la interfaz.
+     * 
+     * @param listaIDs La lista de IDs que se mostrará en la zona común.
+     *                 Se espera que la lista contenga los IDs de los humanos presentes en la zona común.
+     *              La lista se mostrará en la interfaz gráfica, separando los IDs por espacios y
+     *              agregando un salto de línea cada 4 IDs.
+     */
     public void actualizarZonaComun(CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
@@ -89,14 +132,36 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
+
+    /**
+     * Actualiza el contenido del componente "Comedor" con una lista de IDs proporcionada.
+     * 
+     * @param listaIDs Una lista segura para subprocesos (CopyOnWriteArrayList) que contiene
+     *                 los IDs que se mostrarán en el componente "Comedor". Cada ID se mostrará
+     *                 en una línea separada.
+     */
     public void actualizarComedor(CopyOnWriteArrayList<String> listaIDs) {
         actualizarTextPaneConColor(Comedor, listaIDs, heridos, 4); // 1 ID por línea
     }
 
+    /**
+     * Actualiza el contenido del componente "Zona de Descanso" con una lista de IDs proporcionada.
+     * 
+     * @param listaIDs Una lista segura para subprocesos (CopyOnWriteArrayList) que contiene
+     *                 los IDs que se mostrarán en el componente "Zona de Descanso". Cada ID se mostrará
+     *                 en una línea separada.
+     */
     public void actualizarZonaDescanso(CopyOnWriteArrayList<String> listaIDs) {
         actualizarTextPaneConColor(ZonaDescanso, listaIDs, heridos, 4); // 4 IDs por línea
     }
 
+    /**
+     * Actualiza el contenido de un túnel específico con una lista de IDs proporcionada.
+     * Dependiendo del túnel especificado, se actualiza el componente gráfico correspondiente.
+     *
+     * @param tunel El número del túnel a actualizar (0, 1, 2 o 3).
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del túnel.
+     */
     public void actualizarTunel(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         switch (tunel) {
             case 0:
@@ -114,6 +179,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Actualiza el contenido del túnel medio con una lista de IDs proporcionada.
+     * Dependiendo del túnel especificado, se actualiza el componente gráfico correspondiente.
+     *
+     * @param tunel El número del túnel a actualizar (0, 1, 2 o 3).
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del túnel medio.
+     */
     public void actualizarTunelMedio(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         switch (tunel) {
             case 0:
@@ -131,6 +203,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Actualiza el contenido del túnel fuera con una lista de IDs proporcionada.
+     * Dependiendo del túnel especificado, se actualiza el componente gráfico correspondiente.
+     *
+     * @param tunel El número del túnel a actualizar (0, 1, 2 o 3).
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del túnel fuera.
+     */
     public void actualizarTunelFuera(int tunel, CopyOnWriteArrayList<String> listaIDs) {
         switch (tunel) {
             case 0:
@@ -148,6 +227,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Actualiza el contenido de los exteriores con una lista de IDs proporcionada.
+     * Dependiendo del exterior especificado, se actualiza el componente gráfico correspondiente.
+     *
+     * @param exterior El número del exterior a actualizar (0, 1, 2 o 3).
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del exterior.
+     */
     public void actualizarExteriorHumanos(int exterior, CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
@@ -178,6 +264,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Actualiza el contenido de los exteriores con una lista de IDs de zombis proporcionada.
+     * Dependiendo del exterior especificado, se actualiza el componente gráfico correspondiente.
+     *
+     * @param exterior El número del exterior a actualizar (0, 1, 2 o 3).
+     * @param listaIDs Una lista de IDs que se utilizarán para actualizar el contenido del exterior.
+     */
     public void actualizarExteriorZombies(int exterior, CopyOnWriteArrayList<String> listaIDs) {
         SwingUtilities.invokeLater(() -> {
             StringBuilder sb = new StringBuilder();
@@ -208,6 +301,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Agrega un identificador de herido a la lista de heridos de manera segura
+     * utilizando un bloqueo para garantizar la sincronización en un entorno
+     * concurrente.
+     *
+     * @param id El identificador único del herido que se desea agregar a la lista.
+     */
     public void addHerido(String id) {
         heridosLock.lock();
         try {
@@ -217,6 +317,13 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Elimina un identificador de herido de la lista de heridos de manera segura
+     * utilizando un bloqueo para garantizar la sincronización en un entorno
+     * concurrente.
+     *
+     * @param id El identificador único del herido que se desea eliminar de la lista.
+     */
     public void quitarHerido(String id) {
         heridosLock.lock();
         try {
@@ -226,6 +333,18 @@ public final class PantallaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Actualiza el contenido de un JTextPane con una lista de IDs, aplicando colores
+     * específicos según si los IDs están en un conjunto de IDs heridos. Además, organiza
+     * los IDs en líneas según el número especificado por parámetro.
+     *
+     * @param textPane   El JTextPane que se actualizará con el contenido.
+     * @param listaIDs   Una lista de IDs que se mostrarán en el JTextPane.
+     * @param idsHeridos Un conjunto de IDs que serán resaltados en color rojo.
+     * @param porLinea   Número de IDs que se mostrarán por línea. Si es 1, los IDs se
+     *                   separarán por espacios; si es mayor que 1, se insertará un salto
+     *                   de línea después de cada grupo de IDs.
+     */
     private void actualizarTextPaneConColor(JTextPane textPane, CopyOnWriteArrayList<String> listaIDs, Set<String> idsHeridos, int porLinea) {
         SwingUtilities.invokeLater(() -> {
             StyledDocument doc = textPane.getStyledDocument();
