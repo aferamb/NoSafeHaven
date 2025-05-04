@@ -10,7 +10,26 @@ import apocalipsis.nosafehaven.frontend.JDialogCliente;
 public class MainCliente {
 
     /**
-     * @param args the command line arguments
+     * Método principal que gestiona la conexión de un cliente a un servidor.
+     * 
+     * Este método realiza los siguientes pasos:
+     * 1. Crea una instancia de Cliente y la asocia a la pantalla principal.
+     * 2. Intenta conectar al servidor mediante un diálogo modal que solicita la dirección y el puerto.
+     * 3. Permite hasta 3 intentos de conexión antes de cerrar la aplicación.
+     * 4. Si la conexión es exitosa, inicia la recepción de datos y muestra la interfaz principal.
+     * 5. Si no se logra conectar o el usuario decide salir, la aplicación se cierra.
+     * 
+     * Detalles del flujo:
+     * - Se utiliza un diálogo modal (JDialogCliente) para obtener los datos de conexión.
+     * - Si el usuario confirma los datos, se intenta conectar al servidor.
+     * - Si la conexión falla, se reduce el número de intentos restantes.
+     * - Si el usuario decide salir, el programa termina.
+     * 
+     * Notas:
+     * - El método bloquea la ejecución mientras el diálogo está abierto.
+     * - Si la conexión es exitosa, se inicia la recepción de datos en un hilo separado.
+     * 
+     * @param args Argumentos de línea de comandos (no utilizados en este caso).
      */
     public static void main(String[] args) {
 
