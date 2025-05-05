@@ -19,6 +19,7 @@ public class Servidor {
     private BufferedReader entrada;
 
     private EstadoPausa estadoPausa;
+    ServerSocket serverSocket;
 
     private boolean conectado = false;
 
@@ -85,14 +86,16 @@ public class Servidor {
     public void iniciarServidor(int puerto) {
         // Iniciar el servidor y esperar conexiones de clientes
         //Apertura de Sockets (en la parte del servidor)
-        try (ServerSocket serverSocket = new ServerSocket(puerto)) { //Creamos un objeto ServerSocket para que esté atento a las conexiones de clientes potenciales
+        
+        try {
+            // Si en este caso utilizasemos un try with resources donde inicializamos el socket del servidor, el socket se cerraría automáticamente al salir del bloque try habiendo creado la conexion con el cliente.
+            // Esto crearia canales de comunicacion con el cliente una vez cerrado el socket, y se podria reutilizar el socket del servidor para crear nuevas conexiones con otros clientes.
 
-            // Imprimir el puerto y la dirección IP del servidor para la conexión del cliente
+            serverSocket = new ServerSocket(puerto);
             System.out.println("Servidor iniciado en: " + serverSocket.getInetAddress().getHostAddress() + ":" + puerto); ////////////////////////////?
             System.out.println("Esperando conexión del cliente...");
-
-            //Crear objeto Socket para poder enviar y recibir datos
             clienteSocket = serverSocket.accept();
+
             System.out.println("Cliente conectado.");
             conectado = true;
 
@@ -252,7 +255,7 @@ public class Servidor {
      * Desconecta el servidor cerrando las conexiones con el cliente.
      * 
      * Este método envía un comando de salida al cliente, cierra los flujos de entrada
-     * y salida, y finalmente cierra el socket del cliente. Si no hay un cliente conectado,
+     * y salida, y finalmente cierra el socket del cliente y del servdor. Si no hay un cliente conectado,
      * se notifica mediante un mensaje en la consola.
      * 
      * @throws IOException Si ocurre un error al cerrar los flujos o el socket.
@@ -263,6 +266,7 @@ public class Servidor {
             salida.close();
             entrada.close();
             clienteSocket.close();
+            serverSocket.close();
             System.out.println("Servidor desconectado.");
         } else {
             System.out.println("No hay cliente.");
