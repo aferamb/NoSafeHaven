@@ -5,8 +5,6 @@
 package apocalipsis.nosafehaven.backend;
 
 import static java.lang.Thread.sleep;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import apocalipsis.nosafehaven.frontend.PantallaPrincipal;
 
@@ -22,15 +20,14 @@ public class Humano extends Thread {
     private Refugio refugio;
     private ZonaExterior[] zonas = new ZonaExterior[4];
 
-
     /**
      * Constructor de la clase Humano.
      *
-     * @param id           Identificador único del humano.
-     * @param refugio      Refugio asociado al humano.
-     * @param zonas        Array de zonas exteriores donde el humano puede interactuar.
-     * @param r            Ranking asociado al humano.
-     * @param estadoPausa  Estado de pausa actual del humano.
+     * @param id Identificador único del humano.
+     * @param refugio Refugio asociado al humano.
+     * @param zonas Array de zonas exteriores donde el humano puede interactuar.
+     * @param r Ranking asociado al humano.
+     * @param estadoPausa Estado de pausa actual del humano.
      */
     public Humano(String id, Refugio refugio, ZonaExterior[] zonas, Ranking r, EstadoPausa estadoPausa) {
         this.id = id;
@@ -41,25 +38,27 @@ public class Humano extends Thread {
     }
 
     /**
-     * Método que representa el ciclo de vida de un humano en el refugio durante el apocalipsis.
-     * Este método se ejecuta en un hilo separado y controla las acciones del humano, como 
-     * buscar comida, interactuar con el refugio y enfrentarse a posibles ataques de zombis.
-     * 
-     * Comportamiento principal:
-     * - El humano entra al refugio y se registra en el contador de humanos.
-     * - Se mueve entre diferentes zonas, como la zona común, el exterior y las zonas de descanso.
-     * - Busca comida en el exterior, enfrentándose a posibles ataques de zombis.
-     * - Si sobrevive, regresa al refugio con o sin comida dependiendo de si fue herido.
-     * - Si muere, se convierte en un zombi y se actualizan los contadores correspondientes.
-     * 
-     * Consideraciones:
-     * - El método utiliza pausas controladas por el estado de pausa (`estadoPausa.parar()`).
-     * - Se maneja el tiempo de espera en el exterior, que puede ser interrumpido por ataques.
-     * - Si el humano es herido, no trae comida al refugio y necesita más tiempo de descanso.
-     * - Si el humano muere, se crea un nuevo objeto `Zombie` y se inicia su hilo.
-     * 
-     * Manejo de errores:
-     * - Se capturan excepciones generales para registrar errores en el log y en la consola.
+     * Método que representa el ciclo de vida de un humano en el refugio durante
+     * el apocalipsis. Este método se ejecuta en un hilo separado y controla las
+     * acciones del humano, como buscar comida, interactuar con el refugio y
+     * enfrentarse a posibles ataques de zombis.
+     *
+     * Comportamiento principal: - El humano entra al refugio y se registra en
+     * el contador de humanos. - Se mueve entre diferentes zonas, como la zona
+     * común, el exterior y las zonas de descanso. - Busca comida en el
+     * exterior, enfrentándose a posibles ataques de zombis. - Si sobrevive,
+     * regresa al refugio con o sin comida dependiendo de si fue herido. - Si
+     * muere, se convierte en un zombi y se actualizan los contadores
+     * correspondientes.
+     *
+     * Consideraciones: - El método utiliza pausas controladas por el estado de
+     * pausa (`estadoPausa.parar()`). - Se maneja el tiempo de espera en el
+     * exterior, que puede ser interrumpido por ataques. - Si el humano es
+     * herido, no trae comida al refugio y necesita más tiempo de descanso. - Si
+     * el humano muere, se crea un nuevo objeto `Zombie` y se inicia su hilo.
+     *
+     * Manejo de errores: - Se capturan excepciones generales para registrar
+     * errores en el log y en la consola.
      */
     @Override
     public void run() {
@@ -81,7 +80,7 @@ public class Humano extends Thread {
                 System.out.println(id + " busca comida en la zona exterior " + tunel + ".");
                 estadoPausa.parar();
 
-                try { 
+                try {
                     sleep((int) ((Math.random() * 2000 + 3000) / Velocidad.getVelocidad())); // en exterior 3-5 seg
                     estadoPausa.parar();
                 } catch (InterruptedException e) {
@@ -131,21 +130,22 @@ public class Humano extends Thread {
             } catch (Exception e) {
                 Log.escribir("Error en el hilo de " + id + ": " + e.getMessage());
                 System.out.println("Error en el hilo de " + id + ": " + e.getMessage());
-            } finally {
-                // 
             }
         }
     }
 
     /**
-     * Permite que un humano entre en una zona de descanso, permanezca allí durante un tiempo
-     * determinado y luego salga de la zona de descanso. Durante este proceso, se registran
-     * mensajes en el log y en la consola para indicar las acciones realizadas.
-     * 
-     * Internamenmte s emaneja una InterruptedException para manejar la interrupción del hilo
+     * Permite que un humano entre en una zona de descanso, permanezca allí
+     * durante un tiempo determinado y luego salga de la zona de descanso.
+     * Durante este proceso, se registran mensajes en el log y en la consola
+     * para indicar las acciones realizadas.
      *
-     * @param tiempomin El tiempo mínimo (en milisegundos) que el humano debe permanecer en la zona de descanso.
-     *                  El tiempo real será un valor aleatorio entre 2 y 4 segundos, ajustado por la velocidad del sistema.
+     * Internamenmte s emaneja una InterruptedException para manejar la
+     * interrupción del hilo
+     *
+     * @param tiempomin El tiempo mínimo (en milisegundos) que el humano debe
+     * permanecer en la zona de descanso. El tiempo real será un valor aleatorio
+     * entre 2 y 4 segundos, ajustado por la velocidad del sistema.
      */
     public void irZonaDescansoGeneral(int tiempomin) {
         estadoPausa.parar();
@@ -158,7 +158,7 @@ public class Humano extends Thread {
         try {
             sleep((int) ((Math.random() * 2000 + tiempomin) / Velocidad.getVelocidad())); //en zona descanso 2-4 seg
         } catch (InterruptedException ex) {
-            Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         estadoPausa.parar();
         refugio.salirZonaDescanso(id);
@@ -168,14 +168,17 @@ public class Humano extends Thread {
     }
 
     /**
-     * Permite que un humano entre en la zona de descanso para curarse si está herido.
-     * Durante este proceso, se registran mensajes en el log y en la consola para indicar
-     * las acciones realizadas. El humano espera un tiempo determinado antes de salir de la zona de descanso.
-     * 
-     * Internamenmte se maneja una InterruptedException para manejar la interrupción del hilo
+     * Permite que un humano entre en la zona de descanso para curarse si está
+     * herido. Durante este proceso, se registran mensajes en el log y en la
+     * consola para indicar las acciones realizadas. El humano espera un tiempo
+     * determinado antes de salir de la zona de descanso.
      *
-     * @param tiempomin El tiempo mínimo (en milisegundos) que el humano debe permanecer en la zona de descanso.
-     *                  El tiempo real será un valor aleatorio entre 2 y 4 segundos, ajustado por la velocidad del sistema.
+     * Internamenmte se maneja una InterruptedException para manejar la
+     * interrupción del hilo
+     *
+     * @param tiempomin El tiempo mínimo (en milisegundos) que el humano debe
+     * permanecer en la zona de descanso. El tiempo real será un valor aleatorio
+     * entre 2 y 4 segundos, ajustado por la velocidad del sistema.
      */
     public void irZonaDescansoHerido(int tiempomin) {
         estadoPausa.parar();
@@ -188,7 +191,7 @@ public class Humano extends Thread {
         try {
             sleep((int) ((Math.random() * 2000 + tiempomin) / Velocidad.getVelocidad())); //en zona descanso 3-5 seg
         } catch (InterruptedException ex) {
-            Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         estadoPausa.parar();
         herido = false; //se cura si esta herido
@@ -200,11 +203,13 @@ public class Humano extends Thread {
     }
 
     /**
-     * Permite que un humano entre en el comedor, permanezca allí durante un tiempo
-     * determinado y luego salga del comedor. Durante este proceso, se registran
-     * mensajes en el log y en la consola para indicar las acciones realizadas.
-     * 
-     * Internamenmte se maneja una InterruptedException para manejar la interrupción del hilo
+     * Permite que un humano entre en el comedor, permanezca allí durante un
+     * tiempo determinado y luego salga del comedor. Durante este proceso, se
+     * registran mensajes en el log y en la consola para indicar las acciones
+     * realizadas.
+     *
+     * Internamenmte se maneja una InterruptedException para manejar la
+     * interrupción del hilo
      */
     public void irComedor() {
         estadoPausa.parar();
@@ -215,7 +220,7 @@ public class Humano extends Thread {
         try {
             sleep((int) ((Math.random() * 2000 + 3000) / Velocidad.getVelocidad())); //comiendo 3-5 seg
         } catch (InterruptedException ex) {
-            Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         estadoPausa.parar();
         refugio.salirComedor(id);
@@ -225,12 +230,13 @@ public class Humano extends Thread {
     }
 
     /**
-     * Permite que un humano entre en el refugio a través de un túnel específico.
-     * Durante este proceso, se registran mensajes en el log y en la consola para
-     * indicar las acciones realizadas. El humano espera un tiempo determinado
-     * antes de entrar al refugio.
+     * Permite que un humano entre en el refugio a través de un túnel
+     * específico. Durante este proceso, se registran mensajes en el log y en la
+     * consola para indicar las acciones realizadas. El humano espera un tiempo
+     * determinado antes de entrar al refugio.
      *
-     * @param tunel El número del túnel por el cual el humano intenta entrar al refugio.
+     * @param tunel El número del túnel por el cual el humano intenta entrar al
+     * refugio.
      */
     public void entrarRefugio(int tunel) {
         estadoPausa.parar();
@@ -241,7 +247,7 @@ public class Humano extends Thread {
         try {
             sleep(1000 / Velocidad.getVelocidad()); //esperar 1 seg cruzar tunel
         } catch (InterruptedException ex) {
-            Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         estadoPausa.parar();
 
@@ -254,11 +260,12 @@ public class Humano extends Thread {
 
     /**
      * Permite que un humano salga del refugio a través de un túnel específico.
-     * Durante este proceso, se registran mensajes en el log y en la consola para
-     * indicar las acciones realizadas. El humano espera un tiempo determinado
-     * antes de salir completamente del refugio.
+     * Durante este proceso, se registran mensajes en el log y en la consola
+     * para indicar las acciones realizadas. El humano espera un tiempo
+     * determinado antes de salir completamente del refugio.
      *
-     * @param tunel El número del túnel por el cual el humano intenta salir del refugio.
+     * @param tunel El número del túnel por el cual el humano intenta salir del
+     * refugio.
      */
     public void salirRefugio(int tunel) {
         estadoPausa.parar();
@@ -272,7 +279,7 @@ public class Humano extends Thread {
         try {
             sleep(1000 / Velocidad.getVelocidad()); //esperar 1seg cruzar tunel
         } catch (InterruptedException ex) {
-            Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         estadoPausa.parar();
         refugio.salirTunel(tunel, id); // sale del tunel y llega a la zona exterior
@@ -284,11 +291,12 @@ public class Humano extends Thread {
 
     /**
      * Permite que un humano entre en la zona común del refugio, permanezca allí
-     * durante un tiempo determinado y luego salga de la zona común. Durante este
-     * proceso, se registran mensajes en el log y en la consola para indicar las
-     * acciones realizadas.
-     * 
-     * Internamenmte se maneja una InterruptedException para manejar la interrupción del hilo
+     * durante un tiempo determinado y luego salga de la zona común. Durante
+     * este proceso, se registran mensajes en el log y en la consola para
+     * indicar las acciones realizadas.
+     *
+     * Internamenmte se maneja una InterruptedException para manejar la
+     * interrupción del hilo
      */
     public void irZonaComun() {
         estadoPausa.parar();
@@ -299,7 +307,7 @@ public class Humano extends Thread {
         try {
             sleep((int) ((Math.random() * 1000 + 1000) / Velocidad.getVelocidad())); //en zona comun 1 a 2 seg
         } catch (InterruptedException ex) {
-            Logger.getLogger(Humano.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
         estadoPausa.parar();
     }
@@ -325,7 +333,8 @@ public class Humano extends Thread {
     /**
      * Verifica si el humano está herido.
      *
-     * @return {@code true} si el humano está herido, {@code false} en caso contrario.
+     * @return {@code true} si el humano está herido, {@code false} en caso
+     * contrario.
      */
     public boolean isHerido() {
         return herido;
@@ -343,7 +352,8 @@ public class Humano extends Thread {
     /**
      * Verifica si el humano está muerto.
      *
-     * @return {@code true} si el humano está muerto, {@code false} en caso contrario.
+     * @return {@code true} si el humano está muerto, {@code false} en caso
+     * contrario.
      */
     public boolean isMuerto() {
         return muerto;
@@ -361,7 +371,8 @@ public class Humano extends Thread {
     /**
      * Verifica si el humano está siendo atacado.
      *
-     * @return {@code true} si el humano está siendo atacado, {@code false} en caso contrario.
+     * @return {@code true} si el humano está siendo atacado, {@code false} en
+     * caso contrario.
      */
     public boolean isSiendoAtacado() {
         return siendoAtacado;
@@ -370,12 +381,12 @@ public class Humano extends Thread {
     /**
      * Establece el estado de si el humano está siendo atacado.
      *
-     * @param siendoAtacado true si el humano está siendo atacado, false en caso contrario.
+     * @param siendoAtacado true si el humano está siendo atacado, false en caso
+     * contrario.
      */
     public void setSiendoAtacado(boolean siendoAtacado) {
         this.siendoAtacado = siendoAtacado;
     }
-
 
     /**
      * Obtiene el refugio asociado al humano.

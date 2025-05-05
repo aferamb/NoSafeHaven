@@ -36,9 +36,10 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }
 
     /**
-     * Obtiene la instancia única de la clase ClientePantalla utilizando el patrón Singleton.
-     * Este método garantiza que solo se cree una única instancia de ClientePantalla,
-     * incluso en un entorno multihilo, mediante el uso de sincronización y doble comprobación.
+     * Obtiene la instancia única de la clase ClientePantalla utilizando el
+     * patrón Singleton. Este método garantiza que solo se cree una única
+     * instancia de ClientePantalla, incluso en un entorno multihilo, mediante
+     * el uso de sincronización y doble comprobación.
      *
      * @return La instancia única de ClientePantalla.
      */
@@ -61,11 +62,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el texto de la etiqueta de comida en la interfaz gráfica.
-     * Este método asegura que la actualización se realice en el hilo de
-     * despacho de eventos de Swing para evitar problemas de concurrencia.
+     * Actualiza el texto de la etiqueta de comida en la interfaz gráfica. Este
+     * método asegura que la actualización se realice en el hilo de despacho de
+     * eventos de Swing para evitar problemas de concurrencia.
      *
-     * @param comida La cantidad o descripción de comida que se mostrará en la etiqueta.
+     * @param comida La cantidad o descripción de comida que se mostrará en la
+     * etiqueta.
      */
     public void actualizarComida(String comida) {
         SwingUtilities.invokeLater(() -> {
@@ -75,11 +77,13 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
     /**
      * Actualiza la información del refugio en la interfaz gráfica de usuario.
-     * 
-     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
-     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
-     * 
-     * @param num El número de humanos en el refugio que se mostrará en la etiqueta.
+     *
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event
+     * Dispatch Thread) utilizando SwingUtilities.invokeLater para garantizar la
+     * seguridad en el manejo de la GUI.
+     *
+     * @param num El número de humanos en el refugio que se mostrará en la
+     * etiqueta.
      */
     public void actualizarRefugio(String num) {
         SwingUtilities.invokeLater(() -> {
@@ -89,10 +93,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
     /**
      * Actualiza el número de humanos en la interfaz gráfica de usuario.
-     * 
-     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
-     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
-     * 
+     *
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event
+     * Dispatch Thread) utilizando SwingUtilities.invokeLater para garantizar la
+     * seguridad en el manejo de la GUI.
+     *
      * @param num El número de humanos que se mostrará en la etiqueta.
      */
     public void actualizarTotalHumanos(String num) {
@@ -103,10 +108,11 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
     /**
      * Actualiza el número de zombies en la interfaz gráfica de usuario.
-     * 
-     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
-     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
-     * 
+     *
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event
+     * Dispatch Thread) utilizando SwingUtilities.invokeLater para garantizar la
+     * seguridad en el manejo de la GUI.
+     *
      * @param num El número de zombies que se mostrará en la etiqueta.
      */
     public void actualizarTotalZombies(String num) {
@@ -117,16 +123,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
     /**
      * Actualiza el número de humanos en un túnel específico.
-     * 
-     * La actualización se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
-     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la GUI.
-     * 
+     *
+     * La actualización se realiza en el hilo de la interfaz gráfica (Event
+     * Dispatch Thread) utilizando SwingUtilities.invokeLater para garantizar la
+     * seguridad en el manejo de la GUI.
+     *
      * @param tunel El número del túnel que se actualizará (0-3).
      * @param num El número de humanos que se mostrará en la etiqueta del túnel.
      */
     public void actualizarTunel(int tunel, String num) {
         SwingUtilities.invokeLater(() -> {
-
             switch (tunel) {
                 case 0:
                     T1.setText("Nº humanos: " + num);
@@ -144,16 +150,17 @@ public final class ClientePantalla extends javax.swing.JFrame {
         });
     }
 
-    
     /**
-     * Actualiza la información del número de humanos en un exterior específico de la interfaz gráfica.
+     * Actualiza la información del número de humanos en un exterior específico
+     * de la interfaz gráfica.
      *
-     * La actualización de la interfaz gráfica se realiza en el hilo de eventos de Swing
-     * utilizando {@code SwingUtilities.invokeLater} para garantizar la seguridad en el acceso
-     * a los componentes de la interfaz.
-     * 
+     * La actualización de la interfaz gráfica se realiza en el hilo de eventos
+     * de Swing utilizando {@code SwingUtilities.invokeLater} para garantizar la
+     * seguridad en el acceso a los componentes de la interfaz.
+     *
      * @param exterior El número del exterior que se actualizará (0-3).
-     * @param numH El número de humanos que se mostrará en la etiqueta del exterior.
+     * @param numH El número de humanos que se mostrará en la etiqueta del
+     * exterior.
      */
     public void actualizarExteriorHumanos(int exterior, String numH) {
         SwingUtilities.invokeLater(() -> {
@@ -175,14 +182,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza la información del número de zombies en un exterior específico de la interfaz gráfica.
+     * Actualiza la información del número de zombies en un exterior específico
+     * de la interfaz gráfica.
      *
-     * La actualización de la interfaz gráfica se realiza en el hilo de eventos de Swing
-     * utilizando {@code SwingUtilities.invokeLater} para garantizar la seguridad en el acceso
-     * a los componentes de la interfaz.
-     * 
+     * La actualización de la interfaz gráfica se realiza en el hilo de eventos
+     * de Swing utilizando {@code SwingUtilities.invokeLater} para garantizar la
+     * seguridad en el acceso a los componentes de la interfaz.
+     *
      * @param exterior El número del exterior que se actualizará (0-3).
-     * @param numZ El número de zombies que se mostrará en la etiqueta del exterior.
+     * @param numZ El número de zombies que se mostrará en la etiqueta del
+     * exterior.
      */
     public void actualizarExteriorZombies(int exterior, String numZ) {
         SwingUtilities.invokeLater(() -> {
@@ -204,14 +213,17 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }
 
     /**
-     * Actualiza el texto de un componente de la interfaz gráfica basado en el ranking proporcionado.
-     *      
-     * La actualización del texto se realiza en el hilo de la interfaz gráfica (Event Dispatch Thread)
-     * utilizando SwingUtilities.invokeLater para garantizar la seguridad en el manejo de la interfaz.
-     * 
-     * @param ranking El número del ranking (1, 2 o 3) que determina qué componente actualizar.
-     *                Debe ser un valor entero entre 1 y 3.
-     * @param valor   El texto que se establecerá en el componente correspondiente al ranking.
+     * Actualiza el texto de un componente de la interfaz gráfica basado en el
+     * ranking proporcionado.
+     *
+     * La actualización del texto se realiza en el hilo de la interfaz gráfica
+     * (Event Dispatch Thread) utilizando SwingUtilities.invokeLater para
+     * garantizar la seguridad en el manejo de la interfaz.
+     *
+     * @param ranking El número del ranking (1, 2 o 3) que determina qué
+     * componente actualizar. Debe ser un valor entero entre 1 y 3.
+     * @param valor El texto que se establecerá en el componente correspondiente
+     * al ranking.
      */
     public void actualizarRanking(int ranking, String valor) {
         SwingUtilities.invokeLater(() -> {
@@ -351,6 +363,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Panel de control");
 
+        BotonComidaExtra.setBackground(new java.awt.Color(204, 204, 204));
         BotonComidaExtra.setText("+ 50 Comida");
         BotonComidaExtra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,7 +380,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
                 .addComponent(jLabel14)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RefugioLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(RefugioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(BotonComidaExtra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(velocidad1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -393,12 +406,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
                     .addComponent(stopButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonComidaExtra)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Refugio, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(Refugio);
-        Refugio.setBounds(280, 120, 280, 250);
+        Refugio.setBounds(240, 80, 280, 230);
 
         Tuneles.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Tuneles.setOpaque(false);
@@ -423,13 +436,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
         Tunel1Layout.setHorizontalGroup(
             Tunel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(T1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(Tunel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel1Layout.createSequentialGroup()
+                        .addComponent(T1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
         );
         Tunel1Layout.setVerticalGroup(
             Tunel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,13 +475,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
         Tunel2Layout.setHorizontalGroup(
             Tunel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(T2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(Tunel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel2Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel2Layout.createSequentialGroup()
+                        .addComponent(T2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
         Tunel2Layout.setVerticalGroup(
             Tunel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,13 +514,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
         Tunel3Layout.setHorizontalGroup(
             Tunel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(T3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(Tunel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel3Layout.createSequentialGroup()
+                        .addComponent(T3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))))
         );
         Tunel3Layout.setVerticalGroup(
             Tunel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,13 +553,14 @@ public final class ClientePantalla extends javax.swing.JFrame {
         Tunel4Layout.setHorizontalGroup(
             Tunel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Tunel4Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(T4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addContainerGap(49, Short.MAX_VALUE)
+                .addGroup(Tunel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel4Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Tunel4Layout.createSequentialGroup()
+                        .addComponent(T4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
         Tunel4Layout.setVerticalGroup(
             Tunel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,7 +601,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(Tuneles, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(Tuneles);
-        Tuneles.setBounds(600, 300, 300, 510);
+        Tuneles.setBounds(620, 240, 300, 510);
 
         Exterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         Exterior.setOpaque(false);
@@ -618,12 +635,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
                     .addGroup(E1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(E1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NZ1)
-                            .addComponent(NH1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                            .addComponent(NZ1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                            .addComponent(NH1)))
                     .addGroup(E1Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         E1Layout.setVerticalGroup(
             E1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -666,8 +683,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
                     .addGroup(E2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(E2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NZ2)
-                            .addComponent(NH2, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
+                            .addComponent(NZ2, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                            .addComponent(NH2)))
                     .addGroup(E2Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel3)))
@@ -714,8 +731,8 @@ public final class ClientePantalla extends javax.swing.JFrame {
                     .addGroup(E3Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(E3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NH3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(NZ3)))
+                            .addComponent(NH3)
+                            .addComponent(NZ3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
                     .addGroup(E3Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(jLabel4)))
@@ -762,12 +779,12 @@ public final class ClientePantalla extends javax.swing.JFrame {
                     .addGroup(E4Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(E4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NH4, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(NZ4)))
+                            .addComponent(NH4)
+                            .addComponent(NZ4, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)))
                     .addGroup(E4Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jLabel5)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         E4Layout.setVerticalGroup(
             E4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -787,12 +804,13 @@ public final class ClientePantalla extends javax.swing.JFrame {
             ExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExteriorLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(ExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(E3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(E2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(E1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(E4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(ExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(E4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(E3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(E2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(E1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         ExteriorLayout.setVerticalGroup(
             ExteriorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -810,7 +828,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(Exterior, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(Exterior);
-        Exterior.setBounds(960, 250, 280, 510);
+        Exterior.setBounds(1010, 240, 270, 510);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
@@ -848,23 +866,23 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(z1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(z2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(z1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))
+                        .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(z3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
+                        .addGap(37, 37, 37))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel12)
@@ -875,15 +893,15 @@ public final class ClientePantalla extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel12)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(z1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(z2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(z2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
                     .addComponent(z3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -892,7 +910,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(jPanel2, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(jPanel2);
-        jPanel2.setBounds(280, 530, 280, 280);
+        jPanel2.setBounds(240, 470, 280, 280);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apocalipse2.jpg"))); // NOI18N
         jLayeredPane1.add(jLabel15);
@@ -903,7 +921,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jLabel17.setText("NO SAFE HAVEN");
         jLayeredPane1.setLayer(jLabel17, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(jLabel17);
-        jLabel17.setBounds(650, 120, 390, 60);
+        jLabel17.setBounds(580, 120, 390, 60);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         jPanel3.setOpaque(false);
@@ -974,9 +992,9 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(jPanel3, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(jPanel3);
-        jPanel3.setBounds(280, 380, 280, 140);
+        jPanel3.setBounds(240, 320, 280, 140);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 3));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
         jPanel4.setOpaque(false);
 
         jLabel18.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 18)); // NOI18N
@@ -998,15 +1016,16 @@ public final class ClientePantalla extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(humanos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addComponent(zombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addGap(59, 59, 59))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addContainerGap(51, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(humanos, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(zombies, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1022,7 +1041,7 @@ public final class ClientePantalla extends javax.swing.JFrame {
 
         jLayeredPane1.setLayer(jPanel4, javax.swing.JLayeredPane.PALETTE_LAYER);
         jLayeredPane1.add(jPanel4);
-        jPanel4.setBounds(600, 190, 300, 100);
+        jPanel4.setBounds(1010, 110, 270, 100);
 
         jPanel1.add(jLayeredPane1);
         jLayeredPane1.setBounds(0, -2, 2048, 1160);
@@ -1042,7 +1061,6 @@ public final class ClientePantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
-
         paused = !paused;  // Alterna estado de pausa/reanudación
         if (!paused) {
             cliente.enviarComando("REANUDAR");

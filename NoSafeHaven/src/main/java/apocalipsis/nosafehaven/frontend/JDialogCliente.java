@@ -220,18 +220,19 @@ public class JDialogCliente extends javax.swing.JDialog {
 
     /**
      * Maneja el evento de acción del botón "Listo" para establecer la conexión.
-     * 
-     * Este método se ejecuta cuando el usuario hace clic en el botón "Listo" en la interfaz.
-     * Valida la dirección y el puerto ingresados por el usuario, y si son válidos, 
-     * los asigna a las variables correspondientes y cierra el diálogo.
-     * 
-     * Validaciones realizadas:
-     * - La dirección no debe estar vacía.
-     * - El puerto debe estar en el rango de 1024 a 65535.
-     * 
-     * En caso de que el puerto no sea un número válido, se muestra un mensaje de error.
-     * Si ocurre cualquier otro error, se muestra un mensaje con la descripción del problema.
-     * 
+     *
+     * Este método se ejecuta cuando el usuario hace clic en el botón "Listo" en
+     * la interfaz. Valida la dirección y el puerto ingresados por el usuario, y
+     * si son válidos, los asigna a las variables correspondientes y cierra el
+     * diálogo.
+     *
+     * Validaciones realizadas: - La dirección no debe estar vacía. - El puerto
+     * debe estar en el rango de 1024 a 65535.
+     *
+     * En caso de que el puerto no sea un número válido, se muestra un mensaje
+     * de error. Si ocurre cualquier otro error, se muestra un mensaje con la
+     * descripción del problema.
+     *
      * @param evt El evento de acción generado al hacer clic en el botón.
      */
     private void botonListoConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonListoConexionActionPerformed

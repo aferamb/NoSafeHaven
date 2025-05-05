@@ -65,7 +65,6 @@ public class Zombie extends Thread {
                 System.out.println(id + " ha sido interrumpido.");
             } catch (Exception e) {
                 Log.escribir("Error en el hilo de " + id + ": " + e.getMessage());
-                e.printStackTrace(); // muy importante para saber qué pasó
                 System.out.println("Error en el hilo de " + id + ": " + e.getMessage());
             }
         }
@@ -98,6 +97,7 @@ public class Zombie extends Thread {
         try {
             sleep((int) (tiempoAtaque / Velocidad.getVelocidad()));
         } catch (InterruptedException ex) {
+            System.out.println(ex.getMessage());
         }
         if (matado) {
             bodycount++;

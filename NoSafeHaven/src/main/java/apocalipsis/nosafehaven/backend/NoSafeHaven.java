@@ -109,6 +109,7 @@ public class NoSafeHaven {
                     try {
                         Thread.sleep((int) (Math.random() * 500 + 1500) / Velocidad.getVelocidad());
                     } catch (Exception e) {
+                         System.out.println(e.getMessage());
                     }
 
                 }

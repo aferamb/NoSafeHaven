@@ -10,8 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Refugio {
 
@@ -56,7 +54,6 @@ public class Refugio {
         humanosTotales.incrementAndGet();
         System.out.println("  Un humano más en el mundo... " + humanosTotales.get());
         Log.escribir("  Un humano más en el mundo... " + humanosTotales.get());
-        //PantallaPrincipal.getInstancia().actualizarHumanosTotales(humanosTotales.get());
         servidor.actualizarDatosHumanosTotal(humanosTotales.get());
     }
 
@@ -71,7 +68,6 @@ public class Refugio {
         humanosTotales.decrementAndGet();
         System.out.println("  Un humano menos en el mundo... " + humanosTotales.get());
         Log.escribir("  Un humano menos en el mundo... " + humanosTotales.get());
-        //PantallaPrincipal.getInstancia().actualizarHumanosTotales(humanosTotales.get());
         servidor.actualizarDatosHumanosTotal(humanosTotales.get());
     }
 
@@ -88,7 +84,6 @@ public class Refugio {
         zombiesTotales.decrementAndGet();
         System.out.println("  Un zombie menos en el mundo... " + zombiesTotales.get());
         Log.escribir("  Un zombie menos en el mundo... " + zombiesTotales.get());
-        //PantallaPrincipal.getInstancia().actualizarZombiesTotales(zombiesTotales.get());
         servidor.actualizarDatosZombiesTotal(zombiesTotales.get());
     }
 
@@ -105,7 +100,6 @@ public class Refugio {
         zombiesTotales.incrementAndGet();
         System.out.println("  Un zombie más en el mundo... " + zombiesTotales.get());
         Log.escribir("  Un zombie más en el mundo... " + zombiesTotales.get());
-        //PantallaPrincipal.getInstancia().actualizarZombiesTotales(zombiesTotales.get());
         servidor.actualizarDatosZombiesTotal(zombiesTotales.get());
     }
 
@@ -289,7 +283,7 @@ public class Refugio {
                 try {
                     esperarComida.await();
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Refugio.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
                 }
             }
             int c = comida.decrementAndGet(); //comer 1 comida
@@ -329,8 +323,8 @@ public class Refugio {
      * especificado.
      *
      * @param tunel El índice del túnel por el cual el humano saldrá. Debe estar
-     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). @param idH
-     * umano El identificador único del humano que saldrá del refugio.
+     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). 
+     * @param idHumano El identificador único del humano que saldrá del refugio.
      * @throws IllegalArgumentException Si el índice del túnel es inválido.
      *
      */
@@ -350,8 +344,7 @@ public class Refugio {
      *
      * @param tunel El índice del túnel por el cual el humano entrará. Debe
      * estar dentro del rango válido de túneles (0 <= túnel < tuneles.length).
-     * @param idH
-     * umano El identificador único del humano que entrará al refugio.
+     * @param idHumano El identificador único del humano que entrará al refugio.
      * @throws IllegalArgumentException Si el índice del túnel es inválido.
      */
     public void entrarRefugio(int tunel, String idHumano) {
@@ -367,8 +360,8 @@ public class Refugio {
      * Permite que un humano salga de un túnel específico.
      *
      * @param tunel El índice del túnel por el cual el humano saldrá. Debe estar
-     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). @param idH
-     * umano El identificador único del humano que saldrá del túnel.
+     * dentro del rango válido de túneles (0 <= túnel < tuneles.length). 
+     * @param idHumano El identificador único del humano que saldrá del túnel. 
      * @throws IllegalArgumentException Si el índice del túnel es inválido.
      */
     public void salirTunel(int tunel, String idHumano) {

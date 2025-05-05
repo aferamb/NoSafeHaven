@@ -6,7 +6,6 @@ package apocalipsis.nosafehaven.backend;
 
 import java.util.ArrayList;
 
-
 public class Ranking {
 
     private ArrayList<String> ranking = new ArrayList<>();
@@ -14,23 +13,24 @@ public class Ranking {
 
     /**
      * Constructor de la clase Ranking.
-     * 
-     * @param servidor Instancia del servidor que se utilizará para actualizar el ranking.
+     *
+     * @param servidor Instancia del servidor que se utilizará para actualizar
+     * el ranking.
      */
     public Ranking(Servidor servidor) {
         this.servidor = servidor;
     }
 
-
     /**
-     * Actualiza el ranking con un nuevo registro de puntuación.
-     * Si el identificador ya existe en el ranking, se elimina antes de agregar el nuevo valor.
-     * Luego, el ranking se ordena de mayor a menor según el bodycount y se limita a los
-     * tres primeros puestos.
-     * Finalmente, se actualiza el ranking en el servidor y se muestra por consola.
+     * Actualiza el ranking con un nuevo registro de puntuación. Si el
+     * identificador ya existe en el ranking, se elimina antes de agregar el
+     * nuevo valor. Luego, el ranking se ordena de mayor a menor según el
+     * bodycount y se limita a los tres primeros puestos. Finalmente, se
+     * actualiza el ranking en el servidor y se muestra por consola.
      *
-     * @param id        El identificador único del jugador.
-     * @param bodycount La cantidad de puntos o eliminaciones asociadas al jugador.
+     * @param id El identificador único del jugador.
+     * @param bodycount La cantidad de puntos o eliminaciones asociadas al
+     * jugador.
      */
     public synchronized void actualizarRanking(String id, int bodycount) {
         // Elimina si ya está
@@ -58,7 +58,7 @@ public class Ranking {
 
     /**
      * Extrae el valor numérico de una cadena en el formato "id: valor".
-     * 
+     *
      * @param entrada La cadena de entrada en el formato "id: valor".
      * @return El valor numérico extraído de la cadena.
      */
