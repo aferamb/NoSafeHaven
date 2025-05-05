@@ -19,7 +19,7 @@ public class Refugio {
     private AtomicInteger zombiesTotales = new AtomicInteger(1); // Total de zombies que han pasado por el refugio
 
     private AtomicInteger enZonaComun = new AtomicInteger(0);
-    private CopyOnWriteArrayList<String> humanosZonaComun = new CopyOnWriteArrayList<>(); // mejor que colleccion sincronizada mas rapida y eficaz
+    private CopyOnWriteArrayList<String> humanosZonaComun = new CopyOnWriteArrayList<>();
 
     private AtomicInteger enCama = new AtomicInteger(0);
     private CopyOnWriteArrayList<String> humanosZonaDescanso = new CopyOnWriteArrayList<>();

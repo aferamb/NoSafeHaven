@@ -64,7 +64,7 @@ public class Humano extends Thread {
     public void run() {
         estadoPausa.parar();
         refugio.unHumanoMas(); //cuando llega un humano, el contador de humanos aumenta
-        refugio.humanoEntraRefugio(id); //cuando llega un humano, el contador de humanos aumenta
+        refugio.humanoEntraRefugio(id); //cuando llega un humano, el la lista de humanos en el refugio se actualiza
         while (!muerto) {
             try {
 

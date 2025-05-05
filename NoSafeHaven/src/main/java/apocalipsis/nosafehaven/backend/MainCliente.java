@@ -34,7 +34,7 @@ public class MainCliente {
     public static void main(String[] args) {
 
         Cliente cliente = new Cliente();
-        ClientePantalla.getInstancia().setCliente(cliente); //para llamar a desconectar desde la pantalla
+        ClientePantalla.getInstancia().setCliente(cliente); 
 
         int intentos = 3;
         boolean conectado = false;
