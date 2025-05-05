@@ -17,14 +17,14 @@ public class Tunel {
 
     private int humanosDentro = 0;
     private Lock entrando = new ReentrantLock();
-    private Condition quiereEntrar = entrando.newCondition(); //prioridad
+    private Condition quiereEntrar = entrando.newCondition(); 
     private Condition quiereSalir = entrando.newCondition();
 
     private int humanosEntrando = 0;
 
     private CopyOnWriteArrayList<String> humanosSaliendoRef = new CopyOnWriteArrayList<>();
-    private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
-    private CopyOnWriteArrayList<String> humanosDentroRef = new CopyOnWriteArrayList<>(); //mejor que colleccion sincronizada mas rapida y eficaz
+    private CopyOnWriteArrayList<String> humanosEntrandoRef = new CopyOnWriteArrayList<>();
+    private CopyOnWriteArrayList<String> humanosDentroRef = new CopyOnWriteArrayList<>(); 
 
     private CyclicBarrier barrera = new CyclicBarrier(3);
     private int id;

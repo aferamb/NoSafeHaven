@@ -78,7 +78,7 @@ public class ZonaExterior {
      */
     public synchronized void zombieAtacar(Zombie z) {
         if (ctdhumanos.get() > 0) {
-            int humano = (int) (Math.random() * ctdhumanos.get()); //humano en el array en la posicion "humano"
+            int humano = (int) (Math.random() * ctdhumanos.get()); 
             Humano h = humanos.get(humano);
 
             h.setSiendoAtacado(true); //marcar que esta siendo atacado
@@ -90,7 +90,7 @@ public class ZonaExterior {
             } else {
                 h.setHerido(true);
             }
-            //el humano ha sido atacadoa. Se borra para que otro zombie no le ataque
+            //el humano ha sido atacado. Se borra para que otro zombie no le ataque
             h.interrupt();
             ctdhumanos.decrementAndGet();
             listaIDsHumanos.remove(h.getid()); //eliminamos el id del humano de la lista de ids

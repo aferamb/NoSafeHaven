@@ -92,7 +92,7 @@ public class Servidor {
             // Esto crearia canales de comunicacion con el cliente una vez cerrado el socket, y se podria reutilizar el socket del servidor para crear nuevas conexiones con otros clientes.
 
             serverSocket = new ServerSocket(puerto);
-            System.out.println("Servidor iniciado en: " + serverSocket.getInetAddress().getHostAddress() + ":" + puerto); ////////////////////////////?
+            System.out.println("Servidor iniciado en: " + serverSocket.getInetAddress().getHostAddress() + ":" + puerto); 
             System.out.println("Esperando conexión del cliente...");
             clienteSocket = serverSocket.accept();
 

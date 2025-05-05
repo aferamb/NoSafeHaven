@@ -993,9 +993,6 @@
                     <Component class="javax.swing.JTextPane" name="Exterior1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1013,9 +1010,6 @@
                     <Component class="javax.swing.JTextPane" name="Exterior2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1033,9 +1027,6 @@
                     <Component class="javax.swing.JTextPane" name="Exterior3">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1053,9 +1044,6 @@
                     <Component class="javax.swing.JTextPane" name="Exterior4">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1073,9 +1061,6 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ2">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1093,9 +1078,6 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ3">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1113,9 +1095,6 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ4">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>
@@ -1133,9 +1112,6 @@
                     <Component class="javax.swing.JTextPane" name="ExteriorZ1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="logicalStyle" type="javax.swing.text.Style" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="default"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[62, 20]"/>
                         </Property>

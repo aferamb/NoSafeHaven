@@ -193,14 +193,11 @@ public class JDialogServidor extends javax.swing.JDialog {
     }//GEN-LAST:event_botonListoConexionActionPerformed
 
     private void botonListoConexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonListoConexionMouseClicked
-        //esperarInicioCliente();
+
     }//GEN-LAST:event_botonListoConexionMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
         quiereSalir = true;
-        //dispose();  // Cierra el JDialog
-        //System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 
     /**

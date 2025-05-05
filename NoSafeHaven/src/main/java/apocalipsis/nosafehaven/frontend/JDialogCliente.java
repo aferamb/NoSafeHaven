@@ -277,9 +277,7 @@ public class JDialogCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_direccionTextFieldMouseClicked
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
-        quiereSalir = true; //marcamos que quiere salir sin confirmar
-        //dispose(); //cerramos el dialogo
+        quiereSalir = true; //marcamos que quiere salir sin confirmar    
     }//GEN-LAST:event_formWindowClosing
 
     /**
